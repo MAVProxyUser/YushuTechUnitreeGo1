@@ -15,26 +15,38 @@ https://www.taobao.com/list/item/657740636451.htm
 Early Black variant of the Air? 
 
 ## Go1 Air
-
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1Air.png"><br>
+</p>
 ## Go1 Pro
-
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1Pro.png"><br>
+</p>
 ## Go1 Pro MAX
 
 ## Go1 Nx
 
 ## Go1 MAX
 https://www.taobao.com/list/item/667863152779.htm
-
-## Go1 Edu (Basic)
-
-## Go1 Edu Explorer (2D LiDar)
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1MAX.png"><br>
+</p>
+## Go1 Edu
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1EDU.png"><br>
+</p>
+## Go1 Edu Explorer
 
 Like the Explorer, the Basic version of the Unitree A1 also has an IntelRealsense 3D camera, but the computing operations are performed by a Raspberry Pi in the 
 Basic version, whereas an NViDIA TX2 or NX is installed in the Explorer version. Of course, the Raspberry Pi cannot perform full image processing, but is 
 usually only the interface between the robot and the third-party device. Thus, the Basic variant is suitable for all those who want to install their own CPU & 
 GPU, and the Explorer variant for all those who like to have a complete research platform "out of the box".
 
-## Go1 Edu Plus (3D LiDar)
+## Go1 Edu Plus
 
 # Robot Internal Architecture
 
