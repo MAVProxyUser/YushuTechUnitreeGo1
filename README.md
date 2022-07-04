@@ -11,15 +11,22 @@ https://www.tele.soumu.go.jp/giteki/SearchServlet?pageID=jg01_01&PC=018&TC=N&PK=
 
 
 ## Go1 (TM?)
-
 https://www.taobao.com/list/item/657740636451.htm
+Early Black variant of the Air? 
+
 ## Go1 Air
+
 ## Go1 Pro
+
 ## Go1 Pro MAX
+
 ## Go1 Nx
+
 ## Go1 MAX
 https://www.taobao.com/list/item/667863152779.htm
+
 ## Go1 Edu (Basic)
+
 ## Go1 Edu Explorer (2D LiDar)
 
 Like the Explorer, the Basic version of the Unitree A1 also has an IntelRealsense 3D camera, but the computing operations are performed by a Raspberry Pi in the 
