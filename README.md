@@ -33,17 +33,17 @@ GPU, and the Explorer variant for all those who like to have a complete research
 
 <p align="center">
 <img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/NetworkLayout.jpg"><br>
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/NetworkLayout.png"><br>
 </p>
 
 <p align="center">
 <img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/FlowChart.jpg"><br>
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/FlowChart.png"><br>
 </p>
 
 <p align="center">
 <img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.jpg"><br>
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.png"><br>
 </p>
 
 
