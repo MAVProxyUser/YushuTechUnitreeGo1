@@ -23,11 +23,13 @@ Early Black variant of the Air?
 <img 
 src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1Air.png"><br>
 </p>
+
 ## Go1 Pro
 <p align="center">
 <img 
 src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1Pro.png"><br>
 </p>
+
 ## Go1 Pro MAX
 
 ## Go1 Nx
@@ -38,11 +40,13 @@ https://www.taobao.com/list/item/667863152779.htm
 <img 
 src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1MAX.png"><br>
 </p>
+
 ## Go1 Edu
 <p align="center">
 <img 
 src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1EDU.png"><br>
 </p>
+
 ## Go1 Edu Explorer
 
 Like the Explorer, the Basic version of the Unitree A1 also has an IntelRealsense 3D camera, but the computing operations are performed by a Raspberry Pi in the 
