@@ -3,7 +3,7 @@
 
 This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?<br>
 https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<br>
-https://www.youtube.com/watch?v=xdfmhWQyp_8<br>
+[![Launch Video](http://img.youtube.com/vi/xdfmhWQyp_8/0.jpg)](https://www.youtube.com/watch?v=xdfmhWQyp_8)<br>
 
 # Go1 series Product Matrix
 The full product matrix is not understood, there appear to be regional sub variants that are only sold in certain countries. For example the "Go1 MAX" is supposed to be China exclusive, although it can be easily obtained "cross-border". Test report details have given the current understanding of product options. <br>
@@ -11,6 +11,7 @@ https://www.tele.soumu.go.jp/giteki/SearchServlet?pageID=jg01_01&PC=018&TC=N&PK=
 
 
 ## Go1 (TM?)
+
 https://www.taobao.com/list/item/657740636451.htm
 ## Go1 Air
 ## Go1 Pro
@@ -18,8 +19,31 @@ https://www.taobao.com/list/item/657740636451.htm
 ## Go1 Nx
 ## Go1 MAX
 https://www.taobao.com/list/item/667863152779.htm
-## Go1 Edu
-## Go1 Edu Explorer
-## Go1 Edu Plus
+## Go1 Edu (Basic)
+## Go1 Edu Explorer (2D LiDar)
+
+Like the Explorer, the Basic version of the Unitree A1 also has an IntelRealsense 3D camera, but the computing operations are performed by a Raspberry Pi in the 
+Basic version, whereas an NViDIA TX2 or NX is installed in the Explorer version. Of course, the Raspberry Pi cannot perform full image processing, but is 
+usually only the interface between the robot and the third-party device. Thus, the Basic variant is suitable for all those who want to install their own CPU & 
+GPU, and the Explorer variant for all those who like to have a complete research platform "out of the box".
+
+## Go1 Edu Plus (3D LiDar)
 
 # Robot Internal Architecture
+
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/NetworkLayout.jpg"><br>
+</p>
+
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/FlowChart.jpg"><br>
+</p>
+
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.jpg"><br>
+</p>
+
+
