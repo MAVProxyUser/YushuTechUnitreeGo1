@@ -1,0 +1,103 @@
+\section{glwindow\+:\+:Scene\+Window Class Reference}
+\label{classglwindow_1_1_scene_window}\index{glwindow\+::\+Scene\+Window@{glwindow\+::\+Scene\+Window}}
+
+
+Inheritance diagram for glwindow\+:\+:Scene\+Window\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{classglwindow_1_1_scene_window__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for glwindow\+:\+:Scene\+Window\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classglwindow_1_1_scene_window__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ Viewpoint}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_a41959b518db30a3ab785492f1ac010fd}} 
+{\bfseries Scene\+Window} (int width, int height, const char $\ast$title)
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_a2e960ccafe493ce9e71418a03bf88301}} 
+void {\bfseries update} ()
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_af3c36c90d57620298fd2796ced9af848}} 
+bool {\bfseries start\+\_\+draw} ()
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_ab0688f7612cdaa8b06b86a3979abcdf4}} 
+void {\bfseries finish\+\_\+draw} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_a0946d9bab275dab533fe778af5d3ec7a}} 
+\textbf{ G\+L\+Window} {\bfseries win}
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_aac5dd0d07cb2dd42aa044622c6d7de6b}} 
+\textbf{ Viewpoint} {\bfseries viewpoint}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_a1482ec985ea436cb29e8da14cf7c55b5}} 
+bool {\bfseries on\+\_\+key\+\_\+down} (\textbf{ G\+L\+Window} \&win, int key)
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_a75cabfd481bb531d37ee5637c207311e}} 
+bool {\bfseries on\+\_\+button\+\_\+down} (\textbf{ G\+L\+Window} \&win, int btn, int state, int x, int y)
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_a10c408229e2f6baea755a07e56a28644}} 
+bool {\bfseries on\+\_\+button\+\_\+up} (\textbf{ G\+L\+Window} \&win, int btn, int state, int x, int y)
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_a3c67279c10c4cff40aacac9571091f12}} 
+bool {\bfseries on\+\_\+mouse\+\_\+move} (\textbf{ G\+L\+Window} \&win, int state, int x, int y)
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_a0186ad496adbcc11ada5ac24f4d7f37d}} 
+bool {\bfseries on\+\_\+mouse\+\_\+wheel} (\textbf{ G\+L\+Window} \&win, int state, int x, int y, int dx, int dy)
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_a932e76733ea8d6197ec9453c1ef09553}} 
+bool {\bfseries on\+\_\+resize} (\textbf{ G\+L\+Window} \&win, int x, int y, int w, int h)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_a7d77c829486011d04815eeb114919d71}} 
+bool {\bfseries dragging}
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_aeb7b1933324b7e32ef1c27496e398843}} 
+int {\bfseries drag\+\_\+btn}
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_a92ed7e285bc0c1f72bbe34830c2fa839}} 
+int {\bfseries x0}
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_a5a7ef8f289c9ef5d4546099724bfff77}} 
+int {\bfseries y0}
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_a261ceaff788f0d6c2d01ca71d2b268c7}} 
+double {\bfseries inv\+\_\+w0}
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_acb85c5bbf1a1e7152b5518c298e9e6cb}} 
+double {\bfseries inv\+\_\+h0}
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_a331e548ff2c83c970ca9ebddcd04581c}} 
+\textbf{ Viewpoint} {\bfseries vp0}
+\item 
+\mbox{\label{classglwindow_1_1_scene_window_a93a5025d20cd92db7bf541764fe32b93}} 
+bool {\bfseries drawing}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+examples/gl\+Viewer/scenewindow.\+hpp\item 
+examples/gl\+Viewer/scenewindow.\+cpp\end{DoxyCompactItemize}

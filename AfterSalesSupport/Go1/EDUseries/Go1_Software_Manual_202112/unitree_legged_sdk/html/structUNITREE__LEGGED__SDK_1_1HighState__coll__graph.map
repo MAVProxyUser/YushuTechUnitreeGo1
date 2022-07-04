@@ -1,0 +1,5 @@
+<map id="UNITREE_LEGGED_SDK::HighState" name="UNITREE_LEGGED_SDK::HighState">
+<area shape="rect" id="node2" href="$structUNITREE__LEGGED__SDK_1_1BmsState.html" title="UNITREE_LEGGED_SDK\l::BmsState" alt="" coords="5,5,184,47"/>
+<area shape="rect" id="node3" href="$structUNITREE__LEGGED__SDK_1_1IMU.html" title="UNITREE_LEGGED_SDK::IMU" alt="" coords="209,13,421,39"/>
+<area shape="rect" id="node4" href="$structUNITREE__LEGGED__SDK_1_1Cartesian.html" title="UNITREE_LEGGED_SDK\l::Cartesian" alt="" coords="445,5,624,47"/>
+</map>

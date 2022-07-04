@@ -1,0 +1,39 @@
+Unitree Robotics is a energetic start-\/up company that focuses on the development, production and sales of high-\/performance quadruped robots. It has been interviewed by B\+BC and C\+C\+TV, and is one of the earliest company to publicly sell quadruped robots.
+
+The company has an outstanding leadership in developing robot core components, motion control, robot perception, etc.
+
+We attaches great importance to research and development, and thus independently developed the motors, reducers, controllers, and even some sensors of the quadruped robot.
+
+\subsection*{1.\+Overview }
+
+Unitree\+Camera\+S\+DK 1.\+0 is a cross-\/platform library for unitree depth cameras
+
+The S\+DK allows depth and color streaming, and provides intrinsic calibration information. The library also offers pointcloud, depth aligned to color and vise-\/versa.
+
+\subsection*{2.\+Dependencies }
+
+Open\+CV, version\+: equal or lager than 4 Cmake, version\+:
+
+\subsection*{2.\+Build }
+
+
+\begin{DoxyCode}
+cd UnitreeCameraSDK;
+mkdir build; cd build;
+cmake ..; make
+\end{DoxyCode}
+
+
+\subsection*{3.\+Run Examples }
+
+Get Camera Raw Frame\+: 
+\begin{DoxyCode}
+cd UnitreeCameraSDK ; 
+./bin/example\_getRawFrame 
+\end{DoxyCode}
+ Get Point Cloud\+: 
+\begin{DoxyCode}
+cd UnitreeCameraSDK ; 
+./bin/example\_getPointCloud
+\end{DoxyCode}
+ 

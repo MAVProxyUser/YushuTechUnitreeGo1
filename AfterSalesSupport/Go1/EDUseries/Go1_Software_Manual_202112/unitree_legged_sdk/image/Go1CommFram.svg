@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- 由 Microsoft Visio, SVG Export 生成 Go1CommFram_English.svg Page-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="11.2691in" height="4.33529in"
+		viewBox="0 0 811.379 312.141" xml:space="preserve" color-interpolation-filters="sRGB" class="st12">
+	<v:documentProperties v:langID="2052" v:metric="true" v:viewMarkup="false">
+		<v:userDefs>
+			<v:ud v:nameU="msvSubprocessMaster" v:prompt="" v:val="VT4(Rectangle)"/>
+			<v:ud v:nameU="msvNoAutoConnect" v:val="VT0(1):26"/>
+		</v:userDefs>
+	</v:documentProperties>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#ffffff;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st2 {fill:#000000;font-family:Times New Roman;font-size:1.16666em}
+		.st3 {font-size:1em}
+		.st4 {fill:#000000;font-family:Times New Roman;font-size:1.08334em}
+		.st5 {fill:#ffffff;stroke:#c00000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st6 {font-family:宋体;font-size:1em}
+		.st7 {marker-end:url(#mrkr13-61);marker-start:url(#mrkr13-59);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st8 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.29411764705882}
+		.st9 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st10 {fill:none;stroke:#000000;stroke-dasharray:7,5;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st11 {fill:#000000;font-family:Times New Roman;font-size:1.00001em}
+		.st12 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Markers">
+		<g id="lend13">
+			<path d="M 3 1 L 0 0 L 3 -1 L 3 1 " style="stroke:none"/>
+		</g>
+		<marker id="mrkr13-59" class="st8" v:arrowType="13" v:arrowSize="1" v:setback="9.72" refX="9.72" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend13" transform="scale(3.4) "/>
+		</marker>
+		<marker id="mrkr13-61" class="st8" v:arrowType="13" v:arrowSize="1" v:setback="10.2" refX="-10.2" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend13" transform="scale(-3.4,-3.4) "/>
+		</marker>
+	</defs>
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<title>页-1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<v:layer v:name="连接线" v:index="0"/>
+		<g id="group44-1" transform="translate(469.887,-12.715)" v:mID="44" v:groupContext="group">
+			<title>工作表.44</title>
+			<g id="shape45-2" v:mID="45" v:groupContext="shape" transform="translate(-0.881687,0)">
+				<title>矩形.5</title>
+				<desc>(Main Nano) Nano3 IP: 192.168.123.15</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="166.404" cy="280.251" width="332.81" height="63.7795"/>
+				<rect x="0" y="248.361" width="332.807" height="63.7795" class="st1"/>
+				<text x="4" y="259.25" class="st2" v:langID="2052"><v:paragraph/><v:tabList/>(Main Nano)<v:newlineChar/><v:newlineChar/><tspan
+							x="4" dy="2.4em" class="st3">Nano</tspan>3<v:newlineChar/><tspan x="4" dy="1.2em" class="st3">IP</tspan>: 192.168.123.15</text>			</g>
+			<g id="shape46-7" v:mID="46" v:groupContext="shape" transform="translate(191.719,-35.4717)">
+				<title>矩形.3</title>
+				<desc>Bottom CIT/PCT</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="67.9396" cy="301.136" width="135.88" height="22.0091"/>
+				<rect x="0" y="290.132" width="135.879" height="22.0091" class="st1"/>
+				<text x="19.13" y="305.74" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Bottom CIT/PCT</text>			</g>
+			<g id="shape47-10" v:mID="47" v:groupContext="shape" transform="translate(192.002,-6.41654)">
+				<title>矩形.4</title>
+				<desc>UnitreeCameraSdk</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="67.7979" cy="301.511" width="135.6" height="21.2598"/>
+				<rect x="0" y="290.881" width="135.596" height="21.2598" class="st1"/>
+				<text x="14.15" y="305.71" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>UnitreeCameraSdk</text>			</g>
+		</g>
+		<g id="shape1-13" v:mID="1" v:groupContext="shape" transform="translate(303.307,-268.951)">
+			<title>矩形</title>
+			<desc>User PC IP: 192.168.123.xxx</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="70.8661" cy="290.881" width="141.74" height="42.5197"/>
+			<rect x="0" y="269.621" width="141.732" height="42.5197" class="st1"/>
+			<text x="47.34" y="286.27" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>User PC<v:lf/><tspan
+						x="13.7" dy="1.316em" class="st3">IP</tspan>: 192.168.123.xxx</text>		</g>
+		<g id="shape2-17" v:mID="2" v:groupContext="shape" transform="translate(351.496,-19.8016)">
+			<title>矩形.2</title>
+			<desc>Switch</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="22.6772" cy="216.472" width="45.36" height="191.339"/>
+			<rect x="0" y="120.802" width="45.3543" height="191.339" class="st1"/>
+			<text x="4.62" y="220.37" class="st4" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Switch</text>		</g>
+		<g id="group6-20" transform="translate(12.0087,-13.2457)" v:mID="6" v:groupContext="group">
+			<title>工作表.6</title>
+			<g id="shape5-21" v:mID="5" v:groupContext="shape">
+				<title>矩形.5</title>
+				<desc>Raspberry IP: 192.168.123.161</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="138.313" cy="280.251" width="276.63" height="63.7795"/>
+				<rect x="0" y="248.361" width="276.625" height="63.7795" class="st5"/>
+				<text x="4" y="267.65" class="st2" v:langID="2052"><v:paragraph/><v:tabList/>Raspberry<v:lf/><v:newlineChar/><tspan
+							x="4" dy="2.4em" class="st3">IP</tspan>: 192.168.123.161</text>			</g>
+			<g id="shape3-25" v:mID="3" v:groupContext="shape" transform="translate(146.941,-35.4331)">
+				<title>矩形.3</title>
+				<desc>Sport Mode</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="62.1525" cy="301.511" width="124.31" height="21.2598"/>
+				<rect x="0" y="290.881" width="124.305" height="21.2598" class="st5"/>
+				<text x="28.9" y="305.71" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Sport Mode</text>			</g>
+			<g id="shape4-28" v:mID="4" v:groupContext="shape" transform="translate(146.941,-7.08661)">
+				<title>矩形.4</title>
+				<desc>Unitree_legged_sdk</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="62.1525" cy="301.511" width="124.31" height="21.2598"/>
+				<rect x="0" y="290.881" width="124.305" height="21.2598" class="st5"/>
+				<text x="5.78" y="305.71" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Unitree_legged_sdk</text>			</g>
+		</g>
+		<g id="group7-31" transform="translate(468.496,-157.991)" v:mID="7" v:groupContext="group">
+			<title>工作表.7</title>
+			<g id="shape8-32" v:mID="8" v:groupContext="shape">
+				<title>矩形.5</title>
+				<desc>Nano1 IP: 192.168.123.13</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="166.601" cy="280.251" width="333.21" height="63.7795"/>
+				<rect x="0" y="248.361" width="333.203" height="63.7795" class="st1"/>
+				<text x="4" y="267.65" class="st2" v:langID="2052"><v:paragraph/><v:tabList/>Nano1<v:lf/><v:newlineChar/><tspan
+							x="4" dy="2.4em" class="st3">IP</tspan>: 192.168.123.13</text>			</g>
+			<g id="shape9-36" v:mID="9" v:groupContext="shape" transform="translate(191.976,-35.4331)">
+				<title>矩形.3</title>
+				<desc>Head CIT/PCT</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="68.5066" cy="301.511" width="137.02" height="21.2598"/>
+				<rect x="0" y="290.881" width="137.013" height="21.2598" class="st1"/>
+				<text x="25.93" y="305.71" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Head CIT/PCT</text>			</g>
+			<g id="shape10-39" v:mID="10" v:groupContext="shape" transform="translate(191.976,-7.08661)">
+				<title>矩形.4</title>
+				<desc>UnitreeCameraSdk</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="68.5066" cy="301.511" width="137.02" height="21.2598"/>
+				<rect x="0" y="290.881" width="137.013" height="21.2598" class="st1"/>
+				<text x="14.86" y="305.71" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>UnitreeCameraSdk</text>			</g>
+		</g>
+		<g id="shape12-42" v:mID="12" v:groupContext="shape" transform="translate(155.906,-157.991)">
+			<title>矩形.5</title>
+			<desc>MCU IP192.168.123.10</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="67.0728" cy="280.251" width="134.15" height="63.7795"/>
+			<rect x="0" y="248.361" width="134.146" height="63.7795" class="st1"/>
+			<text x="4" y="266.84" class="st2" v:langID="2052"><v:paragraph/><v:tabList/>MCU<v:lf/><v:lf/><tspan x="4" dy="2.487em"
+						class="st3">IP</tspan><tspan class="st6">：</tspan>192.168.123.10</text>		</g>
+		<g id="shape13-47" v:mID="13" v:groupContext="shape" transform="translate(199.848,-193.424)">
+			<title>矩形.3</title>
+			<desc>Basic Mode</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="42.5197" cy="301.511" width="85.04" height="21.2598"/>
+			<rect x="0" y="290.881" width="85.0394" height="21.2598" class="st1"/>
+			<text x="8.89" y="305.71" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Basic Mode</text>		</g>
+		<g id="shape16-50" v:mID="16" v:groupContext="shape" transform="translate(172.018,-95.6669)">
+			<title>矩形.16</title>
+			<desc>12 joint motors</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="50.7625" cy="297.968" width="101.53" height="28.3465"/>
+			<rect x="0" y="283.794" width="101.525" height="28.3465" class="st1"/>
+			<text x="7.98" y="302.17" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>12 joint motors</text>		</g>
+		<g id="shape19-53" v:mID="19" v:groupContext="shape" v:layerMember="0" transform="translate(381.26,-268.951)">
+			<title>动态连接线</title>
+			<path d="M-7.09 319.43 L-7.09 319.79 L-7.09 362.3" class="st7"/>
+		</g>
+		<g id="shape25-62" v:mID="25" v:groupContext="shape" transform="translate(369.174,-218.227)">
+			<title>工作表.25</title>
+			<desc>Ethernet</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="31.1811" cy="297.968" width="62.37" height="28.3465"/>
+			<rect x="0" y="283.794" width="62.3622" height="28.3465" class="st9"/>
+			<text x="7.47" y="302.57" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Ethernet</text>		</g>
+		<g id="shape27-65" v:mID="27" v:groupContext="shape" transform="translate(291.469,-184.458)">
+			<title>工作表.27</title>
+			<desc>Ethernet</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="31.1811" cy="297.968" width="62.37" height="28.3465"/>
+			<rect x="0" y="283.794" width="62.3622" height="28.3465" class="st9"/>
+			<text x="7.47" y="302.17" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Ethernet</text>		</g>
+		<g id="shape29-68" v:mID="29" v:groupContext="shape" transform="translate(224.346,-224.749)">
+			<title>工作表.29</title>
+			<desc>DDT</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="21.2598" cy="301.511" width="42.52" height="21.2598"/>
+			<rect x="0" y="290.881" width="42.5197" height="21.2598" class="st9"/>
+			<text x="6.87" y="305.71" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>DDT</text>		</g>
+		<g id="shape30-71" v:mID="30" v:groupContext="shape" transform="translate(226.772,-133.331)">
+			<title>工作表.30</title>
+			<rect v:rectContext="foreign" x="0" y="297.146" width="48.9827" height="14.9953" class="st9"/>
+			<switch>
+				<foreignObject x="0" y="297.146" width="48.9827" height="14.9953"
+						requiredExtensions="http://schemas.microsoft.com/visio/2003/SVGExtensions/">
+					<v:foreignData v:dataType="ole" v:type="33280" v:orgSize="6144" v:data="data:metafile;base64,eNrtGEtsVFX03Pd
+								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"/>
+				</foreignObject>
+				<svg viewBox="0 0 650.6 199.6" enable-background="new" color-interpolation-filters="sRGB" height="14.9953"
+						preserveAspectRatio="none" width="48.9827" x="0" y="297.146">
+					<defs>
+						<clipPath id="mfid6">
+							<rect id="mfid7" x="0" y="0" width="650.6" height="199.6"/>
+						</clipPath>
+					</defs>
+					<g clip-path="url(#mfid6)">
+						<mask id="mfid5" fill-rule="evenodd">
+							<g>
+								<rect width="651" height="200" fill="white" stroke="none"/>
+							</g>
+						</mask>
+						<g mask="url(#mfid5)">
+							<g transform="matrix(0.41518, 0, 0, 0.41667, 0, 0)">
+								<g stroke="#000000" stroke-miterlimit="10" fill="none">
+									<g font-family="&#39;Times New Roman&#39;,roman,serif" font-style="normal" font-weight="400"
+											font-size="448">
+										<text stroke="none" fill="#000000" x="0,301,553,780,1004,1228,2124" y="0"
+												transform="translate(57,384)" xml:space="preserve">RS-485</text>
+									</g>
+								</g>
+							</g>
+						</g>
+						<mask id="mfid8" fill-rule="evenodd" fill="white" stroke="none">
+							<rect x="0" y="0" width="651" height="200"/>
+						</mask>
+					</g>
+				</svg>
+			</switch>
+			<rect v:rectContext="foreign" x="0" y="297.146" width="48.9827" height="14.9953" class="st9"/>
+		</g>
+		<g id="shape31-74" v:mID="31" v:groupContext="shape" transform="translate(0.670079,-0.670079)">
+			<title>矩形.31</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<path d="M0 312.14 L810.04 312.14 L810.04 62.69 L0 62.69 L0 312.14 Z" class="st10"/>
+		</g>
+		<g id="shape32-76" v:mID="32" v:groupContext="shape" transform="translate(453.543,-268.951)">
+			<title>工作表.32</title>
+			<desc>Note: Camera Image and Point Cloud tranfer referred to as CIT...</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="177.165" cy="290.881" width="354.34" height="42.5197"/>
+			<rect x="0" y="269.621" width="354.331" height="42.5197" class="st9"/>
+			<text x="12.21" y="280.08" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Note: Camera Image and Point Cloud tranfer referred to as CIT/PCT<v:newlineChar/><tspan
+						x="53.36" dy="1.2em" class="st3">Recognition of Human Skeleton referred to as RHS<v:newlineChar/></tspan><tspan
+						x="66.86" dy="1.2em" class="st3">Digital Data Transmission referred to as DDT</tspan></text>		</g>
+		<g id="shape33-81" v:mID="33" v:groupContext="shape" transform="translate(161.291,-268.951)">
+			<title>矩形.18</title>
+			<desc>Wireless Handle</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="60.2362" cy="297.968" width="120.48" height="28.3465"/>
+			<rect x="0" y="283.794" width="120.472" height="28.3465" class="st1"/>
+			<text x="13.78" y="302.17" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Wireless Handle</text>		</g>
+		<g id="shape34-84" v:mID="34" v:groupContext="shape" transform="translate(533.668,43.297) rotate(90.0197)">
+			<title>工作表.34</title>
+			<path d="M7.29 312.14 L7.65 312.14 L39.53 312.14" class="st7"/>
+		</g>
+		<g id="shape36-91" v:mID="36" v:groupContext="shape" transform="translate(289.497,-189.879) rotate(-0.134758)">
+			<title>工作表.36</title>
+			<path d="M7.29 312.14 L7.65 312.14 L53.62 312.14" class="st7"/>
+		</g>
+		<g id="shape39-98" v:mID="39" v:groupContext="shape" transform="translate(290.051,-39.8913)">
+			<title>工作表.39</title>
+			<desc>Ethernet</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="31.1811" cy="297.968" width="62.37" height="28.3465"/>
+			<rect x="0" y="283.794" width="62.3622" height="28.3465" class="st9"/>
+			<text x="7.47" y="302.57" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Ethernet</text>		</g>
+		<g id="group40-101" transform="translate(468.651,-84.9984)" v:mID="40" v:groupContext="group">
+			<title>工作表.40</title>
+			<g id="shape41-102" v:mID="41" v:groupContext="shape">
+				<title>矩形.5</title>
+				<desc>Nano2 IP: 192.168.123.14</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="166.404" cy="280.251" width="332.81" height="63.7795"/>
+				<rect x="0" y="248.361" width="332.807" height="63.7795" class="st1"/>
+				<text x="4" y="267.65" class="st2" v:langID="2052"><v:paragraph/><v:tabList/>Nano2<v:lf/><v:newlineChar/><tspan
+							x="4" dy="2.4em" class="st3">IP</tspan>: 192.168.123.14</text>			</g>
+			<g id="shape42-106" v:mID="42" v:groupContext="shape" transform="translate(192.53,-35.4331)">
+				<title>矩形.3</title>
+				<desc>Side CIT/PCT</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="68.1522" cy="301.511" width="136.31" height="21.2598"/>
+				<rect x="0" y="290.881" width="136.304" height="21.2598" class="st1"/>
+				<text x="27.9" y="305.71" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Side CIT/PCT</text>			</g>
+			<g id="shape43-109" v:mID="43" v:groupContext="shape" transform="translate(192.552,-7.08661)">
+				<title>矩形.4</title>
+				<desc>UnitreeCameraSdk</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="68.1413" cy="301.511" width="136.29" height="21.2598"/>
+				<rect x="0" y="290.881" width="136.283" height="21.2598" class="st1"/>
+				<text x="14.49" y="305.71" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>UnitreeCameraSdk</text>			</g>
+		</g>
+		<g id="shape26-112" v:mID="26" v:groupContext="shape" transform="translate(395.852,-182.794)">
+			<title>工作表.26</title>
+			<desc>Ethernet</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.9325" cy="297.968" width="71.87" height="28.3465"/>
+			<rect x="0" y="283.794" width="71.865" height="28.3465" class="st9"/>
+			<text x="12.22" y="302.57" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Ethernet</text>		</g>
+		<g id="shape37-115" v:mID="37" v:groupContext="shape" transform="translate(397.478,-190.024) rotate(0.115233)">
+			<title>工作表.37</title>
+			<path d="M7.29 312.14 L7.65 312.14 L64 312.14" class="st7"/>
+		</g>
+		<g id="shape50-122" v:mID="50" v:groupContext="shape" transform="translate(395.852,-111.928)">
+			<title>工作表.50</title>
+			<desc>Ethernet</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.9325" cy="297.968" width="71.87" height="28.3465"/>
+			<rect x="0" y="283.794" width="71.865" height="28.3465" class="st9"/>
+			<text x="12.22" y="302.57" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Ethernet</text>		</g>
+		<g id="shape51-125" v:mID="51" v:groupContext="shape" transform="translate(395.936,-117.74) rotate(-0.167764)">
+			<title>工作表.51</title>
+			<path d="M7.29 312.14 L7.65 312.14 L64.15 312.14" class="st7"/>
+		</g>
+		<g id="shape53-132" v:mID="53" v:groupContext="shape" transform="translate(395.852,-41.0614)">
+			<title>工作表.53</title>
+			<desc>Ethernet</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.9325" cy="297.968" width="71.87" height="28.3465"/>
+			<rect x="0" y="283.794" width="71.865" height="28.3465" class="st9"/>
+			<text x="12.22" y="302.57" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Ethernet</text>		</g>
+		<g id="shape54-135" v:mID="54" v:groupContext="shape" transform="translate(400.533,-46.8531) rotate(0.675909)">
+			<title>工作表.54</title>
+			<path d="M7.29 312.14 L7.65 312.14 L64.64 312.14" class="st7"/>
+		</g>
+		<g id="shape56-142" v:mID="56" v:groupContext="shape" transform="translate(7.08661,-268.951)">
+			<title>矩形.56</title>
+			<desc>APP IP: 192.168.12.xxx</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="70.8661" cy="290.881" width="141.74" height="42.5197"/>
+			<rect x="0" y="269.621" width="141.732" height="42.5197" class="st1"/>
+			<text x="58.03" y="285.87" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>APP<v:lf/><tspan
+						x="17.2" dy="1.287em" class="st3">IP</tspan>: 192.168.12.xxx</text>		</g>
+		<g id="shape58-146" v:mID="58" v:groupContext="shape" transform="translate(82.2962,-220.391)">
+			<title>工作表.58</title>
+			<desc>DDT</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="21.2598" cy="297.968" width="42.52" height="28.3465"/>
+			<rect x="0" y="283.794" width="42.5197" height="28.3465" class="st9"/>
+			<text x="6.87" y="302.17" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>DDT</text>		</g>
+		<g id="shape62-149" v:mID="62" v:groupContext="shape" transform="translate(590.74,-38.2654)">
+			<title>矩形.4</title>
+			<desc>AI RHS</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="31.1811" cy="297.968" width="62.37" height="28.3465"/>
+			<rect x="0" y="283.794" width="62.3622" height="28.3465" class="st1"/>
+			<text x="8.43" y="302.17" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>AI RHS</text>		</g>
+		<g id="shape64-152" v:mID="64" v:groupContext="shape" transform="translate(17.7165,-158.596)">
+			<title>矩形.64</title>
+			<desc>Wifi Module IP: 192.168.12.1</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="60.2362" cy="280.251" width="120.48" height="63.7795"/>
+			<rect x="0" y="248.361" width="120.472" height="63.7795" class="st1"/>
+			<text x="4" y="267.25" class="st2" v:langID="2052"><v:paragraph/><v:tabList/>Wifi Module<v:newlineChar/><v:lf/><tspan
+						x="4" dy="2.516em" class="st3">IP</tspan>: 192.168.12.1</text>		</g>
+		<g id="shape66-156" v:mID="66" v:groupContext="shape" transform="translate(390.094,43.1898) rotate(90)">
+			<title>工作表.66</title>
+			<path d="M7.29 312.14 L7.65 312.14 L38.93 312.14" class="st7"/>
+		</g>
+		<g id="shape68-163" v:mID="68" v:groupContext="shape" transform="translate(390.094,153.545) rotate(90)">
+			<title>工作表.68</title>
+			<path d="M7.29 312.14 L7.65 312.14 L73.92 312.14" class="st7"/>
+		</g>
+		<g id="shape69-170" v:mID="69" v:groupContext="shape" transform="translate(79.4954,-100.202)">
+			<title>工作表.69</title>
+			<desc>USB2.0</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="29.3468" cy="297.968" width="58.7" height="28.3465"/>
+			<rect x="0" y="283.794" width="58.6936" height="28.3465" class="st9"/>
+			<text x="6.98" y="302.17" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>USB2.0</text>		</g>
+		<g id="shape70-173" v:mID="70" v:groupContext="shape" transform="translate(535.114,155.965) rotate(90.3332)">
+			<title>工作表.70</title>
+			<path d="M7.29 312.14 L7.65 312.14 L26.33 312.14" class="st7"/>
+		</g>
+		<g id="shape71-180" v:mID="71" v:groupContext="shape" transform="translate(285.999,-46.333) rotate(-0.483703)">
+			<title>工作表.71</title>
+			<path d="M7.29 312.14 L7.65 312.14 L55.21 312.14" class="st7"/>
+		</g>
+		<g id="shape78-187" v:mID="78" v:groupContext="shape" transform="translate(532.913,-226.431)">
+			<title>工作表.78</title>
+			<desc>Robot Internal Communication</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="99.2126" cy="297.968" width="198.43" height="28.3465"/>
+			<rect x="0" y="283.794" width="198.425" height="28.3465" class="st9"/>
+			<text x="11.73" y="302.17" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Robot Internal Communication</text>		</g>
+	</g>
+</svg>

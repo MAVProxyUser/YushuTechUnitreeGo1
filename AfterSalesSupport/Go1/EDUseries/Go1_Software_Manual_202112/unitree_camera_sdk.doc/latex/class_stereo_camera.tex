@@ -1,0 +1,966 @@
+\section{Stereo\+Camera Class Reference}
+\label{class_stereo_camera}\index{Stereo\+Camera@{Stereo\+Camera}}
+
+
+this class integrate camera control and stereo vision algorithm  
+
+
+
+
+{\ttfamily \#include $<$Stereo\+Camera\+Common.\+hpp$>$}
+
+
+
+Inheritance diagram for Stereo\+Camera\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{class_stereo_camera__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Stereo\+Camera} (void)
+\begin{DoxyCompactList}\small\item\em \doxyref{Stereo\+Camera}{p.}{class_stereo_camera}. \end{DoxyCompactList}\item 
+\mbox{\label{class_stereo_camera_ad5caa5f91c77562d8b6183ef153a943c}} 
+{\bfseries Stereo\+Camera} (std\+::string file\+Name)
+\item 
+\mbox{\label{class_stereo_camera_a6e0d6591990e7f8d175d67e9609c8a4c}} 
+{\bfseries Stereo\+Camera} (int device\+Node)
+\item 
+virtual \textbf{ $\sim$\+Stereo\+Camera} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{Stereo\+Camera}{p.}{class_stereo_camera} destructor. \end{DoxyCompactList}\item 
+virtual bool \textbf{ is\+Opened} (void)
+\begin{DoxyCompactList}\small\item\em get stereo camera running status \end{DoxyCompactList}\item 
+virtual bool \textbf{ set\+Log\+Level} (int level)
+\begin{DoxyCompactList}\small\item\em set stereo camera ouput log level \end{DoxyCompactList}\item 
+virtual bool \textbf{ set\+Pos\+Number} (int pos\+Number)
+\begin{DoxyCompactList}\small\item\em set stereo camera position number \end{DoxyCompactList}\item 
+virtual bool \textbf{ set\+Serial\+Number} (int serial\+Number)
+\begin{DoxyCompactList}\small\item\em set stereo camera serial number \end{DoxyCompactList}\item 
+virtual bool \textbf{ set\+Raw\+Frame\+Rate} (int frame\+Rate)
+\begin{DoxyCompactList}\small\item\em set stereo camera F\+PS (Frames Per Seconds) \end{DoxyCompactList}\item 
+virtual bool \textbf{ set\+Raw\+Frame\+Size} (cv\+::\+Size frame\+Size)
+\begin{DoxyCompactList}\small\item\em set stereo camera frame size \end{DoxyCompactList}\item 
+virtual bool \textbf{ set\+Rect\+Frame\+Size} (cv\+::\+Size frame\+Size)
+\begin{DoxyCompactList}\small\item\em set rectification image size \end{DoxyCompactList}\item 
+virtual bool \textbf{ set\+Calib\+Params} (std\+::vector$<$ cv\+::\+Mat $>$ params\+Array, bool flag=false)
+\begin{DoxyCompactList}\small\item\em set stereo camera calibration parameters \end{DoxyCompactList}\item 
+virtual int \textbf{ get\+Log\+Level} (void) const
+\begin{DoxyCompactList}\small\item\em get log system output level \end{DoxyCompactList}\item 
+virtual int \textbf{ get\+Device\+Node} (void) const
+\begin{DoxyCompactList}\small\item\em get camera device node \end{DoxyCompactList}\item 
+virtual int \textbf{ get\+Pos\+Number} (void) const
+\begin{DoxyCompactList}\small\item\em get stereo camera device node \end{DoxyCompactList}\item 
+virtual int \textbf{ get\+Serial\+Number} (void) const
+\begin{DoxyCompactList}\small\item\em get stereo camera serial number \end{DoxyCompactList}\item 
+virtual float \textbf{ get\+Raw\+Frame\+Rate} (void) const
+\begin{DoxyCompactList}\small\item\em get stereo camera capture frame rate \end{DoxyCompactList}\item 
+virtual cv\+::\+Size \textbf{ get\+Raw\+Frame\+Size} (void) const
+\begin{DoxyCompactList}\small\item\em get stereo camera frame size \end{DoxyCompactList}\item 
+virtual bool \textbf{ get\+Raw\+Frame} (cv\+::\+Mat \&frame, std\+::chrono\+::microseconds \&time\+Stamp)
+\begin{DoxyCompactList}\small\item\em get stereo camera raw frame \end{DoxyCompactList}\item 
+virtual bool \textbf{ get\+Stereo\+Frame} (cv\+::\+Mat \&left, cv\+::\+Mat \&right, std\+::chrono\+::microseconds \&time\+Stamp)
+\begin{DoxyCompactList}\small\item\em get stereo camera left and right image \end{DoxyCompactList}\item 
+virtual bool \textbf{ get\+Depth\+Frame} (cv\+::\+Mat \&depth, bool color, std\+::chrono\+::microseconds \&time\+Stamp)
+\begin{DoxyCompactList}\small\item\em get stereo camera depth image \end{DoxyCompactList}\item 
+\mbox{\label{class_stereo_camera_a7c326ad599fb3f48d80db0a7c561a287}} 
+virtual bool {\bfseries get\+Point\+Cloud} (std\+::vector$<$ cv\+::\+Vec3f $>$ \&pcl, std\+::chrono\+::microseconds \&time\+Stamp)
+\item 
+\mbox{\label{class_stereo_camera_abbf62e645d1675b4a95bf058f22e00fc}} 
+virtual bool {\bfseries get\+Point\+Cloud} (std\+::vector$<$ \textbf{ P\+C\+L\+Type} $>$ \&pcl, std\+::chrono\+::microseconds \&time\+Stamp)
+\item 
+virtual bool \textbf{ get\+Calib\+Params} (std\+::vector$<$ cv\+::\+Mat $>$ \&params\+Array, bool flag=false)
+\begin{DoxyCompactList}\small\item\em get stereo camera calibration paramerters \end{DoxyCompactList}\item 
+\mbox{\label{class_stereo_camera_a4e235f64a1a9be476c8c79695df25b4d}} 
+virtual bool {\bfseries get\+Rect\+Stereo\+Frame} (cv\+::\+Mat \&left, cv\+::\+Mat \&right, cv\+::\+Mat \&feim)
+\item 
+\mbox{\label{class_stereo_camera_ae5f827285780da011005b1036c7b942d}} 
+virtual bool {\bfseries get\+Rect\+Stereo\+Frame} (cv\+::\+Mat \&left, cv\+::\+Mat \&right, cv\+::\+Mat \&feim, std\+::chrono\+::microseconds \&time\+Stamp)
+\item 
+virtual bool \textbf{ load\+Config} (std\+::string file\+Name)
+\begin{DoxyCompactList}\small\item\em load stereo camera config parameters \end{DoxyCompactList}\item 
+virtual bool \textbf{ load\+Calib\+Params} (std\+::string file\+Name)
+\begin{DoxyCompactList}\small\item\em load stereo camera calibration params \end{DoxyCompactList}\item 
+virtual bool \textbf{ save\+Config} (std\+::string file\+Name=\char`\"{}stereo\+\_\+camera\+\_\+config.\+yaml\char`\"{})
+\begin{DoxyCompactList}\small\item\em save stereo camera settings to config file \end{DoxyCompactList}\item 
+virtual bool \textbf{ save\+Calib\+Params} (std\+::string file\+Name=\char`\"{}stereo\+\_\+camera\+\_\+calibparams.\+yaml\char`\"{})
+\begin{DoxyCompactList}\small\item\em save stereo camera calibration parameters to file \end{DoxyCompactList}\item 
+virtual bool \textbf{ start\+Capture} (bool udp\+Flag=false, bool shm\+Flag=false)
+\begin{DoxyCompactList}\small\item\em start stereo camera capture thread \end{DoxyCompactList}\item 
+virtual bool \textbf{ start\+Stereo\+Compute} (void)
+\begin{DoxyCompactList}\small\item\em start stereo camera computing disparity thread \end{DoxyCompactList}\item 
+virtual bool \textbf{ stop\+Stereo\+Compute} (void)
+\begin{DoxyCompactList}\small\item\em stop stereo camera computing disparity thread \end{DoxyCompactList}\item 
+virtual bool \textbf{ stop\+Capture} (void)
+\begin{DoxyCompactList}\small\item\em stop stereo camera capture thread \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+this class integrate camera control and stereo vision algorithm 
+
+this class is the base of Unitree\+Camera\+S\+DK, it includes many functions, such as camera frame capturing, image rectification, disparity computation, generating point cloud and etc. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_stereo_camera_a6d9ac42b50dc07f5f846336ffd29e752}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!Stereo\+Camera@{Stereo\+Camera}}
+\index{Stereo\+Camera@{Stereo\+Camera}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{Stereo\+Camera()}
+{\footnotesize\ttfamily Stereo\+Camera\+::\+Stereo\+Camera (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\doxyref{Stereo\+Camera}{p.}{class_stereo_camera}. 
+
+\doxyref{Stereo\+Camera}{p.}{class_stereo_camera} constructor overload.
+
+default constructor 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+initialize \doxyref{Stereo\+Camera}{p.}{class_stereo_camera} object by default settings 
+\begin{DoxyCode}
+StereoCamera *pCam = \textcolor{keyword}{new} StereoCamera(); or StereoCamera cam;
+\end{DoxyCode}
+
+\end{DoxyNote}
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
+
+use camera config file to init stereo camera 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\+Name} & camera config file, include file path, for example\+: $\sim$/test/stereo\+Config.yaml \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+initialize \doxyref{Stereo\+Camera}{p.}{class_stereo_camera} object by settings from configure file 
+\begin{DoxyCode}
+StereoCamera(\textcolor{stringliteral}{"path\_to/config.yaml"});
+\end{DoxyCode}
+
+\end{DoxyNote}
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
+
+use camera device node number to init stereo camera 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Node} & camera device node, for example\+: /dev/video0, camera device node\+: 0 \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+initialize \doxyref{Stereo\+Camera}{p.}{class_stereo_camera} object by device node number 
+\begin{DoxyCode}
+StereoCamera(0); \textcolor{comment}{// for /dev/video0}
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_a2b36ce592e0e2bf0850d37681c51ae60}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!````~Stereo\+Camera@{$\sim$\+Stereo\+Camera}}
+\index{````~Stereo\+Camera@{$\sim$\+Stereo\+Camera}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{$\sim$\+Stereo\+Camera()}
+{\footnotesize\ttfamily Stereo\+Camera\+::$\sim$\+Stereo\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\doxyref{Stereo\+Camera}{p.}{class_stereo_camera} destructor. 
+
+release all stereo camera resource 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+automatically called when \doxyref{Stereo\+Camera}{p.}{class_stereo_camera} object released 
+\end{DoxyNote}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{class_stereo_camera_a1bc99ca3154d36b2b2133cf2a33fc5c1}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!get\+Calib\+Params@{get\+Calib\+Params}}
+\index{get\+Calib\+Params@{get\+Calib\+Params}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{get\+Calib\+Params()}
+{\footnotesize\ttfamily Stereo\+Camera\+::get\+Calib\+Params (\begin{DoxyParamCaption}\item[{std\+::vector$<$ cv\+::\+Mat $>$ \&}]{params\+Array,  }\item[{bool}]{flag = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get stereo camera calibration paramerters 
+
+calibration paramerters include\+: camera intrinsic matrix, camera distortion coefficient, xi(mei model), rotation matrix, translation vector, rectification image intrinsic matrix 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em flag} & default false, false\+: get left camera parameters, true\+: get right camera parameters. \\
+\hline
+\mbox{\tt out}  & {\em params\+Array} & arrange Array element as follows\+: intrinsic,distortion,xi,rotation,translation,kfe \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if assignment successfully return true, otherwise return false 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+This funtion must be called after \doxyref{start\+Capture()}{p.}{class_stereo_camera_a4639e44df0bfc307a6834415b2419e56} 
+\end{DoxyAttention}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+cam.startCapture();
+std::vector<cv::Mat> paramsArray;
+\textcolor{keywordflow}{if}(cam.getCalibParams(paramsArray))\{
+    \textcolor{comment}{//do something}
+\}
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_a9398e15e05df3dbcf2c344bbb21b0918}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!get\+Depth\+Frame@{get\+Depth\+Frame}}
+\index{get\+Depth\+Frame@{get\+Depth\+Frame}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{get\+Depth\+Frame()}
+{\footnotesize\ttfamily Stereo\+Camera\+::get\+Depth\+Frame (\begin{DoxyParamCaption}\item[{cv\+::\+Mat \&}]{depth,  }\item[{bool}]{color,  }\item[{std\+::chrono\+::microseconds \&}]{time\+Stamp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get stereo camera depth image 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em color} & true\+: depth is color image, false\+:depth is gray image \\
+\hline
+\mbox{\tt out}  & {\em depth} & left image \\
+\hline
+\mbox{\tt out}  & {\em time\+Stamp} & frame time stamp \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if depth image is not empty, return true, otherwise return false. 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+This funtion must be called after \doxyref{start\+Capture()}{p.}{class_stereo_camera_a4639e44df0bfc307a6834415b2419e56}. 
+\end{DoxyAttention}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+cam.startCapture();
+cam.startStereoCompute();
+cv::Mat depth;
+std::chrono::microseconds timeStamp;
+\textcolor{keywordflow}{if}(cam.getPointCloud(depth, \textcolor{keyword}{true}, timeStamp))\{
+    \textcolor{comment}{//do something}
+\}
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_a220c957dde76a90d39f9c697115df9f8}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!get\+Device\+Node@{get\+Device\+Node}}
+\index{get\+Device\+Node@{get\+Device\+Node}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{get\+Device\+Node()}
+{\footnotesize\ttfamily Stereo\+Camera\+::get\+Device\+Node (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get camera device node 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+device node number 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+for example\+: /dev/video2, device node number is 2, the return value of function is 2. 
+\begin{DoxyCode}
+\textcolor{keywordtype}{int} nodeNumber = cam.getDeviceNode();
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_a71f3982fcea2f51db74f992c71118b13}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!get\+Log\+Level@{get\+Log\+Level}}
+\index{get\+Log\+Level@{get\+Log\+Level}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{get\+Log\+Level()}
+{\footnotesize\ttfamily Stereo\+Camera\+::get\+Log\+Level (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get log system output level 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+log level 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+1\+: output runtime information, 2\+: output runtime infomation and debug information 
+\begin{DoxyCode}
+\textcolor{keywordtype}{int} LogLevel = cam.getLogLevel();
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_a303f63876eb4f4bbac3952f556a0d4b5}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!get\+Pos\+Number@{get\+Pos\+Number}}
+\index{get\+Pos\+Number@{get\+Pos\+Number}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{get\+Pos\+Number()}
+{\footnotesize\ttfamily Stereo\+Camera\+::get\+Pos\+Number (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get stereo camera device node 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+positon number 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+face N\+O.\+1, chin N\+O.\+2, left N\+O.\+3, right N\+O.\+4, down N\+O.\+5 
+\begin{DoxyCode}
+\textcolor{keywordtype}{int} posNum = cam.getPosNumber();
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_af73c5d51e7d705738d68e5b39dc376d6}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!get\+Raw\+Frame@{get\+Raw\+Frame}}
+\index{get\+Raw\+Frame@{get\+Raw\+Frame}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{get\+Raw\+Frame()}
+{\footnotesize\ttfamily Stereo\+Camera\+::get\+Raw\+Frame (\begin{DoxyParamCaption}\item[{cv\+::\+Mat \&}]{frame,  }\item[{std\+::chrono\+::microseconds \&}]{time\+Stamp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get stereo camera raw frame 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None} & \\
+\hline
+\mbox{\tt out}  & {\em frame} & raw frame, include left and right image \\
+\hline
+\mbox{\tt out}  & {\em time\+Stamp} & raw frame time stamp \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if frame is not empty, return true, otherwise return false. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+cv::Mat frame;
+std::chrono::microseconds timeStamp
+cam.getRawFrame(frame, timeStamp);
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_a17ede497b1862574d98f73b0de2afc50}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!get\+Raw\+Frame\+Rate@{get\+Raw\+Frame\+Rate}}
+\index{get\+Raw\+Frame\+Rate@{get\+Raw\+Frame\+Rate}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{get\+Raw\+Frame\+Rate()}
+{\footnotesize\ttfamily Stereo\+Camera\+::get\+Raw\+Frame\+Rate (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get stereo camera capture frame rate 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+current stereo camera fps. 
+\begin{DoxyCode}
+\textcolor{keywordtype}{float} fps = getRawFrameRate();
+\end{DoxyCode}
+ 
+\end{DoxyReturn}
+\mbox{\label{class_stereo_camera_a31b6e103592cca9f0aa49ec795724702}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!get\+Raw\+Frame\+Size@{get\+Raw\+Frame\+Size}}
+\index{get\+Raw\+Frame\+Size@{get\+Raw\+Frame\+Size}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{get\+Raw\+Frame\+Size()}
+{\footnotesize\ttfamily Stereo\+Camera\+::get\+Raw\+Frame\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get stereo camera frame size 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+frame size. 
+\begin{DoxyCode}
+cv::Size fSize = cam.getRawFrameSize();
+\end{DoxyCode}
+ 
+\end{DoxyReturn}
+\mbox{\label{class_stereo_camera_a61bc5d4871f641660e19f1eae6ec7ecb}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!get\+Serial\+Number@{get\+Serial\+Number}}
+\index{get\+Serial\+Number@{get\+Serial\+Number}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{get\+Serial\+Number()}
+{\footnotesize\ttfamily Stereo\+Camera\+::get\+Serial\+Number (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get stereo camera serial number 
+
+this number is same as robot serial number 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+robot serial number 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+\textcolor{keywordtype}{int} seiralNumber = cam.getSerialNumber();
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_ae053739f5a6cf33f332952ab5fbcf6f2}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!get\+Stereo\+Frame@{get\+Stereo\+Frame}}
+\index{get\+Stereo\+Frame@{get\+Stereo\+Frame}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{get\+Stereo\+Frame()}
+{\footnotesize\ttfamily Stereo\+Camera\+::get\+Stereo\+Frame (\begin{DoxyParamCaption}\item[{cv\+::\+Mat \&}]{left,  }\item[{cv\+::\+Mat \&}]{right,  }\item[{std\+::chrono\+::microseconds \&}]{time\+Stamp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get stereo camera left and right image 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None} & \\
+\hline
+\mbox{\tt out}  & {\em left} & left image \\
+\hline
+\mbox{\tt out}  & {\em right} & right image \\
+\hline
+\mbox{\tt out}  & {\em time\+Stamp} & frame time stamp \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if left and right images are not empty, return true, otherwise return false. 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+This funtion must be called after \doxyref{start\+Capture()}{p.}{class_stereo_camera_a4639e44df0bfc307a6834415b2419e56}. 
+\end{DoxyAttention}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+cam.startCapture();
+cv::Mat left, right;
+std::chrono::microseconds timeStamp;
+\textcolor{keywordflow}{if}(cam.getRawFrame(left,right, timeStamp))\{
+    \textcolor{comment}{//do something}
+\}
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_a6250595f3d8f0a3ec47ccb65b4dc45dd}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!is\+Opened@{is\+Opened}}
+\index{is\+Opened@{is\+Opened}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{is\+Opened()}
+{\footnotesize\ttfamily Stereo\+Camera\+::is\+Opened (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get stereo camera running status 
+
+detect camera is opened or closed 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if camera is opened return true, otherwise return false 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+tell camera running status, it should be called after \doxyref{Stereo\+Camera}{p.}{class_stereo_camera} object initialization 
+\begin{DoxyCode}
+StereoCamera cam;
+\textcolor{keywordflow}{if}(cam.isOpened())
+    printf(\textcolor{stringliteral}{"Camera is opened!"});
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_a27bdfe94bcb5cc739e3873f5492a4e66}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!load\+Calib\+Params@{load\+Calib\+Params}}
+\index{load\+Calib\+Params@{load\+Calib\+Params}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{load\+Calib\+Params()}
+{\footnotesize\ttfamily Stereo\+Camera\+::load\+Calib\+Params (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+load stereo camera calibration params 
+
+calibration paramerters include\+: camera intrinsic matrix, camera distortion coefficient, xi(mei model), rotation matrix, translation vector, rectification image intrinsic matrix, etc. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\+Name} & calibration file name\+: include file path, for example\+: \char`\"{}path\+\_\+to/calib.\+yaml\char`\"{} \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if load file successfully return true, otherwise return false 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+This funtion must be called before \doxyref{start\+Capture()}{p.}{class_stereo_camera_a4639e44df0bfc307a6834415b2419e56} and after load\+Config(\char`\"{}xxx\char`\"{}); 
+\end{DoxyAttention}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+cam.loadConfig(\textcolor{stringliteral}{"path\_to/config.yaml"});
+cam.loadCalibParams(\textcolor{stringliteral}{"path\_to/calib.yaml"});
+cam.startCapture();
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_ab1456e1348adbbbb543f1b3178515c32}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!load\+Config@{load\+Config}}
+\index{load\+Config@{load\+Config}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{load\+Config()}
+{\footnotesize\ttfamily Stereo\+Camera\+::load\+Config (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+load stereo camera config parameters 
+
+parameters include\+: Log\+Level,Threshold,Algorithm,Ip\+Last\+Segment, Device\+Node,Frame\+Size,Rectify\+Frame\+Size,Frame\+Rate, etc. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\+Name} & config name\+: include config path, for example\+: \char`\"{}path\+\_\+to/config.\+yaml\char`\"{} \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if load config file successfully return true, otherwise return false 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+This funtion must be called before \doxyref{start\+Capture()}{p.}{class_stereo_camera_a4639e44df0bfc307a6834415b2419e56} and after init the camera object. 
+\end{DoxyAttention}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+cam.loadConfig(\textcolor{stringliteral}{"path\_to/config.yaml"});
+cam.startCapture();
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_adae4ba66d7e44469b1477c6971f18c0c}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!save\+Calib\+Params@{save\+Calib\+Params}}
+\index{save\+Calib\+Params@{save\+Calib\+Params}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{save\+Calib\+Params()}
+{\footnotesize\ttfamily Stereo\+Camera\+::save\+Calib\+Params (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name = {\ttfamily \char`\"{}stereo\+\_\+camera\+\_\+calibparams.yaml\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+save stereo camera calibration parameters to file 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\+Name} & default name\+: stereo\+\_\+camera\+\_\+calibparams.\+yaml, output file\+: include file path, for example\+: \char`\"{}path\+\_\+to/calib.\+yaml\char`\"{} \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if save file successfully return true, otherwise return false 
+\begin{DoxyCode}
+cam.saveConfig(\textcolor{stringliteral}{"stereo\_camera\_config.yaml"});
+\end{DoxyCode}
+ 
+\end{DoxyReturn}
+\mbox{\label{class_stereo_camera_ac64f4bcc5b6cb3f83c1ca873e6eca7bc}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!save\+Config@{save\+Config}}
+\index{save\+Config@{save\+Config}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{save\+Config()}
+{\footnotesize\ttfamily Stereo\+Camera\+::save\+Config (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name = {\ttfamily \char`\"{}stereo\+\_\+camera\+\_\+config.yaml\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+save stereo camera settings to config file 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\+Name} & default name\+: stereo\+\_\+camera\+\_\+config.\+yaml, output config file\+: include file path, for example\+: \char`\"{}path\+\_\+to/config.\+yaml\char`\"{} \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if save file successfully return true, otherwise return false 
+\begin{DoxyCode}
+cam.saveConfig(\textcolor{stringliteral}{"stereo\_camera\_config.yaml"});
+\end{DoxyCode}
+ 
+\end{DoxyReturn}
+\mbox{\label{class_stereo_camera_aedaeeab142c26e37c9a7ca077adc744e}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!set\+Calib\+Params@{set\+Calib\+Params}}
+\index{set\+Calib\+Params@{set\+Calib\+Params}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{set\+Calib\+Params()}
+{\footnotesize\ttfamily Stereo\+Camera\+::set\+Calib\+Params (\begin{DoxyParamCaption}\item[{std\+::vector$<$ cv\+::\+Mat $>$}]{params\+Array,  }\item[{bool}]{flag = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+set stereo camera calibration parameters 
+
+calibration paramerters include\+: camera intrinsic matrix, camera distortion coefficient, xi(mei model), rotation matrix, translation vector, rectification image intrinsic matrix 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em params\+Array} & arrange Array element as follows\+: intrinsic,distortion,xi,rotation,translation,kfe \\
+\hline
+\mbox{\tt in}  & {\em flag} & false\+: set left camera params, true\+: right camera params \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if assignment successfully return true, otherwise return false 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+the order of parameters should be correct 
+\end{DoxyAttention}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+std::vector<cv::Mat> leftParamsArray;
+cam.setCalibParams(leftParamsArray);
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_aad5e3744af4e30277516c2f2affa0d6e}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!set\+Log\+Level@{set\+Log\+Level}}
+\index{set\+Log\+Level@{set\+Log\+Level}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{set\+Log\+Level()}
+{\footnotesize\ttfamily Stereo\+Camera\+::set\+Log\+Level (\begin{DoxyParamCaption}\item[{int}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+set stereo camera ouput log level 
+
+log level means that different kind of information will be output 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em level} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if assignment successfully return true, otherwise return false 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+output information starts with \char`\"{}\+Stereo\+Camera\char`\"{}, it should be called after \doxyref{Stereo\+Camera}{p.}{class_stereo_camera} object initialization 
+\begin{DoxyCode}
+cam.setLogLevel(2); \textcolor{comment}{//debug level }
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_add164cd7c3f94a451973d71412cbcb50}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!set\+Pos\+Number@{set\+Pos\+Number}}
+\index{set\+Pos\+Number@{set\+Pos\+Number}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{set\+Pos\+Number()}
+{\footnotesize\ttfamily Stereo\+Camera\+::set\+Pos\+Number (\begin{DoxyParamCaption}\item[{int}]{pos\+Number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+set stereo camera position number 
+
+position number means that the number of camera location in robot body 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pos\+Number} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if assignment successfully return true, otherwise return false 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+face N\+O.\+1, chin N\+O.\+2, left N\+O.\+3, right N\+O.\+4, down N\+O.\+5 
+\begin{DoxyCode}
+cam.setPosNumber(2);
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_a45d70c76b62dda99fd42da94a39dae6b}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!set\+Raw\+Frame\+Rate@{set\+Raw\+Frame\+Rate}}
+\index{set\+Raw\+Frame\+Rate@{set\+Raw\+Frame\+Rate}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{set\+Raw\+Frame\+Rate()}
+{\footnotesize\ttfamily Stereo\+Camera\+::set\+Raw\+Frame\+Rate (\begin{DoxyParamCaption}\item[{int}]{frame\+Rate }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+set stereo camera F\+PS (Frames Per Seconds) 
+
+for 1856\+X800 F\+PS\+:30, for 928x400 F\+PS\+:30 or 60 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em frame\+Rate} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if assignment successfully return true, otherwise return false 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+cam.setRawFrameRate(30)
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_aeea3c683ce29f6a8416b9308126861f8}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!set\+Raw\+Frame\+Size@{set\+Raw\+Frame\+Size}}
+\index{set\+Raw\+Frame\+Size@{set\+Raw\+Frame\+Size}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{set\+Raw\+Frame\+Size()}
+{\footnotesize\ttfamily Stereo\+Camera\+::set\+Raw\+Frame\+Size (\begin{DoxyParamCaption}\item[{cv\+::\+Size}]{frame\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+set stereo camera frame size 
+
+There are two choise\+: 1856\+X800,928x400. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em frame\+Size} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if assignment successfully return true, otherwise return false 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+if do not assign frame\+Size, default size is 1856x800 
+\end{DoxyAttention}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+cam.setRawFrameSize(cv::Size(1856, 800));
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_ad12efd850e3b4c7bd5ed17613015e59e}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!set\+Rect\+Frame\+Size@{set\+Rect\+Frame\+Size}}
+\index{set\+Rect\+Frame\+Size@{set\+Rect\+Frame\+Size}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{set\+Rect\+Frame\+Size()}
+{\footnotesize\ttfamily Stereo\+Camera\+::set\+Rect\+Frame\+Size (\begin{DoxyParamCaption}\item[{cv\+::\+Size}]{frame\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+set rectification image size 
+
+this size should keep ratio as camera raw image size, for example\+: raw single frame size\+: 928x800 rectification image size\+: 464x400 or 232x200 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em frame\+Size} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if assignment successfully return true, otherwise return false 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+rectification image size must be smaller than camera raw single image size 
+\end{DoxyAttention}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+cam.setRawFrameSize(cv::Size(464, 400));
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_a64debae99da85fe4ac152b94b2168ee9}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!set\+Serial\+Number@{set\+Serial\+Number}}
+\index{set\+Serial\+Number@{set\+Serial\+Number}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{set\+Serial\+Number()}
+{\footnotesize\ttfamily Stereo\+Camera\+::set\+Serial\+Number (\begin{DoxyParamCaption}\item[{int}]{serial\+Number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+set stereo camera serial number 
+
+serial number same as robot serial number 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em serial\+Number} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if assignment successfully return true, otherwise return false 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+cam.setSerialNumber(2);
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_a4639e44df0bfc307a6834415b2419e56}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!start\+Capture@{start\+Capture}}
+\index{start\+Capture@{start\+Capture}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{start\+Capture()}
+{\footnotesize\ttfamily Stereo\+Camera\+::start\+Capture (\begin{DoxyParamCaption}\item[{bool}]{udp\+Flag = {\ttfamily false},  }\item[{bool}]{shm\+Flag = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+start stereo camera capture thread 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em udp\+Flag} & default false, true\+: enable using H264 encode camera frame and send it by gstream udp command \\
+\hline
+\mbox{\tt in}  & {\em shm\+Flag} & default false, true\+: enable using share memory to share camera frame \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if create capture thread successfully return true, otherwise return false 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+gstreamer send command\+: \char`\"{}appsrc ! videoconvert ! omxh264enc ! video/x-\/h264, stream-\/format=byte-\/stream ! rtph264pay ! udpsink host=192.\+168.\+123.\+S\+E\+G port=host\+Port\char`\"{}. S\+EG is last segment of your recieve board IP, its range from 2$\sim$254,for example\+: 13, host=192.\+168.\+123.\+13. host\+Port is defined by the result of adding camera position number and 9000, for example\+: camera positon number is 5, port=9005. share memory key number is defined by the result of adding camera position number and 9000. This function must be called after camera config or settings finished. 
+\begin{DoxyCode}
+cam.startCapture(\textcolor{keyword}{true}, \textcolor{keyword}{false}); \textcolor{comment}{// support h264 encode frame and send it by udp}
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_a64cd533641ce7f2f0515cb55ebfa805f}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!start\+Stereo\+Compute@{start\+Stereo\+Compute}}
+\index{start\+Stereo\+Compute@{start\+Stereo\+Compute}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{start\+Stereo\+Compute()}
+{\footnotesize\ttfamily Stereo\+Camera\+::start\+Stereo\+Compute (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+start stereo camera computing disparity thread 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if create thread successfully return true, otherwise return false 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+This function must be called after \doxyref{start\+Capture()}{p.}{class_stereo_camera_a4639e44df0bfc307a6834415b2419e56}; 
+\end{DoxyAttention}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+cam.startCapture();
+cam.startStereoCompute();
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_a0448ec2c79fc26591be270510f3daeb5}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!stop\+Capture@{stop\+Capture}}
+\index{stop\+Capture@{stop\+Capture}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{stop\+Capture()}
+{\footnotesize\ttfamily Stereo\+Camera\+::stop\+Capture (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+stop stereo camera capture thread 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if stop thread successfully return true, otherwise return false 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+This function must be called after \doxyref{start\+Capture()}{p.}{class_stereo_camera_a4639e44df0bfc307a6834415b2419e56}. 
+\end{DoxyAttention}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+cam.startCapture();
+cam.startStereoCompute();
+cam.stopStereoCompute();
+cam.stopCapture();
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_stereo_camera_adb1240f9d2611ed736cb075c101d8622}} 
+\index{Stereo\+Camera@{Stereo\+Camera}!stop\+Stereo\+Compute@{stop\+Stereo\+Compute}}
+\index{stop\+Stereo\+Compute@{stop\+Stereo\+Compute}!Stereo\+Camera@{Stereo\+Camera}}
+\subsubsection{stop\+Stereo\+Compute()}
+{\footnotesize\ttfamily Stereo\+Camera\+::stop\+Stereo\+Compute (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+stop stereo camera computing disparity thread 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, if stop thread successfully return true, otherwise return false 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+This function must be called after \doxyref{start\+Stereo\+Compute()}{p.}{class_stereo_camera_a64cd533641ce7f2f0515cb55ebfa805f} 
+\end{DoxyAttention}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+cam.startStereoCompute();
+cam.stopStereoCompute();
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\textbf{ Stereo\+Camera\+Common.\+hpp}\end{DoxyCompactItemize}

@@ -1,0 +1,114 @@
+\section{glwindow\+:\+:G\+L\+Window Class Reference}
+\label{classglwindow_1_1_g_l_window}\index{glwindow\+::\+G\+L\+Window@{glwindow\+::\+G\+L\+Window}}
+
+
+Collaboration diagram for glwindow\+:\+:G\+L\+Window\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{classglwindow_1_1_g_l_window__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ Scoped\+Context}
+\item 
+struct \textbf{ System\+State}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_af9e5d6539cdf2b606f7f83959cba4d91}} 
+{\bfseries G\+L\+Window} (int w=-\/1, int h=-\/1, const char $\ast$title=0)
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_ae10e25d700ab0697b2ed42d66a8e4540}} 
+int {\bfseries width} () const
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_aa3ca7cb6e058f1eef4dd769664f98b14}} 
+int {\bfseries height} () const
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_a0791d0c8205ba2c2541903cf258a58f4}} 
+bool {\bfseries visible} () const
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_a8a3a6133efd40d58e6b083469c286825}} 
+bool {\bfseries alive} () const
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_aee36cf4ab449a96fcaa0f01cd382c618}} 
+bool {\bfseries make\+\_\+current} ()
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_ad3e8ca520080b92dd961b4d6708a011a}} 
+bool {\bfseries push\+\_\+context} ()
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_ac3dc676910b6a4f09616e2a3d41ef8ac}} 
+void {\bfseries pop\+\_\+context} ()
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_a82eaf4b8f8f86ee3cf0cef21aef2a4bd}} 
+void {\bfseries swap\+\_\+buffers} ()
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_a6e13fa434eb57f3338da78362b225fde}} 
+void {\bfseries set\+\_\+size} (int w, int h)
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_aa60bf838a81fafa38120424a25a2adef}} 
+void {\bfseries set\+\_\+position} (int x, int y)
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_ae6a1274fab8ba6831681c43964f97a87}} 
+void {\bfseries set\+\_\+title} (const char $\ast$title)
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_a00d9e2f4d0e7d3696e32a38df005299b}} 
+void {\bfseries add\+\_\+handler} (\textbf{ Event\+Handler} $\ast$handler)
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_a13a72e01ab5ee8926dc401f0231d32d3}} 
+bool {\bfseries remove\+\_\+handler} (\textbf{ Event\+Handler} $\ast$handler)
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_adc3ad89ccb14a800919947c55f4f8f81}} 
+void {\bfseries handle\+\_\+events} ()
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_a9a6d66c63bfc4796fd10927da3e3114f}} 
+void {\bfseries destroy} ()
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_a1a8c3e1e280e4c5403a478f5229a3320}} 
+void {\bfseries draw\+\_\+text} (double x, double y, const char $\ast$text, int xywh[4]=0)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_a00458901c7cca772aba1e37c7ae11da5}} 
+static void {\bfseries handle\+\_\+all\+\_\+events} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_a6ec4437b302fad937613bbc7305b54af}} 
+static void {\bfseries add\+\_\+window} (\textbf{ G\+L\+Window} $\ast$win)
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_a20ba7d81fc374904b55ec40e3fb19a52}} 
+static bool {\bfseries remove\+\_\+window} (\textbf{ G\+L\+Window} $\ast$win)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_a362305bae97dad5418748841d7691694}} 
+\textbf{ System\+State} $\ast$ {\bfseries sys\+\_\+state}
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_a63eb370b84f35a788b4831e7e8ebb883}} 
+std\+::vector$<$ \textbf{ Event\+Handler} $\ast$ $>$ {\bfseries handlers}
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_a1b26b56139bda79015c4acd5082af29b}} 
+\textbf{ G\+L\+Window} $\ast$ {\bfseries prev\+\_\+active}
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_ae9a8057a689a57a27f923bc745de4bf8}} 
+static \textbf{ G\+L\+Window} $\ast$ {\bfseries active\+\_\+context} = 0
+\item 
+\mbox{\label{classglwindow_1_1_g_l_window_a53cc9ed919e7251c9a33bf5f9197375c}} 
+static std\+::vector$<$ \textbf{ G\+L\+Window} $\ast$ $>$ {\bfseries all\+\_\+windows}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+examples/gl\+Viewer/glwindow.\+hpp\item 
+examples/gl\+Viewer/glwindow\+\_\+x11.\+cpp\end{DoxyCompactItemize}

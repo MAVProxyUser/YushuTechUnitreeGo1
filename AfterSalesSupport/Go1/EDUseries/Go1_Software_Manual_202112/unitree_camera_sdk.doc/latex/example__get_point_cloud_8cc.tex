@@ -1,0 +1,65 @@
+\section{examples/example\+\_\+get\+Point\+Cloud.cc File Reference}
+\label{example__get_point_cloud_8cc}\index{examples/example\+\_\+get\+Point\+Cloud.\+cc@{examples/example\+\_\+get\+Point\+Cloud.\+cc}}
+
+
+This file is part of Unitree\+Camera\+S\+DK.  
+
+
+{\ttfamily \#include $<$G\+L/gl.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$cerrno$>$}\newline
+{\ttfamily \#include $<$cfenv$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}gl\+Viewer/scenewindow.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$Unitree\+Camera\+S\+D\+K.\+hpp$>$}\newline
+Include dependency graph for example\+\_\+get\+Point\+Cloud.\+cc\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{example__get_point_cloud_8cc__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{example__get_point_cloud_8cc_a252571170a109b31218383613dc16295}} 
+\#define \textbf{ R\+G\+B\+\_\+\+P\+CL}~true
+\begin{DoxyCompactList}\small\item\em Color Point Cloud Enable Flag. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{example__get_point_cloud_8cc_a3ba436e743e30c5f31f98acb33bcd50b}} 
+void {\bfseries Draw\+Scene} (const std\+::vector$<$ \textbf{ P\+C\+L\+Type} $>$ \&pcl\+\_\+vec)
+\item 
+\mbox{\label{example__get_point_cloud_8cc_a27d13c3979cbbf70959fddbf5cc02bb5}} 
+void {\bfseries Draw\+Scene} (const std\+::vector$<$ cv\+::\+Vec3f $>$ \&pcl\+\_\+vec)
+\item 
+\mbox{\label{example__get_point_cloud_8cc_a35f9ea2056a80a6c96b5c3ef3c19dafd}} 
+void {\bfseries ctrl\+\_\+c\+\_\+handler} (int s)
+\item 
+\mbox{\label{example__get_point_cloud_8cc_a0ddf1224851353fc92bfbff6f499fa97}} 
+int {\bfseries main} (int argc, char $\ast$argv[$\,$])
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{example__get_point_cloud_8cc_ace2ab20fcac45c041999dbe39df5ee4d}} 
+bool {\bfseries kill\+Signal\+Flag} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is part of Unitree\+Camera\+S\+DK. 
+
+This example that how to get camera point cloud. \begin{DoxyAuthor}{Author}
+Zhang\+Chunyang 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2021.\+07.\+31 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2020-\/2021, Hangzhou Yushu Technology Stock C\+O.\+L\+TD. All Rights Reserved. 
+\end{DoxyCopyright}

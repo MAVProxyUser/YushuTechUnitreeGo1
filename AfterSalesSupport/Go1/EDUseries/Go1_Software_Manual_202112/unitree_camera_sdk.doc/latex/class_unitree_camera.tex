@@ -1,0 +1,218 @@
+\section{Unitree\+Camera Class Reference}
+\label{class_unitree_camera}\index{Unitree\+Camera@{Unitree\+Camera}}
+
+
+Inheritance diagram for Unitree\+Camera\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{class_unitree_camera__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Unitree\+Camera\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{class_unitree_camera__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Unitree\+Camera} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{Unitree\+Camera}{p.}{class_unitree_camera} init unitree stereo camera object for default parameters. \end{DoxyCompactList}\item 
+\mbox{\label{class_unitree_camera_afe458a0b083d37d8212ddfcbe62cb033}} 
+{\bfseries Unitree\+Camera} (std\+::string file\+Name)
+\item 
+\mbox{\label{class_unitree_camera_a0d447525ea7fbcba9b9f892387fc91ee}} 
+{\bfseries Unitree\+Camera} (int device\+Node)
+\item 
+\textbf{ $\sim$\+Unitree\+Camera} (void)
+\begin{DoxyCompactList}\small\item\em \doxyref{Unitree\+Camera}{p.}{class_unitree_camera} destructor. \end{DoxyCompactList}\item 
+bool \textbf{ update\+Calib\+Params2\+Flash} (std\+::string file\+Name)
+\begin{DoxyCompactList}\small\item\em update camera calibrate parameters \end{DoxyCompactList}\item 
+bool \textbf{ check\+Firmware\+Version} (std\+::string \&version)
+\begin{DoxyCompactList}\small\item\em check camera\textquotesingle{}s firmware version \end{DoxyCompactList}\item 
+bool \textbf{ update\+Firmware} (std\+::string file\+Name)
+\begin{DoxyCompactList}\small\item\em update camera\textquotesingle{}s firmware \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_unitree_camera_af8a5e0c70f99096ecd378680d2f1ec27}} 
+\index{Unitree\+Camera@{Unitree\+Camera}!Unitree\+Camera@{Unitree\+Camera}}
+\index{Unitree\+Camera@{Unitree\+Camera}!Unitree\+Camera@{Unitree\+Camera}}
+\subsubsection{Unitree\+Camera()}
+{\footnotesize\ttfamily Unitree\+Camera\+::\+Unitree\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxyref{Unitree\+Camera}{p.}{class_unitree_camera} init unitree stereo camera object for default parameters. 
+
+\doxyref{Unitree\+Camera}{p.}{class_unitree_camera} constructor overload.
+
+default constructor 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+UnitreeCamera();
+\end{DoxyCode}
+
+\end{DoxyNote}
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
+
+use camera config file to init unitree stereo camera 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\+Name} & camera config file, include file path, for example\+: $\sim$/test/stereo\+Config.yaml \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+UnitreeCamera(\textcolor{stringliteral}{"path\_to/config.yaml"});
+\end{DoxyCode}
+
+\end{DoxyNote}
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
+
+use camera device node number to init unitree stereo camera 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em device\+Node} & camera device node, for example\+: /dev/video0, camera device node\+: 0 \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+StereoCamera(0); \textcolor{comment}{// for /dev/video0}
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_unitree_camera_aefb112b0fa677221163ddd18ccf08d8c}} 
+\index{Unitree\+Camera@{Unitree\+Camera}!````~Unitree\+Camera@{$\sim$\+Unitree\+Camera}}
+\index{````~Unitree\+Camera@{$\sim$\+Unitree\+Camera}!Unitree\+Camera@{Unitree\+Camera}}
+\subsubsection{$\sim$\+Unitree\+Camera()}
+{\footnotesize\ttfamily Unitree\+Camera\+::$\sim$\+Unitree\+Camera (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\doxyref{Unitree\+Camera}{p.}{class_unitree_camera} destructor. 
+
+release all unitree stereo camera resource 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None} & \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+automatically called when \doxyref{Unitree\+Camera}{p.}{class_unitree_camera} object released 
+\end{DoxyNote}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{class_unitree_camera_abca8256f52aca5d73a3925c340a78703}} 
+\index{Unitree\+Camera@{Unitree\+Camera}!check\+Firmware\+Version@{check\+Firmware\+Version}}
+\index{check\+Firmware\+Version@{check\+Firmware\+Version}!Unitree\+Camera@{Unitree\+Camera}}
+\subsubsection{check\+Firmware\+Version()}
+{\footnotesize\ttfamily Unitree\+Camera\+::check\+Firmware\+Version (\begin{DoxyParamCaption}\item[{std\+::string \&}]{version }\end{DoxyParamCaption})}
+
+
+
+check camera\textquotesingle{}s firmware version 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em version} & firmware version \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_unitree_camera_a00f53c89da4ccd429cddbbd49556e627}} 
+\index{Unitree\+Camera@{Unitree\+Camera}!update\+Calib\+Params2\+Flash@{update\+Calib\+Params2\+Flash}}
+\index{update\+Calib\+Params2\+Flash@{update\+Calib\+Params2\+Flash}!Unitree\+Camera@{Unitree\+Camera}}
+\subsubsection{update\+Calib\+Params2\+Flash()}
+{\footnotesize\ttfamily Unitree\+Camera\+::update\+Calib\+Params2\+Flash (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+update camera calibrate parameters 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\+Name} & calibration parameters file \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+\mbox{\label{class_unitree_camera_ae2d33c3447614b61c5cf8e203bbbe46c}} 
+\index{Unitree\+Camera@{Unitree\+Camera}!update\+Firmware@{update\+Firmware}}
+\index{update\+Firmware@{update\+Firmware}!Unitree\+Camera@{Unitree\+Camera}}
+\subsubsection{update\+Firmware()}
+{\footnotesize\ttfamily Unitree\+Camera\+::update\+Firmware (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+update camera\textquotesingle{}s firmware 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file\+Name} & firmware file \\
+\hline
+\mbox{\tt out}  & {\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyCode}
+\end{DoxyCode}
+ 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\textbf{ Unitree\+Camera\+S\+D\+K.\+hpp}\end{DoxyCompactItemize}

@@ -1,0 +1,6 @@
+<map id="glwindow::SceneWindow" name="glwindow::SceneWindow">
+<area shape="rect" id="node2" href="$structglwindow_1_1_event_handler.html" title="glwindow::EventHandler" alt="" coords="5,117,168,143"/>
+<area shape="rect" id="node3" href="$classglwindow_1_1_g_l_window.html" title="glwindow::GLWindow" alt="" coords="193,117,341,143"/>
+<area shape="rect" id="node4" href="$struct_g_l_window_1_1_system_state.html" title="glwindow::GLWindow\l::SystemState" alt="" coords="193,5,341,47"/>
+<area shape="rect" id="node5" href="$structglwindow_1_1_scene_window_1_1_viewpoint.html" title="glwindow::SceneWindow\l::Viewpoint" alt="" coords="479,109,647,151"/>
+</map>

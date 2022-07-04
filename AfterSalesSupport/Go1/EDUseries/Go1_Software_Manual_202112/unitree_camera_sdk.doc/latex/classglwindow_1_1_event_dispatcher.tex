@@ -1,0 +1,65 @@
+\section{glwindow\+:\+:Event\+Dispatcher Class Reference}
+\label{classglwindow_1_1_event_dispatcher}\index{glwindow\+::\+Event\+Dispatcher@{glwindow\+::\+Event\+Dispatcher}}
+
+
+Inheritance diagram for glwindow\+:\+:Event\+Dispatcher\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{classglwindow_1_1_event_dispatcher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for glwindow\+:\+:Event\+Dispatcher\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{classglwindow_1_1_event_dispatcher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classglwindow_1_1_event_dispatcher_af6bc815caa60cb9c6781db5f0756e414}} 
+{\bfseries Event\+Dispatcher} (const std\+::vector$<$ \textbf{ Event\+Handler} $\ast$$>$ \&h)
+\item 
+\mbox{\label{classglwindow_1_1_event_dispatcher_a101905128b1a416fbd9bf1adab9bcc44}} 
+bool {\bfseries on\+\_\+key\+\_\+down} (\textbf{ G\+L\+Window} \&win, int key)
+\item 
+\mbox{\label{classglwindow_1_1_event_dispatcher_ac75bcbcdd9411c5f84b99764da2206a4}} 
+bool {\bfseries on\+\_\+key\+\_\+up} (\textbf{ G\+L\+Window} \&win, int key)
+\item 
+\mbox{\label{classglwindow_1_1_event_dispatcher_aeae6ae67e9384d2cec6058fc603d065c}} 
+bool {\bfseries on\+\_\+text} (\textbf{ G\+L\+Window} \&win, const char $\ast$text, int len)
+\item 
+\mbox{\label{classglwindow_1_1_event_dispatcher_ab3484ee0cfdc125d1d25550b3065aa90}} 
+bool {\bfseries on\+\_\+button\+\_\+down} (\textbf{ G\+L\+Window} \&win, int btn, int state, int x, int y)
+\item 
+\mbox{\label{classglwindow_1_1_event_dispatcher_a0ab408899d7b617c82623596a4f46e67}} 
+bool {\bfseries on\+\_\+button\+\_\+up} (\textbf{ G\+L\+Window} \&win, int btn, int state, int x, int y)
+\item 
+\mbox{\label{classglwindow_1_1_event_dispatcher_a5669333f26e662e6afdb9aede5d6fd54}} 
+bool {\bfseries on\+\_\+mouse\+\_\+move} (\textbf{ G\+L\+Window} \&win, int state, int x, int y)
+\item 
+\mbox{\label{classglwindow_1_1_event_dispatcher_abdffd623813b637a85568664ac8918f2}} 
+bool {\bfseries on\+\_\+mouse\+\_\+wheel} (\textbf{ G\+L\+Window} \&win, int state, int x, int y, int dx, int dy)
+\item 
+\mbox{\label{classglwindow_1_1_event_dispatcher_ac9c42e34d486adaf04fa9e6bba360439}} 
+bool {\bfseries on\+\_\+resize} (\textbf{ G\+L\+Window} \&win, int x, int y, int w, int h)
+\item 
+\mbox{\label{classglwindow_1_1_event_dispatcher_af6e45a1615779b918fd94db1d0c4be32}} 
+bool {\bfseries on\+\_\+close} (\textbf{ G\+L\+Window} \&win)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classglwindow_1_1_event_dispatcher_ad110818c4668576c63d182e91070fbd7}} 
+const std\+::vector$<$ \textbf{ Event\+Handler} $\ast$ $>$ \& {\bfseries handlers}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+examples/gl\+Viewer/glwindow.\+hpp\item 
+examples/gl\+Viewer/glwindow\+\_\+x11.\+cpp\end{DoxyCompactItemize}

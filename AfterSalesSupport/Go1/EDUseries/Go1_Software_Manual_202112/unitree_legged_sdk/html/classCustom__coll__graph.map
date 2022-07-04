@@ -1,0 +1,20 @@
+<map id="Custom" name="Custom">
+<area shape="rect" id="node2" href="$classUNITREE__LEGGED__SDK_1_1UDP.html" title="Notice: User defined data(like struct) should add crc(4Byte) at the end. " alt="" coords="373,31,589,58"/>
+<area shape="rect" id="node3" href="$structUNITREE__LEGGED__SDK_1_1UDPState.html" title="UNITREE_LEGGED_SDK\l::UDPState" alt="" coords="23,5,201,47"/>
+<area shape="rect" id="node4" href="$classUNITREE__LEGGED__SDK_1_1Safety.html" title="UNITREE_LEGGED_SDK\l::Safety" alt="" coords="392,101,571,143"/>
+<area shape="rect" id="node5" href="$structUNITREE__LEGGED__SDK_1_1HighState.html" title="UNITREE_LEGGED_SDK\l::HighState" alt="" coords="392,232,571,273"/>
+<area shape="rect" id="node6" href="$structUNITREE__LEGGED__SDK_1_1BmsState.html" title="UNITREE_LEGGED_SDK\l::BmsState" alt="" coords="23,76,201,117"/>
+<area shape="rect" id="node9" href="$structUNITREE__LEGGED__SDK_1_1LowState.html" title="UNITREE_LEGGED_SDK\l::LowState" alt="" coords="392,167,571,208"/>
+<area shape="rect" id="node7" href="$structUNITREE__LEGGED__SDK_1_1IMU.html" title="UNITREE_LEGGED_SDK::IMU" alt="" coords="6,146,218,173"/>
+<area shape="rect" id="node8" href="$structUNITREE__LEGGED__SDK_1_1Cartesian.html" title="UNITREE_LEGGED_SDK\l::Cartesian" alt="" coords="23,287,201,328"/>
+<area shape="rect" id="node10" href="$structUNITREE__LEGGED__SDK_1_1MotorState.html" title="UNITREE_LEGGED_SDK\l::MotorState" alt="" coords="23,197,201,239"/>
+<area shape="rect" id="node11" href="$structAAA.html" title="AAA" alt="" coords="457,298,506,325"/>
+<area shape="rect" id="node12" href="$structUNITREE__LEGGED__SDK_1_1LowCmd.html" title="UNITREE_LEGGED_SDK\l::LowCmd" alt="" coords="392,349,571,391"/>
+<area shape="rect" id="node13" href="$structUNITREE__LEGGED__SDK_1_1MotorCmd.html" title="UNITREE_LEGGED_SDK\l::MotorCmd" alt="" coords="23,352,201,393"/>
+<area shape="rect" id="node14" href="$structUNITREE__LEGGED__SDK_1_1BmsCmd.html" title="UNITREE_LEGGED_SDK\l::BmsCmd" alt="" coords="23,423,201,464"/>
+<area shape="rect" id="node16" href="$structUNITREE__LEGGED__SDK_1_1HighCmd.html" title="UNITREE_LEGGED_SDK\l::HighCmd" alt="" coords="392,467,571,508"/>
+<area shape="rect" id="node15" href="$structBBB.html" title="BBB" alt="" coords="457,415,506,442"/>
+<area shape="rect" id="node17" href="$structUNITREE__LEGGED__SDK_1_1LED.html" title="UNITREE_LEGGED_SDK::LED" alt="" coords="5,493,219,519"/>
+<area shape="rect" id="node18" href="$structxRockerBtnDataStruct.html" title="xRockerBtnDataStruct" alt="" coords="404,538,559,565"/>
+<area shape="rect" id="node19" href="$unionxKeySwitchUnion.html" title="xKeySwitchUnion" alt="" coords="49,543,175,570"/>
+</map>
