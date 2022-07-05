@@ -136,3 +136,19 @@ def on_message(client, userdata, msg):
         process = subprocess.Popen(["sh", bashFile],stdout=subprocess.PIPE)
 ```
 
+# Upload interface 
+In Go1_2021_12_10_d799e0c3//raspi/Unitree/autostart/updateDependencies we find startup_uploader.py
+It outlines how to accept update packages. They must be .zip files, or they will be rejected
+
+
+$ cat test.txt 
+------------------------------4ebf00fbcf09
+Content-Disposition: form-data; name="file"; filename="/tmp/out.zip"
+
+filecontent here
+
+------------------------------4ebf00fbcf09
+
+$ curl -X POST -H "Content-Type: multipart/form-data; boundary=----------------------------4ebf00fbcf09"   --data-binary @test.txt http://localhost:9800
+{'info':'File '/tmp/out.zip' upload success!'}Kevins-MacBook-Air:YushuTechUnitreeGo1 kfinisterre
+
