@@ -88,8 +88,27 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.png"><b
 
 # Programming interface
 In Go1_2022_05_11_e0d0e617/raspi/Unitree/autostart/programming we find programming.py
+It imports ./build/robot_interface_high_level.cpython-37m-aarch64-linux-gnu.so in order to call the UDP listen 
+functions. 
+```
+import robot_interface_high_level as robot_interface
+``` 
+...
+```
+unitree_go1 = robot_interface.RobotInterface()
+```
 
-This handles all the Scratch code from the mobile client. 
+The interface seems to blindly pass user input to exec().
+```
+The exec() method executes the dynamically created program, which is either a string or a code object.
+```
+
+First the code passes through compile()
+```
+compile() method is used if the Python code is in string form or is an AST object, and you want to change it to 
+a code object.
+```
+This handles all the MIT Scratch code blocks from the mobile client. 
 
 
 
