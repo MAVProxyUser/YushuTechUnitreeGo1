@@ -86,4 +86,10 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/FlowChart.png
 src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.png"><br>
 </p>
 
+# Programming interface
+In Go1_2022_05_11_e0d0e617/raspi/Unitree/autostart/programming we find programming.py
+
+This handles all the Scratch code from the mobile client. 
+
+
 
