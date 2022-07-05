@@ -17,9 +17,18 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/ChinaTest.png
 ## Go1 (TM?)
 https://www.taobao.com/list/item/657740636451.htm
 Early Black variant of the Air? 
+
+https://www.cnbeta.com/articles/tech/1139381.htm
+Includes "HAI1" features!
+ 
 <p align="center">
 <img 
 src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1TM.jpg"><br>
+</p>
+
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1.jpg"><br>
 </p>
 
 ## Go1 Air
