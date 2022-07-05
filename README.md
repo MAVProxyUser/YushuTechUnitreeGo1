@@ -110,5 +110,29 @@ a code object.
 ```
 This handles all the MIT Scratch code blocks from the mobile client. 
 
+# Update interface
+In Go1_2021_12_10_d799e0c3//raspi/Unitree/autostart/updateDependencies we find startup_manager.py 
+It declares itself to be "Unitree System Manager", and offers the following functions
+```
+Functions:
+1. run bash files
+2. delete uploaded packages
+3. run update packages
+4. process topics when modules shut down
+```
 
+This can also be used to run arbitry commands. 
+```
+def on_message(client, userdata, msg):
+    global updatePackage
+    global updateFirmware
+    # not doing anything during update
+    if(updatePackage !='' or updateFirmware !=''):
+        return 
+    # run bash file
+    if(msg.topic == "usys/sh"):
+        bashFile = str(msg.payload,'utf-8')
+        print("Running sh " + bashFile)
+        process = subprocess.Popen(["sh", bashFile],stdout=subprocess.PIPE)
+```
 
