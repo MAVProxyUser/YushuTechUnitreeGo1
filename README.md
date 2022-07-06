@@ -62,10 +62,12 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1EDU.png"><
 
 ## Go1 Edu Explorer
 
-Like the Explorer, the Basic version of the Unitree A1 also has an IntelRealsense 3D camera, but the computing operations are performed by a Raspberry Pi in the 
-Basic version, whereas an NViDIA TX2 or NX is installed in the Explorer version. Of course, the Raspberry Pi cannot perform full image processing, but is 
-usually only the interface between the robot and the third-party device. Thus, the Basic variant is suitable for all those who want to install their own CPU & 
-GPU, and the Explorer variant for all those who like to have a complete research platform "out of the box".
+The difference between the EDU and the EDU Explorer is basically those features that comes with the integration of the Lidar (2D/3D): Basically
+- Obstacle avoidance
+- Mapping and navigation planning
+- Support for developing gesture recognition
+- VSLAM and other secondary development
+- With the 3D Lidar, also the Dynamic Obstacle Avoidance.
 
 ## Go1 Edu Plus
 
