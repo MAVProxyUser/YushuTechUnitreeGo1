@@ -92,7 +92,7 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.png"><b
 </p>
 
 # Programming interface
-In Go1_2022_05_11_e0d0e617/raspi/Unitree/autostart/programming we find programming.py
+In Go1_2022_05_11_e0d0e617/raspi/Unitree/autostart/programming we find programming.py<br>
 It imports ./build/robot_interface_high_level.cpython-37m-aarch64-linux-gnu.so in order to call the UDP listen 
 functions. 
 ```
@@ -116,7 +116,7 @@ a code object.
 This handles all the MIT Scratch code blocks from the mobile client. 
 
 # Update interface
-In Go1_2021_12_10_d799e0c3//raspi/Unitree/autostart/updateDependencies we find startup_manager.py 
+In Go1_2021_12_10_d799e0c3/raspi/Unitree/autostart/updateDependencies we find startup_manager.py<br>
 It declares itself to be "Unitree System Manager", and offers the following functions
 ```
 Functions:
@@ -142,7 +142,7 @@ def on_message(client, userdata, msg):
 ```
 
 # Upload interface 
-In Go1_2021_12_10_d799e0c3//raspi/Unitree/autostart/updateDependencies we find startup_uploader.py<br>
+In Go1_2021_12_10_d799e0c3/raspi/Unitree/autostart/updateDependencies we find startup_uploader.py<br>
 It outlines how to accept update packages. They must be .zip files, or they will be rejected
 
 ```
