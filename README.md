@@ -1,6 +1,25 @@
 # HangZhou Yushu Tech Unitree Go1
 宇树科技 HangZhou Yushu Technology (Unitree) go1 development notes
 
+* [Go1 series Product Matrix](#go1-series-product-matrix)
+   * [Go1 (TM?)](#go1-tm)
+   * [Go1 Air](#go1-air)
+   * [Go1 Pro](#go1-pro)
+   * [Go1 Pro MAX](#go1-pro-max)
+   * [Go1 Nx](#go1-nx)
+   * [Go1 MAX](#go1-max)
+   * [Go1 Edu](#go1-edu)
+   * [Go1 Edu Explorer](#go1-edu-explorer)
+   * [Go1 Edu Plus](#go1-edu-plus)
+* [Robot Internal Architecture](#robot-internal-architecture)
+* [Programming interface](#programming-interface)
+* [Update interface](#update-interface)
+* [Upload interface](#upload-interface)
+* [Passwords](#passwords)
+* [Power Output](#power-output)
+* [Installing TCPdump on the RasPi](#installing-tcpdump-on-the-raspi)
+* [STM32 MicroROS?](#stm32-microros)
+
 This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?<br>
 https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<br>
 [![Launch Video](http://img.youtube.com/vi/xdfmhWQyp_8/0.jpg)](https://www.youtube.com/watch?v=xdfmhWQyp_8)<br>
@@ -167,3 +186,50 @@ root / 123 (RasPi)<br>
 
 # Power Output 
 On the dogs belly is a 24v pass though assumed to be 2A max.
+
+# Installing TCPdump on the RasPi
+
+Download from the mirror
+```
+$ wget https://mirrors.tuna.tsinghua.edu.cn/debian/pool/main/t/tcpdump/tcpdump_4.9.3-1~deb10u2_arm64.deb 
+--2022-07-06 15:30:55--  https://mirrors.tuna.tsinghua.edu.cn/debian/pool/main/t/tcpdump/tcpdump_4.9.3-1~deb10u2_arm64.deb
+Resolving mirrors.tuna.tsinghua.edu.cn (mirrors.tuna.tsinghua.edu.cn)... 101.6.15.130, 2402:f000:1:400::2
+Connecting to mirrors.tuna.tsinghua.edu.cn (mirrors.tuna.tsinghua.edu.cn)|101.6.15.130|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 378080 (369K) [application/octet-stream]
+Saving to: ‘tcpdump_4.9.3-1~deb10u2_arm64.deb’
+
+tcpdump_4.9.3-1~deb 100%[===================>] 369.22K   290KB/s    in 1.3s    
+
+2022-07-06 15:31:00 (290 KB/s) - ‘tcpdump_4.9.3-1~deb10u2_arm64.deb’ saved [378080/378080]
+```
+
+Scp to the raspi, and install. 
+
+```
+$ scp tcpdump_4.9.3-1~deb10u2_arm64.deb pi@192.168.123.161:/tmp/
+pi@192.168.123.161's password: 
+tcpdump_4.9.3-1~deb10u2_arm64.deb                                                    100%  369KB   
+```
+
+Make yourself root and install the package. 
+```
+root@raspberrypi:/home/pi# dpkg -i /tmp/tcpdump_4.9.3-1~deb10u2_arm64.deb 
+Selecting previously unselected package tcpdump.
+(Reading database ... 171570 files and directories currently installed.)
+Preparing to unpack .../tcpdump_4.9.3-1~deb10u2_arm64.deb ...
+Unpacking tcpdump (4.9.3-1~deb10u2) ...
+Setting up tcpdump (4.9.3-1~deb10u2) ...
+Processing triggers for man-db (2.8.5-2) ...
+```
+
+# STM32 MicroROS?
+
+The device at 192.168.123.10 may be an STM32 running MicroROS
+
+https://micro.ros.org/docs/overview/hardware/<br>
+https://www.youtube.com/watch?v=Sz-nllmtcc8<br>
+https://github.com/micro-ROS/micro_ros_stm32cubemx_utils<br>
+
+
+
