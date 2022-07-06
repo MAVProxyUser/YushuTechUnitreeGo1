@@ -83,6 +83,11 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/FlowChart.png
 
 <p align="center">
 <img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/sdk.png"><br>
+</p>
+
+<p align="center">
+<img 
 src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.png"><br>
 </p>
 
@@ -152,3 +157,11 @@ filecontent here
 $ curl -X POST -H "Content-Type: multipart/form-data; boundary=----------------------------4ebf00fbcf09"   --data-binary @test.txt http://localhost:9800
 {'info':'File '/tmp/out.zip' upload success!'}Kevins-MacBook-Air:YushuTechUnitreeGo1 kfinisterre
 
+
+# Passwords
+unitree / 123 (Nano)
+raspberry / 123 (RasPi)
+root / 123 (RasPi)
+
+# Power Output 
+On the dogs belly is a 24v pass though assumed to be 2A max.
