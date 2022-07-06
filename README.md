@@ -19,6 +19,7 @@
 * [Power Output](#power-output)
 * [Installing TCPdump on the RasPi](#installing-tcpdump-on-the-raspi)
 * [STM32 MicroROS?](#stm32-microros)
+* [45 / 5G support](#45--5g-support)
 
 This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?<br>
 https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<br>
@@ -231,5 +232,18 @@ https://micro.ros.org/docs/overview/hardware/<br>
 https://www.youtube.com/watch?v=Sz-nllmtcc8<br>
 https://github.com/micro-ROS/micro_ros_stm32cubemx_utils<br>
 
+# 45 / 5G support
 
+Quectel EG25-G is connected to the RasPI
+https://www.quectel.com/wp-content/uploads/pdfupload/EP-FMEG25GMPCIs_Specification_V1.0-1609137.pdf
+https://www.t-mobile.com/content/dam/tfb/pdf/tfb-iot/Quectel_EG25-G_LTE_Standard_Specification_V1.3.pdf
+https://fccid.io/XMR201903EG25G/User-Manual/user-manual-4219711.pdf
 
+It includes a GNSS function. The GPS antenna in the Go1 is connected to this device. 
+
+5G support is assumed to be provided by a Quctel RM5 series chipset. 
+https://www.quectel.com/product/5g-rm50xq-series
+https://www.quectel.com/product/5g-rm510q-gl
+https://www.quectel.com/wp-content/uploads/2021/02/Quectel_Product_Brochure_EN_V6.1.pdf
+
+While connected to the 45/5g the dog does call home. 
