@@ -20,6 +20,7 @@
 * [Installing TCPdump on the RasPi](#installing-tcpdump-on-the-raspi)
 * [STM32 MicroROS?](#stm32-microros)
 * [45 / 5G support](#45--5g-support)
+* [Bluetooth](#bluetooth)
 
 This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?<br>
 https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<br>
@@ -247,3 +248,8 @@ https://www.quectel.com/product/5g-rm510q-gl
 https://www.quectel.com/wp-content/uploads/2021/02/Quectel_Product_Brochure_EN_V6.1.pdf
 
 While connected to the 45/5g the dog does call home. 
+
+# Bluetooth 
+
+The transmitter appears to be Bluetooth based. 
+
