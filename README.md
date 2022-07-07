@@ -21,6 +21,7 @@
 * [STM32 MicroROS?](#stm32-microros)
 * [45 / 5G support](#45--5g-support)
 * [Bluetooth](#bluetooth)
+* [Mobile App](#mobile-app)
 
 This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?<br>
 https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<br>
@@ -252,4 +253,49 @@ While connected to the 45/5g the dog does call home.
 # Bluetooth 
 
 The transmitter appears to be Bluetooth based. 
+
+# Mobile App
+The mobile app uses MQTT over websocket
+
+On an iOS device you can use RVI utils to sniff the connection
+https://developer.apple.com/documentation/network/recording_a_packet_trace
+
+$ rvictl -s 0000xxxx-yourdeviceuuid
+
+Starting device 0000xxxx-yourdeviceuuid [SUCCEEDED] with interface rvi0
+
+$ sudo tcpdump -i rvi0 -xX -s2000 host 192.168.12.1 and not port domain -w tcpdump.pcap
+
+The initial connection hits /mqtt on the web server. 
+
+```
+GET /mqtt HTTP/1.1
+Host: 192.168.12.1
+Pragma: no-cache
+Accept: */*
+Sec-WebSocket-Key: qoldXnNLZu0GftYE7x+XgA==
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Extensions: permessage-deflate
+Sec-WebSocket-Protocol: mqtt
+Cache-Control: no-cache
+Accept-Language: en-US,en;q=0.9
+Origin: capacitor://localhost
+User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 15_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148
+Connection: Upgrade
+Accept-Encoding: gzip, deflate
+Upgrade: websocket
+```
+
+It immediately switches to Websocket protocol. 
+
+```
+HTTP/1.1 101 Switching Protocols
+Server: nginx/1.14.2
+Date: Sat, 06 Nov 2021 02:17:43 GMT
+Connection: upgrade
+Upgrade: WebSocket
+Sec-WebSocket-Accept: aLEJi/WW+zQ1NjZiE5SszGyjI+4=
+Sec-WebSocket-Protocol: mqtt
+
+```
 
