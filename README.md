@@ -23,6 +23,7 @@
 * [Bluetooth](#bluetooth)
 * [Mobile App](#mobile-app)
 * [4G use in the USA](#4g-use-in-the-usa)
+* [Wifi backdoor](#wifi-backdoor)
 
 This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?<br>
 https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<br>
@@ -218,7 +219,7 @@ tcpdump_4.9.3-1~deb10u2_arm64.deb                                               
 
 Make yourself root and install the package. 
 ```
-root@raspberrypi:/home/pi# dpkg -i /tmp/tcpdump_4.9.3-1~deb10u2_arm64.deb 
+root@raspberrypi:/home/pi$ dpkg -i /tmp/tcpdump_4.9.3-1~deb10u2_arm64.deb 
 Selecting previously unselected package tcpdump.
 (Reading database ... 171570 files and directories currently installed.)
 Preparing to unpack .../tcpdump_4.9.3-1~deb10u2_arm64.deb ...
@@ -315,14 +316,15 @@ root@raspberrypi:/home/pi/Unitree/autostart/configNetwork/ppp# grep 3gnet . -r
 You'll need to add the libqmi tools. 
 
 ```
-root@raspberrypi:/home/pi# apt-get update
-root@raspberrypi:/home/pi# apt-get install libqmi-utils
+root@raspberrypi:/home/pi$ apt-get update
+root@raspberrypi:/home/pi$ apt-get install libqmi-utils
 ```
 
 The mmcli tool will help get basic informaiton that you may need to give your cellular provider such as IMEI, and ESN. You can also make sure the device is not SIM locked. 
 
 ```
-root@raspberrypi:/home/pi# mmcli -m 0
+
+root@raspberrypi:/home/pi$ mmcli -m 0
   --------------------------------
   General  |            dbus path: /org/freedesktop/ModemManager1/Modem/0
            |            device id: 
@@ -385,8 +387,9 @@ root@raspberrypi:/home/pi# mmcli -m 0
 ```
 
 If you need to double check the bearer information you can. 
+
 ```
-root@raspberrypi:/home/pi# mmcli -b 0
+root@raspberrypi:/home/pi$ mmcli -b 0
   --------------------------------
   General            |  dbus path: /org/freedesktop/ModemManager1/Bearer/0
                      |       type: default
@@ -412,7 +415,7 @@ root@raspberrypi:/home/pi# mmcli -b 0
 You can use qmicli to verify the APN profile setting slots
 
 ```
-root@raspberrypi:/home/pi# qmicli -p -d /dev/cdc-wdm0 --wds-get-profile-list=3gpp
+root@raspberrypi:/home/pi$ qmicli -p -d /dev/cdc-wdm0 --wds-get-profile-list=3gpp
 Profile list retrieved:
 	[1] 3gpp - 
 		APN: 'fast.t-mobile.com'
@@ -447,7 +450,7 @@ Profile list retrieved:
 Scanning for available networks is a good way to troubleshoot as well 
 
 ```
-root@raspberrypi:/home/pi# mmcli -m 0 --3gpp-scan --timeout=300
+root@raspberrypi:/home/pi$ mmcli -m 0 --3gpp-scan --timeout=300
   ---------------------
   3GPP scan | networks: 312250 - T-Mobile (lte, current)
             |           311490 - 311 490 (lte, available)
@@ -459,16 +462,17 @@ root@raspberrypi:/home/pi# mmcli -m 0 --3gpp-scan --timeout=300
 
 # GPS from 4G module
 
-root@raspberrypi:/home/pi# mmcli -m 0 --location-status
+```
+root@raspberrypi:/home/pi$ mmcli -m 0 --location-status
   ------------------------
   Location | capabilities: 3gpp-lac-ci, gps-raw, gps-nmea, cdma-bs, agps
            |      enabled: 3gpp-lac-ci, cdma-bs
            |      signals: no
   ------------------------
   GPS      | refresh rate: 30 seconds
-root@raspberrypi:/home/pi# mmcli -m 0 --location-enable-gps-raw --location-enable-gps-nmea
+root@raspberrypi:/home/pi$ mmcli -m 0 --location-enable-gps-raw --location-enable-gps-nmea
 successfully setup location gathering
-root@raspberrypi:/home/pi# mmcli -m 0 --location-get
+root@raspberrypi:/home/pi$ mmcli -m 0 --location-get
   --------------------------
   3GPP |      operator code: XX
        |      operator name: YY
@@ -482,5 +486,120 @@ root@raspberrypi:/home/pi# mmcli -m 0 --location-get
        |                     $GPRMC,,V,,,,,,,,,,N*53
        |                     $GPGSV,1,1,02,00,,,00,00,,,00,1*68 
 
+```
 
-   
+# Wifi backdoor
+There is an autoconnect network called "Unitree-2.4G" in the wpa supplicant config. 
+
+```
+
+pi@raspberrypi:/etc $ cat ./wpa_supplicant/wpa_supplicant.conf
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+ 
+network={
+	ssid="Unitree-5G"
+	psk="Unitree#9035"
+	key_mgmt=WPA-PSK
+	disabled=1
+}
+ 
+network={
+	ssid="Unitree-WiFi-5G"
+	psk="Unitree#9035"
+	key_mgmt=WPA-PSK
+	disabled=1
+}
+ 
+network={
+	ssid="Unitree-2.4G"
+	psk="Unitree#9035"
+	key_mgmt=WPA-PSK
+}
+```
+
+Supplicant auto starts at boot
+
+```
+pi@raspberrypi:/etc $ ps -ax | grep wpa
+  470 ?        Ss     0:00 /sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+  756 ?        Ss     0:00 wpa_supplicant -B -c/etc/wpa_supplicant/wpa_supplicant.conf -iwlan0 -Dnl80211,wext
+ 8444 pts/1    S+     0:00 grep --color=auto wpa
+```
+
+If you are quick you can catch it to login to the dog. 
+
+```
+$ ping 192.168.1.115
+PING 192.168.1.115 (192.168.1.115): 56 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+Request timeout for icmp_seq 2
+Request timeout for icmp_seq 3
+Request timeout for icmp_seq 4
+Request timeout for icmp_seq 5
+Request timeout for icmp_seq 6
+ping: sendto: No route to host
+Request timeout for icmp_seq 7
+ping: sendto: Host is down
+Request timeout for icmp_seq 8
+ping: sendto: Host is down
+Request timeout for icmp_seq 9
+ping: sendto: Host is down
+Request timeout for icmp_seq 10
+ping: sendto: Host is down
+Request timeout for icmp_seq 11
+ping: sendto: Host is down
+Request timeout for icmp_seq 12
+Request timeout for icmp_seq 13
+64 bytes from 192.168.1.115: icmp_seq=14 ttl=64 time=5.955 ms
+64 bytes from 192.168.1.115: icmp_seq=15 ttl=64 time=2.563 ms
+64 bytes from 192.168.1.115: icmp_seq=16 ttl=64 time=3.939 ms
+64 bytes from 192.168.1.115: icmp_seq=17 ttl=64 time=3.791 ms
+64 bytes from 192.168.1.115: icmp_seq=18 ttl=64 time=3.299 ms
+Request timeout for icmp_seq 19
+Request timeout for icmp_seq 20
+Request timeout for icmp_seq 21
+Request timeout for icmp_seq 22
+Request timeout for icmp_seq 23
+Request timeout for icmp_seq 24
+
+Roughly 40 seconds into the boot process this is available for literally 5 seconds. 
+
+```
+
+Default credentials work as expected 
+
+
+```
+
+$ ssh -o StrictHostKeyChecking=accept-new -v pi@192.168.1.115 "hostname;id;exit"
+OpenSSH_8.6p1, LibreSSL 3.3.6
+...
+debug1: Connecting to 192.168.1.115 [192.168.1.115] port 22.
+debug1: Connection established.
+...
+debug1: Local version string SSH-2.0-OpenSSH_8.6
+debug1: Remote protocol version 2.0, remote software version OpenSSH_7.9p1 Debian-10+deb10u2+rpt1
+debug1: compat_banner: match: OpenSSH_7.9p1 Debian-10+deb10u2+rpt1 pat OpenSSH* compat 0x04000000
+debug1: Authenticating to 192.168.1.115:22 as 'pi'
+...
+debug1: Next authentication method: password
+pi@192.168.1.115's password: 
+debug1: Authentication succeeded (password).
+Authenticated to 192.168.1.115 ([192.168.1.115]:22).
+...
+debug1: Sending command: hostname;id;exit
+...
+raspberrypi
+uid=1000(pi) gid=1000(pi) groups=1000(pi),4(adm),20(dialout),24(cdrom),27(sudo),29(audio),44(video),46(plugdev),60(games),100(users),105(input),109(netdev),997(gpio),998(i2c),999(spi)
+debug1: client_input_channel_req: channel 0 rtype exit-status reply 0
+debug1: client_input_channel_req: channel 0 rtype eow@openssh.com reply 0
+debug1: channel 0: free: client-session, nchannels 1
+Transferred: sent 2992, received 2892 bytes, in 0.1 seconds
+Bytes per second: sent 27756.4, received 26828.7
+debug1: Exit status 0
+
+```
+
