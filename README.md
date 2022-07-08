@@ -299,3 +299,87 @@ Sec-WebSocket-Protocol: mqtt
 
 ```
 
+# 4G use in the USA
+
+Get a T-Mobile SIM card. 
+
+Edit the config file for the Unitree configNetwork autostart service, at the very least the APN needs to be changes off China Unicom.
+```
+root@raspberrypi:/home/pi/Unitree/autostart/configNetwork/ppp# grep 3gnet . -r
+./quectel-pppd.sh:QL_APN=3gnet
+./quectel-chat-connect:# Insert the APN provided by your network operator, default apn is 3gnet
+./quectel-chat-connect:OK AT+CGDCONT=1,"IP","3gnet",,0,0
+```
+
+You'll need to add the libqmi tools. 
+
+```
+root@raspberrypi:/home/pi# apt-get update
+root@raspberrypi:/home/pi# apt-get install libqmi-utils
+```
+
+The mmcli tool will help get basic informaiton that you may need to give your cellular provider such as IMEI, and ESN. 
+
+```
+root@raspberrypi:/home/pi# mmcli -m 0
+  --------------------------------
+  General  |            dbus path: /org/freedesktop/ModemManager1/Modem/0
+           |            device id: 
+  --------------------------------
+  Hardware |         manufacturer: QUALCOMM INCORPORATED
+           |                model: QUECTEL Mobile Broadband Module
+           |             revision: 
+           |         h/w revision: 10000
+           |            supported: gsm-umts, lte
+           |                       cdma-evdo, lte
+           |                       lte
+           |                       cdma-evdo, gsm-umts, lte
+           |              current: cdma-evdo, gsm-umts, lte
+           |         equipment id: 
+  --------------------------------
+  System   |               device: /sys/devices/platform/soc/fe980000.usb/usb1/1-1/1-1.3
+           |              drivers: option1, qmi_wwan
+           |               plugin: Quectel
+           |         primary port: cdc-wdm0
+           |                ports: ttyUSB0 (qcdm), ttyUSB2 (at), cdc-wdm0 (qmi), wwan0 (net), 
+           |                       ttyUSB3 (at)
+  --------------------------------
+  Status   |                 lock: sim-pin2
+           |       unlock retries: sim-pin (3), sim-pin2 (10), sim-puk (10), sim-puk2 (10)
+           |                state: disabled
+           |          power state: on
+           |       signal quality: 0% (cached)
+  --------------------------------
+  Modes    |            supported: allowed: 2g; preferred: none
+           |                       allowed: 3g; preferred: none
+           |                       allowed: 2g, 3g; preferred: 3g
+           |                       allowed: 2g, 3g; preferred: 2g
+           |                       allowed: 2g, 4g; preferred: 4g
+           |                       allowed: 2g, 4g; preferred: 2g
+           |                       allowed: 3g, 4g; preferred: 3g
+           |                       allowed: 3g, 4g; preferred: 4g
+           |                       allowed: 2g, 3g, 4g; preferred: 4g
+           |                       allowed: 2g, 3g, 4g; preferred: 3g
+           |                       allowed: 2g, 3g, 4g; preferred: 2g
+           |              current: allowed: 2g, 3g, 4g; preferred: 4g
+  --------------------------------
+  Bands    |            supported: egsm, dcs, utran-1, utran-8, eutran-1, eutran-3, eutran-5, 
+           |                       eutran-8, eutran-34, eutran-38, eutran-39, eutran-40, eutran-41, 
+           |                       cdma-bc0
+           |              current: egsm, dcs, utran-1, utran-8, eutran-1, eutran-3, eutran-5, 
+           |                       eutran-8, eutran-34, eutran-38, eutran-39, eutran-40, eutran-41, 
+           |                       cdma-bc0
+  --------------------------------
+  IP       |            supported: ipv4, ipv6, ipv4v6
+  --------------------------------
+  3GPP     |                 imei: 313376969187
+  --------------------------------
+  3GPP EPS | ue mode of operation: csps-2
+  --------------------------------
+  CDMA     |                 meid: DEADBEEFCAFEBABE
+           |                  esn: BEEFCAFE
+           |           activation: not-activated
+  --------------------------------
+  SIM      |            dbus path: /org/freedesktop/ModemManager1/SIM/0
+```
+
