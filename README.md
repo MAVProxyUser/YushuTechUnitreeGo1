@@ -250,6 +250,11 @@ https://www.quectel.com/product/5g-rm50xq-series
 https://www.quectel.com/product/5g-rm510q-gl
 https://www.quectel.com/wp-content/uploads/2021/02/Quectel_Product_Brochure_EN_V6.1.pdf
 
+CVE-2021-31698: Quectel EG25-G devices through 202006130814 allow executing arbitrary code remotely by using an AT command to place shell metacharacters in quectel_handle_fumo_cfg input in atfwd_daemon.<br>
+https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31698
+"Code execution as root via AT commands on the Quectel EG25-G modem"
+https://nns.ee/blog/2021/04/03/modem-rce.html
+
 While connected to the 45/5g the dog does call home. 
 
 # Bluetooth 
