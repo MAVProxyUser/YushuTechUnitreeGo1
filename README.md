@@ -305,7 +305,7 @@ Sec-WebSocket-Protocol: mqtt
 
 Get a T-Mobile SIM card. 
 
-Edit the config file for the Unitree configNetwork autostart service, at the very least the APN needs to be changes off China Unicom.
+Edit the config file for the Unitree configNetwork autostart service, at the very least the APN needs to be changed off China Unicom.
 ```
 root@raspberrypi:/home/pi/Unitree/autostart/configNetwork/ppp# grep 3gnet . -r
 ./quectel-pppd.sh:QL_APN=3gnet
