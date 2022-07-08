@@ -318,7 +318,7 @@ root@raspberrypi:/home/pi# apt-get update
 root@raspberrypi:/home/pi# apt-get install libqmi-utils
 ```
 
-The mmcli tool will help get basic informaiton that you may need to give your cellular provider such as IMEI, and ESN. 
+The mmcli tool will help get basic informaiton that you may need to give your cellular provider such as IMEI, and ESN. You can also make sure the device is not SIM locked. 
 
 ```
 root@raspberrypi:/home/pi# mmcli -m 0
@@ -383,6 +383,31 @@ root@raspberrypi:/home/pi# mmcli -m 0
   SIM      |            dbus path: /org/freedesktop/ModemManager1/SIM/0
 ```
 
+If you need to double check the bearer information you can. 
+```
+root@raspberrypi:/home/pi# mmcli -b 0
+  --------------------------------
+  General            |  dbus path: /org/freedesktop/ModemManager1/Bearer/0
+                     |       type: default
+  --------------------------------
+  Status             |  connected: yes
+                     |  suspended: no
+                     |  interface: wwan0
+                     | ip timeout: 20
+  --------------------------------
+  Properties         |        apn: fast.t-mobile.com
+                     |    roaming: allowed
+  --------------------------------
+  IPv4 configuration |     method: static
+                     |    address: 5.4.3.1
+                     |     prefix: 30
+                     |    gateway: 5.4.3.2
+                     |        dns: 1.1.0.4, 1.1.0.2
+                     |        mtu: 1500
+  --------------------------------
+  Statistics         |   duration: 330
+```
+
 You can use qmicli to verify the APN profile setting slots
 
 ```
@@ -417,3 +442,4 @@ Profile list retrieved:
 		APN disabled: 'no'
 
 ``` 
+
