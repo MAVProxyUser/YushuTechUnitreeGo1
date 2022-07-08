@@ -22,6 +22,7 @@
 * [45 / 5G support](#45--5g-support)
 * [Bluetooth](#bluetooth)
 * [Mobile App](#mobile-app)
+* [4G use in the USA](#4g-use-in-the-usa)
 
 This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?<br>
 https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<br>
@@ -443,3 +444,15 @@ Profile list retrieved:
 
 ``` 
 
+Scanning for available networks is a good way to troubleshoot as well 
+
+```
+root@raspberrypi:/home/pi# mmcli -m 0 --3gpp-scan --timeout=300
+  ---------------------
+  3GPP scan | networks: 312250 - T-Mobile (lte, current)
+            |           311490 - 311 490 (lte, available)
+            |           311882 - 311 882 (lte, available)
+            |           312530 - 312 530 (lte, available)
+            |           310120 - Sprint (lte, available)
+
+```
