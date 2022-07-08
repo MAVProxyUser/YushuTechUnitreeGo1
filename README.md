@@ -304,7 +304,11 @@ Sec-WebSocket-Protocol: mqtt
 # 4G use in the USA
 
 Support provided by Quectel EC25<br>
-https://osmocom.org/projects/quectel-modems/wiki/EC25_Linux
+https://osmocom.org/projects/quectel-modems/wiki/EC25_Linux<br>
+Known to be ridden with FOTA backdoors<br>
+https://penthertz.com/blog/mobile-iot-modules-FOTA-backdooring-at-scale.html<br>
+"All the 4G Modules Could be Hacked" talk from Defcon 2019<br>
+https://i.blackhat.com/USA-19/Wednesday/us-19-Shupeng-All-The-4G-Modules-Could-Be-Hacked.pdf
 
 Get a T-Mobile SIM card. 
 
