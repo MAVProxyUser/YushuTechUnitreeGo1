@@ -383,3 +383,37 @@ root@raspberrypi:/home/pi# mmcli -m 0
   SIM      |            dbus path: /org/freedesktop/ModemManager1/SIM/0
 ```
 
+You can use qmicli to verify the APN profile setting slots
+
+```
+root@raspberrypi:/home/pi# qmicli -p -d /dev/cdc-wdm0 --wds-get-profile-list=3gpp
+Profile list retrieved:
+	[1] 3gpp - 
+		APN: 'fast.t-mobile.com'
+		PDP type: 'ipv4'
+		PDP context number: '1'
+		Username: ''
+		Password: ''
+		Auth: 'none'
+		No roaming: 'no'
+		APN disabled: 'no'
+	[2] 3gpp - 
+		APN: 'ims'
+		PDP type: 'ipv4-or-ipv6'
+		PDP context number: '2'
+		Username: ''
+		Password: ''
+		Auth: 'none'
+		No roaming: 'no'
+		APN disabled: 'no'
+	[3] 3gpp - 
+		APN: ''
+		PDP type: 'ipv4-or-ipv6'
+		PDP context number: '3'
+		Username: ''
+		Password: ''
+		Auth: 'none'
+		No roaming: 'no'
+		APN disabled: 'no'
+
+``` 
