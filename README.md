@@ -303,6 +303,9 @@ Sec-WebSocket-Protocol: mqtt
 
 # 4G use in the USA
 
+Support provided by Quectel EC25<br>
+https://osmocom.org/projects/quectel-modems/wiki/EC25_Linux
+
 Get a T-Mobile SIM card. 
 
 Edit the config file for the Unitree configNetwork autostart service, at the very least the APN needs to be changed off China Unicom.
