@@ -456,3 +456,31 @@ root@raspberrypi:/home/pi# mmcli -m 0 --3gpp-scan --timeout=300
             |           310120 - Sprint (lte, available)
 
 ```
+
+# GPS from 4G module
+
+root@raspberrypi:/home/pi# mmcli -m 0 --location-status
+  ------------------------
+  Location | capabilities: 3gpp-lac-ci, gps-raw, gps-nmea, cdma-bs, agps
+           |      enabled: 3gpp-lac-ci, cdma-bs
+           |      signals: no
+  ------------------------
+  GPS      | refresh rate: 30 seconds
+root@raspberrypi:/home/pi# mmcli -m 0 --location-enable-gps-raw --location-enable-gps-nmea
+successfully setup location gathering
+root@raspberrypi:/home/pi# mmcli -m 0 --location-get
+  --------------------------
+  3GPP |      operator code: XX
+       |      operator name: YY
+       | location area code: ZZ
+       | tracking area code: AA
+       |            cell id: 0000000000
+  --------------------------
+  GPS  |               nmea: $GPGGA,,,,,,0,,,,,,,,*66
+       |                     $GPGSA,A,1,,,,,,,,,,,,,,,,*32
+       |                     $GPVTG,,T,,M,,N,,K,N*2C
+       |                     $GPRMC,,V,,,,,,,,,,N*53
+       |                     $GPGSV,1,1,02,00,,,00,00,,,00,1*68 
+
+
+   
