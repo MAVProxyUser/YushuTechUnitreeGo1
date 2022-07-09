@@ -667,3 +667,36 @@ cd /home/pi/Unitree/autostart
 
 https://www.youtube.com/watch?v=gDnDbuFLjys
 
+# What talks to the STM at 192.168.123.10?
+
+Two apps:
+/Unitree/autostart/sportMode/bin/Legged_sport
+/Unitree/autostart/appTransit/build/appTransit
+
+```
+root@raspberrypi:/home/pi# netstat -ap | grep 192.168.123.10
+...
+udp     5504      0 192.168.123.161:8008    192.168.123.10:8007     ESTABLISHED 1460/./bin/Legged_s 
+udp        0      0 192.168.123.161:8093    192.168.123.10:8007     ESTABLISHED 1752/./build/appTra 
+
+root@raspberrypi:/home/pi# fuser -n udp 8008
+8008/udp:             1460
+root@raspberrypi:/home/pi# fuser -n udp 8093
+8093/udp:             1752
+root@raspberrypi:/home/pi# ps -ax | grep 1460 
+ 1460 ?        SLl    3:08 ./bin/Legged_sport
+root@raspberrypi:/home/pi# ps -ax | grep 1752
+ 1752 ?        Sl     0:02 ./build/appTransit
+
+```
+
+Look familiar? 
+
+https://github.com/unitreerobotics/unitree_legged_sdk/blob/master/include/unitree_legged_sdk/udp.h#L32
+
+```
+constexpr int UDP_CLIENT_PORT = 8080;                       // local port
+constexpr int UDP_SERVER_PORT = 8007;                       // target port
+constexpr char UDP_SERVER_IP_BASIC[] = "192.168.123.10";    // target IP address
+constexpr char UDP_SERVER_IP_SPORT[] = "192.168.123.161";   // target IP address
+```
