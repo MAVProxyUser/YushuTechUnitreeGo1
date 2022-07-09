@@ -652,4 +652,16 @@ cd /home/pi/Unitree/autostart
 ./update.sh 
 ```
 
+# PDB emergency shut off (backdoor? no way to disable)
+
+"Under the developer mode, if the robot is out of control, you can cut off the power of the built-in PDB"<br>
+
+<p align="center">
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/PDB.jpg">
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/remote.png">
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/frame.jpg">
+</p>
+<br>
+
+https://www.youtube.com/watch?v=gDnDbuFLjys
 
