@@ -27,6 +27,7 @@
 * [GPS from 4G module](#gps-from-4g-module)
 * [Wifi backdoor](#wifi-backdoor)
 * [Autostart items](#autostart-items)
+* [PDB emergency shut off (backdoor? no way to disable)](#pdb-emergency-shut-off-backdoor-no-way-to-disable)
 
 This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?<br>
 https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<br>
