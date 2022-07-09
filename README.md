@@ -661,6 +661,7 @@ cd /home/pi/Unitree/autostart
 <img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/PDB.jpg">
 <img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/remote.png">
 <img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/frame.jpg">
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/warn.jpg">
 </p>
 <br>
 
