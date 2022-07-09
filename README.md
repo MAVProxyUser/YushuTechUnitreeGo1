@@ -1,6 +1,7 @@
 # HangZhou Yushu Tech Unitree Go1
 宇树科技 HangZhou Yushu Technology (Unitree) go1 development notes
 
+* [HangZhou Yushu Tech Unitree Go1](#hangzhou-yushu-tech-unitree-go1)
 * [Go1 series Product Matrix](#go1-series-product-matrix)
    * [Go1 (TM?)](#go1-tm)
    * [Go1 Air](#go1-air)
@@ -19,11 +20,13 @@
 * [Power Output](#power-output)
 * [Installing TCPdump on the RasPi](#installing-tcpdump-on-the-raspi)
 * [STM32 MicroROS?](#stm32-microros)
-* [45 / 5G support](#45--5g-support)
 * [Bluetooth](#bluetooth)
 * [Mobile App](#mobile-app)
+* [45 / 5G support](#45--5g-support)
 * [4G use in the USA](#4g-use-in-the-usa)
+* [GPS from 4G module](#gps-from-4g-module)
 * [Wifi backdoor](#wifi-backdoor)
+* [Autostart items](#autostart-items)
 
 This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?<br>
 https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<br>
@@ -236,27 +239,6 @@ https://micro.ros.org/docs/overview/hardware/<br>
 https://www.youtube.com/watch?v=Sz-nllmtcc8<br>
 https://github.com/micro-ROS/micro_ros_stm32cubemx_utils<br>
 
-# 45 / 5G support
-
-Quectel EG25-G is connected to the RasPI
-https://www.quectel.com/wp-content/uploads/pdfupload/EP-FMEG25GMPCIs_Specification_V1.0-1609137.pdf
-https://www.t-mobile.com/content/dam/tfb/pdf/tfb-iot/Quectel_EG25-G_LTE_Standard_Specification_V1.3.pdf
-https://fccid.io/XMR201903EG25G/User-Manual/user-manual-4219711.pdf
-
-It includes a GNSS function. The GPS antenna in the Go1 is connected to this device. 
-
-5G support is assumed to be provided by a Quctel RM5 series chipset. 
-https://www.quectel.com/product/5g-rm50xq-series
-https://www.quectel.com/product/5g-rm510q-gl
-https://www.quectel.com/wp-content/uploads/2021/02/Quectel_Product_Brochure_EN_V6.1.pdf
-
-CVE-2021-31698: Quectel EG25-G devices through 202006130814 allow executing arbitrary code remotely by using an AT command to place shell metacharacters in quectel_handle_fumo_cfg input in atfwd_daemon.<br>
-https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31698
-"Code execution as root via AT commands on the Quectel EG25-G modem"
-https://nns.ee/blog/2021/04/03/modem-rce.html
-
-While connected to the 45/5g the dog does call home. 
-
 # Bluetooth 
 
 The transmitter appears to be Bluetooth based. 
@@ -305,6 +287,27 @@ Sec-WebSocket-Accept: aLEJi/WW+zQ1NjZiE5SszGyjI+4=
 Sec-WebSocket-Protocol: mqtt
 
 ```
+
+# 45 / 5G support
+
+Quectel EG25-G is connected to the RasPI
+https://www.quectel.com/wp-content/uploads/pdfupload/EP-FMEG25GMPCIs_Specification_V1.0-1609137.pdf
+https://www.t-mobile.com/content/dam/tfb/pdf/tfb-iot/Quectel_EG25-G_LTE_Standard_Specification_V1.3.pdf
+https://fccid.io/XMR201903EG25G/User-Manual/user-manual-4219711.pdf
+
+It includes a GNSS function. The GPS antenna in the Go1 is connected to this device. 
+
+5G support is assumed to be provided by a Quctel RM5 series chipset. 
+https://www.quectel.com/product/5g-rm50xq-series
+https://www.quectel.com/product/5g-rm510q-gl
+https://www.quectel.com/wp-content/uploads/2021/02/Quectel_Product_Brochure_EN_V6.1.pdf
+
+CVE-2021-31698: Quectel EG25-G devices through 202006130814 allow executing arbitrary code remotely by using an AT command to place shell metacharacters in quectel_handle_fumo_cfg input in atfwd_daemon.<br>
+https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31698
+"Code execution as root via AT commands on the Quectel EG25-G modem"
+https://nns.ee/blog/2021/04/03/modem-rce.html
+
+While connected to the 45/5g the dog does call home. 
 
 # 4G use in the USA
 
@@ -472,6 +475,13 @@ root@raspberrypi:/home/pi$ mmcli -m 0 --3gpp-scan --timeout=300
 
 ```
 
+It may be necessary to set qutoconnect with the qmicli tool 
+```
+root@raspberrypi:/home/pi/Unitree#  qmicli -p -d /dev/cdc-wdm0  --wds-get-autoconnect-settings
+Autoconnect settings retrieved:
+	Status: 'disabled'
+```
+
 # GPS from 4G module
 
 ```
@@ -614,4 +624,32 @@ Bytes per second: sent 27756.4, received 26828.7
 debug1: Exit status 0
 
 ```
+
+# Autostart items
+
+The default uses GNOME autostart<br>
+/home/pi/.config/autostart/*
+
+```
+pi@raspberrypi:~ $ cat /home/pi/.config/autostart/unitree.desktop 
+[Desktop Entry]
+Name=unitree
+Comment=unitree autostart
+Exec=bash /home/pi/UnitreeUpgrade/start.sh
+Terminal=false
+Type=Application
+Categories=System;Utility;Archiving;
+StartupNotify=false
+NoDisplay=true
+
+pi@raspberrypi:~ $ cat /home/pi/UnitreeUpgrade/start.sh
+#!/bin/bash
+cd /home/pi/UnitreeUpgrade
+python3 ./startup_manager.py  &
+python3 ./startup_uploader.py &
+
+cd /home/pi/Unitree/autostart
+./update.sh 
+```
+
 
