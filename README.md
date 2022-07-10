@@ -28,6 +28,8 @@
 * [Wifi backdoor](#wifi-backdoor)
 * [Autostart items](#autostart-items)
 * [PDB emergency shut off (backdoor? no way to disable)](#pdb-emergency-shut-off-backdoor-no-way-to-disable)
+* [What talks to the STM at 192.168.123.10?](#what-talks-to-the-stm-at-19216812310)
+* [MIT Cheetah code](#mit-cheetah-code)
 
 This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?<br>
 https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<br>
@@ -700,3 +702,15 @@ constexpr int UDP_SERVER_PORT = 8007;                       // target port
 constexpr char UDP_SERVER_IP_BASIC[] = "192.168.123.10";    // target IP address
 constexpr char UDP_SERVER_IP_SPORT[] = "192.168.123.161";   // target IP address
 ```
+
+# MIT Cheetah code
+
+printf("[Backflip DataReader] Setup for mini cheetah\n");<br>
+printf("[Cheetah Test] Test initialization is done\n");<br>
+
+https://github.com/search?q=org%3Amit-biomimetics+%22Cheetah+Test%22&type=code
+https://github.com/search?q=org%3Amit-biomimetics+%22Setup+for+mini+cheetah%22&type=code
+
+THis code is MIT license. 
+https://github.com/mit-biomimetics/Cheetah-Software/blob/master/LICENSE
+
