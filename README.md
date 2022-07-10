@@ -30,7 +30,8 @@
 * [PDB emergency shut off (backdoor? no way to disable)](#pdb-emergency-shut-off-backdoor-no-way-to-disable)
 * [What talks to the STM at 192.168.123.10?](#what-talks-to-the-stm-at-19216812310)
 * [MIT Cheetah code](#mit-cheetah-code)
-* [Sniffing MQTT traffic](#sniffing-mqtt-traffic)
+* [Sniffing MQTT traffic on the dog](#sniffing-mqtt-traffic-on-the-dog)
+* [Sending MQTT commands to the dog.](#sending-mqtt-commands-to-the-dog)
 
 This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?<br>
 https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<br>
@@ -742,6 +743,12 @@ robot/state ??.??.????.??.??aH?lR??'<M?1??>??>$???#?9?E?:C???
 bms/state 
 firmware/version 	%%!$$!$#"$$!$FA
 controller/current_action (null)
+
+```
+
+You can also sniff the stick movements. 
+```
+mosquitto_sub  -h 192.168.12.1 -t "controller/stick" 
 ```
 
 # Sending MQTT commands to the dog. 
@@ -769,4 +776,8 @@ These commands seem to be somehow black listed on the go1
 mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "backflip"
 mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "dance3
 mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "dance4
+```
+
+These commands control the stick movement
+```
 ```
