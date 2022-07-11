@@ -312,7 +312,25 @@ https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31698
 "Code execution as root via AT commands on the Quectel EG25-G modem"
 https://nns.ee/blog/2021/04/03/modem-rce.html
 
-While connected to the 45/5g the dog does call home. 
+While connected to the 45/5g the dog does call home. Here is an example of it calling the Zhexi cloud
+
+```
+pi@raspberrypi:~ $ netstat -ap | grep ESTABLISHED | grep 100.100.57.114
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+tcp        0      0 100.100.57.114:53570    124.156.140.55:5670     ESTABLISHED -                   
+tcp        0      0 100.100.57.114:52582    124.156.140.55:http     ESTABLISHED -                   
+tcp        0      0 100.100.57.114:52578    124.156.140.55:http     ESTABLISHED -                   
+tcp        0      0 100.100.57.114:55788    134.175.175.55:9998     ESTABLISHED -                   
+udp        0      0 100.100.57.114:8018     192.168.88.101:8051     ESTABLISHED -  
+```
+
+<p align="center">
+<img
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/zhexi.png"><br>
+<img
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/dns.png"><br>
+</p>
 
 # 4G use in the USA
 
