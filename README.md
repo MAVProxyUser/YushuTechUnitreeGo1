@@ -52,7 +52,6 @@ https://www.taobao.com/list/item/657740636451.htm
 Early Black variant of the Air? 
 
 https://www.cnbeta.com/articles/tech/1139381.htm
-Includes "HAI1" features!
  
 <p align="center">
 <img 
@@ -77,8 +76,10 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1Pro.png"><
 </p>
 
 ## Go1 Pro MAX
+*unknown* 
 
 ## Go1 Nx
+*unknown* 
 
 ## Go1 MAX
 https://www.taobao.com/list/item/667863152779.htm
@@ -93,16 +94,21 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1MAX.png"><
 src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1EDU.png"><br>
 </p>
 
-## Go1 Edu Explorer
-
-The difference between the EDU and the EDU Explorer is basically those features that comes with the integration of the Lidar (2D/3D): Basically
-- Obstacle avoidance
-- Mapping and navigation planning
-- Support for developing gesture recognition
-- VSLAM and other secondary development
-- With the 3D Lidar, also the Dynamic Obstacle Avoidance.
+When upgrading to the 2D or 3D LiDAR versions of the GO1 EDU, one of the three Jetson Nanos is upgraded to a Jetson Xavier NX. As a result, the robot is capable of dynamic obstacle avoidance, navigation planning, map building, self-positioning and more. This also supports your ability to develop gesture recognition, VSLAM, deep learning, machine learning, etc.
 
 ## Go1 Edu Plus
+2D LiDAR Upgrade (Plus)
+
+## Go1 Edu Explorer
+3D LiDAR Upgrade (Explorer)
+
+The difference between the EDU and the EDU Explorer is basically those features that comes with the integration of the Lidar (2D/3D): 
+Basically<br>
+- Obstacle avoidance<br>
+- Mapping and navigation planning<br>
+- Support for developing gesture recognition<br>
+- VSLAM and other secondary development<br>
+- With the 3D Lidar, also the Dynamic Obstacle Avoidance.<br>
 
 # Robot Internal Architecture
 
@@ -128,8 +134,7 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.png"><b
 
 # Programming interface
 In Go1_2022_05_11_e0d0e617/raspi/Unitree/autostart/programming we find programming.py<br>
-It imports ./build/robot_interface_high_level.cpython-37m-aarch64-linux-gnu.so in order to call the UDP listen 
-functions. 
+It imports ./build/robot_interface_high_level.cpython-37m-aarch64-linux-gnu.so in order to call the UDP listen functions. 
 ```
 import robot_interface_high_level as robot_interface
 ``` 
@@ -145,8 +150,7 @@ The exec() method executes the dynamically created program, which is either a st
 
 First the code passes through compile()
 ```
-compile() method is used if the Python code is in string form or is an AST object, and you want to change it to 
-a code object.
+compile() method is used if the Python code is in string form or is an AST object, and you want to change it to a code object.
 ```
 This handles all the MIT Scratch code blocks from the mobile client. 
 
