@@ -322,7 +322,6 @@ tcp        0      0 100.100.57.114:53570    124.156.140.55:5670     ESTABLISHED 
 tcp        0      0 100.100.57.114:52582    124.156.140.55:http     ESTABLISHED -                   
 tcp        0      0 100.100.57.114:52578    124.156.140.55:http     ESTABLISHED -                   
 tcp        0      0 100.100.57.114:55788    134.175.175.55:9998     ESTABLISHED -                   
-udp        0      0 100.100.57.114:8018     192.168.88.101:8051     ESTABLISHED -  
 ```
 
 <p align="center">
@@ -496,13 +495,6 @@ root@raspberrypi:/home/pi$ mmcli -m 0 --3gpp-scan --timeout=300
             |           312530 - 312 530 (lte, available)
             |           310120 - Sprint (lte, available)
 
-```
-
-It may be necessary to set qutoconnect with the qmicli tool 
-```
-root@raspberrypi:/home/pi/Unitree#  qmicli -p -d /dev/cdc-wdm0  --wds-get-autoconnect-settings
-Autoconnect settings retrieved:
-	Status: 'disabled'
 ```
 
 # GPS from 4G module
@@ -798,4 +790,26 @@ mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "dance4
 
 These commands control the stick movement
 ```
+mosquitto_pub -h 192.168.12.1 -d -t "controller/stick" -m <unknown at this time>
 ```
+
+# TFTP to RTOS
+
+The STM RTOS has tftp enabled for updates. 
+./autostart/updateDependencies/update_firmware.py:    atftp = "sleep 5; atftp -p -l " + sys.argv[1] + " 192.168.123.10 --tftp-timeout 10;"
+
+
+It is assumed to be a variants of IAP over tftp per ST spec
+https://www.st.com/resource/en/application_note/an3376-stm32f2x7-inapplication-programming-iap-over-ethernet-stmicroelectronics.pdf
+
+If you tftp to 192.168.161.10, the bot will immediately drop. 
+
+```
+pi@raspberrypi:~ $ atftp -g -r "*.bin" 192.168.123.10 69 --trace  --verbose
+Trace mode on.
+Verbose mode on.
+sent RRQ <file: *.bin, mode: octet <>>
+received DATA <block: 1, size: 0>
+sent ACK <block: 1>
+```
+
