@@ -847,3 +847,26 @@ Jul 11 11:26:58 raspberrypi systemd[1]: Failed to start A high performance web s
 -- Reboot --
 ```
 
+General errors can be found in  /home/pi/.cache/lxsession/LXDE-pi/run.log and /home/pi/.ros/log
+
+You can check the status of the system services for degraded stats with 
+
+```
+root@raspberrypi:/home/pi# systemctl status
+● raspberrypi
+    State: degraded
+     Jobs: 0 queued
+   Failed: 1 units
+...
+
+root@raspberrypi:/home/pi# systemctl 
+  UNIT                                                                                                LOAD   ACTIVE SUB       DESCRIPTION               
+...
+● nginx.service                                                                                       loaded failed failed    A high performance web server and a 
+reverse proxy server                              
+...
+pi@raspberrypi:~ $ systemctl list-units --failed
+  UNIT          LOAD   ACTIVE SUB    DESCRIPTION                                             
+● nginx.service loaded failed failed A high performance web server and a reverse proxy server
+
+```
