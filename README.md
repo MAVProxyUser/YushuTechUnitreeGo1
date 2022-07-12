@@ -336,6 +336,18 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/zhexi.png"><b
 src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/dns.png"><br>
 </p>
 
+You can disbale the tunnel by killing the cloudsail daemon
+```
+root@raspberrypi:/home/pi/Unitree/autostart# systemctl disable CSClientDaemon
+Removed /etc/systemd/system/multi-user.target.wants/CSClientDaemon.service.
+```
+
+Also move the auto start "tunnel" out of the way so it is unable to autostart
+```
+root@raspberrypi:/home/pi/Unitree/autostart# mv tunnel/ /root/tunnel_disabled/
+
+```
+
 # 4G use in the USA
 
 Support provided by Quectel EC25<br>
