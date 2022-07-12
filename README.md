@@ -830,3 +830,19 @@ received DATA <block: 1, size: 0>
 sent ACK <block: 1>
 ```
 
+# Troubleshooting
+
+If you accidentally delete /etc/hosts, or remove the "localhost" entry, the dog will not stand. 
+
+```
+pi@raspberrypi:~ $ journalctl -u nginx.service
+-- Reboot --
+Jul 11 11:26:56 raspberrypi systemd[1]: Starting A high performance web server and a reverse proxy server...
+Jul 11 11:26:58 raspberrypi nginx[676]: nginx: [emerg] host not found in upstream "localhost" in /etc/nginx/sites-enabled/default:11
+Jul 11 11:26:58 raspberrypi nginx[676]: nginx: configuration file /etc/nginx/nginx.conf test failed
+Jul 11 11:26:58 raspberrypi systemd[1]: nginx.service: Control process exited, code=exited, status=1/FAILURE
+Jul 11 11:26:58 raspberrypi systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 11 11:26:58 raspberrypi systemd[1]: Failed to start A high performance web server and a reverse proxy server.
+-- Reboot --
+```
+
