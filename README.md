@@ -362,10 +362,47 @@ Get a T-Mobile SIM card.
 
 Edit the config file for the Unitree configNetwork autostart service, at the very least the APN needs to be changed off China Unicom.
 ```
-root@raspberrypi:/home/pi/Unitree/autostart/configNetwork/ppp# grep 3gnet . -r
-./quectel-pppd.sh:QL_APN=3gnet
-./quectel-chat-connect:# Insert the APN provided by your network operator, default apn is 3gnet
-./quectel-chat-connect:OK AT+CGDCONT=1,"IP","3gnet",,0,0
+pi@raspberrypi:~ $ diff bk_Unitree/ Unitree -ru
+diff -ru bk_Unitree/autostart/configNetwork/ppp/quectel-chat-connect Unitree/autostart/configNetwork/ppp/quectel-chat-connect
+--- bk_Unitree/autostart/configNetwork/ppp/quectel-chat-connect	2021-11-05 04:31:12.986184175 -0900
++++ Unitree/autostart/configNetwork/ppp/quectel-chat-connect	2021-11-05 18:29:08.267718437 -0900
+@@ -9,6 +9,6 @@
+ OK ATE0
+ OK ATI;+CSUB;+CSQ;+CPIN?;+COPS?;+CGREG?;&D2
+ # Insert the APN provided by your network operator, default apn is 3gnet
+-OK AT+CGDCONT=1,"IP","3gnet",,0,0
++OK AT+CGDCONT=1,"IP","fast.t-mobile.com",,0,0
+ OK ATD*99#
+ CONNECT
+diff -ru bk_Unitree/autostart/configNetwork/ppp/quectel-ppp Unitree/autostart/configNetwork/ppp/quectel-ppp
+--- bk_Unitree/autostart/configNetwork/ppp/quectel-ppp	2021-11-05 04:31:12.986184175 -0900
++++ Unitree/autostart/configNetwork/ppp/quectel-ppp	2022-07-08 07:20:32.160480515 -0900
+@@ -3,7 +3,7 @@
+ #Modem path, like /dev/ttyUSB3,/dev/ttyACM0, depend on your module, default path is /dev/ttyUSB3
+ /dev/ttyUSB3 115200
+ #Insert the username and password for authentication, default user and password are test
+-user "test" password "test"
++user "user" password "password"
+ # The chat script, customize your APN in this file
+ connect 'chat -s -v -f /etc/ppp/peers/quectel-chat-connect'
+ # The close script
+diff -ru bk_Unitree/autostart/configNetwork/ppp/quectel-pppd.sh Unitree/autostart/configNetwork/ppp/quectel-pppd.sh
+--- bk_Unitree/autostart/configNetwork/ppp/quectel-pppd.sh	2021-11-05 04:31:12.986184175 -0900
++++ Unitree/autostart/configNetwork/ppp/quectel-pppd.sh	2022-07-08 07:20:48.641378405 -0900
+@@ -3,9 +3,9 @@
+ #quectel-pppd devname apn user password
+ echo "quectel-pppd options in effect:"
+ QL_DEVNAME=/dev/ttyUSB3
+-QL_APN=3gnet
+-QL_USER=user
+-QL_PASSWORD=passwd
++QL_APN=fast.t-mobile.com
++QL_USER="user"
++QL_PASSWORD="password"
+ if [ $# -ge 1 ]; then
+ 	QL_DEVNAME=$1	
+ 	echo "devname   $QL_DEVNAME    # (from command line)"
+
 ```
 
 You'll need to add the libqmi tools. 
