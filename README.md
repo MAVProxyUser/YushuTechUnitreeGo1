@@ -33,6 +33,7 @@
 * [Sniffing MQTT traffic on the dog](#sniffing-mqtt-traffic-on-the-dog)
 * [Sending MQTT commands to the dog.](#sending-mqtt-commands-to-the-dog)
 * [TFTP to RTOS](#tftp-to-rtos)
+* [Troubleshooting](#troubleshooting)
 
 This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?<br>
 https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<br>
