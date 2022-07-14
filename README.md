@@ -357,6 +357,41 @@ Known to be ridden with FOTA backdoors<br>
 https://penthertz.com/blog/mobile-iot-modules-FOTA-backdooring-at-scale.html<br>
 "All the 4G Modules Could be Hacked" talk from Defcon 2019<br>
 https://i.blackhat.com/USA-19/Wednesday/us-19-Shupeng-All-The-4G-Modules-Could-Be-Hacked.pdf
+https://nns.ee/blog/2021/04/03/modem-rce.html
+
+The variant tested was not vulnerable to the obvious code execution: https://nvd.nist.gov/vuln/detail/CVE-2021-31698
+
+```
+root@raspberrypi:~# lsusb | grep Quec
+Bus 001 Device 003: ID 2c7c:0125 Quectel Wireless Solutions Co., Ltd. EC25 LTE modem
+
+root@raspberrypi:~#  minicom -b 115200 -D /dev/ttyUSB2 
+
+
+Welcome to minicom 2.7.1
+
+OPTIONS: I18n 
+Compiled on May  6 2018, 07:48:54.
+Port /dev/ttyUSB2, 18:07:01
+
+Press CTRL-A Z for help on special keys                                                                                                                                                                                          
+                                                                                                                                                                                                                                 
+ATE1<enter>                                                                                                                                                                                                                                 
+OK                       
+
+ATI
+Quectel
+EC20F
+Revision: EC20CEFRSGR08A03M2G
+
+AT+QFUMOCFG=?
++QFUMOCFG: "update",(0,1)
+
+OK
+AT+QFUMOCFG="dmacc","`reboot`"
+ERROR
+```
+
 
 Get a T-Mobile SIM card. 
 
