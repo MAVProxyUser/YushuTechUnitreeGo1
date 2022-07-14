@@ -392,6 +392,17 @@ AT+QFUMOCFG="dmacc","`reboot`"
 ERROR
 ```
 
+Additionally ADB is disabled in firmware per: https://forums.quectel.com/t/eg25-g-cannot-enable-adb-with-at-command/4809
+"ADB port in disblae in firmware. It’s not able to be used in standard module."
+
+```
+AT+QCFG="usbcfg",0x2c7c,0x125,1,1,1,1,1,1,1
+OK                                                                                                                 
+AT+QCFG="usbcfg"                                                                                                   
++QCFG: "usbcfg",0x2C7C,0x0125,1,1,1,1,1,0,1                                                                        
+                                                                                                                   
+OK 
+```
 
 Get a T-Mobile SIM card. 
 
