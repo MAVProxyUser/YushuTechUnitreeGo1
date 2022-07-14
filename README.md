@@ -395,6 +395,7 @@ ERROR
 Additionally ADB is disabled in firmware per: https://forums.quectel.com/t/eg25-g-cannot-enable-adb-with-at-command/4809
 "ADB port in disblae in firmware. It’s not able to be used in standard module."
 
+By default the enable command is refused. 
 ```
 AT+QCFG="usbcfg",0x2c7c,0x125,1,1,1,1,1,1,1
 OK                                                                                                                 
@@ -403,6 +404,68 @@ AT+QCFG="usbcfg"
                                                                                                                    
 OK 
 ```
+
+You can use an unlocker tool however after using the AT command to obtain the key 
+https://xnux.eu/devices/feature/qadbkey-unlock.c
+
+```
+AT+QADBKEY?
++QADBKEY: 39804286
+```
+
+```
+root@raspberrypi:~# wget https://xnux.eu/devices/feature/qadbkey-unlock.c
+--2022-07-13 18:59:07--  https://xnux.eu/devices/feature/qadbkey-unlock.c
+Resolving xnux.eu (xnux.eu)... 195.181.215.36, 2001:15e8:110:3624::1
+Connecting to xnux.eu (xnux.eu)|195.181.215.36|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 658 [text/plain]
+Saving to: ‘qadbkey-unlock.c’
+
+qadbkey-unlock.c                                  100%[=============================================================================================================>]     658  
+--.-KB/s    in 0s      
+
+2022-07-13 18:59:09 (1.41 MB/s) - ‘qadbkey-unlock.c’ saved [658/658]
+
+root@raspberrypi:~# gcc qadbkey-unlock.c -o qadbkey-unlock -lcrypt
+root@raspberrypi:~# ./qadbkey-unlock 
+Usage: unlock <serial>
+Use AT+QADBKEY? to get the serial number.
+root@raspberrypi:~# ./qadbkey-unlock 39804286
+AT+QADBKEY="OyFBlcSkpqh9Xt2i"
+AT+QCFG="usbcfg",0x2C7C,0x125,1,1,1,1,1,1,0
+
+To disable ADB, run: (beware that modem will not be able to enter sleep with ADB enabled!!)
+AT+QCFG="usbcfg",0x2C7C,0x125,1,1,1,1,1,0,0
+
+pi@raspberrypi:~ $ adb devices
+List of devices attached
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+(no serial number)	device
+
+pi@raspberrypi:~ $ adb shell
+/ # hostname
+mdm9607
+/ # id
+uid=0(root) gid=0(root) groups=1004,1007,1011,1015(sdcard),1028,3001,3002,3003,3006
+```
+
+If you see this, you may need to reboot. 
+```
+root@raspberrypi:/home/pi# adb devices
+List of devices attached
+(no serial number)	no permissions (user in plugdev group; are your udev rules wrong?); see [http://developer.android.com/tools/device.html]
+```
+
+Alternately you can try:
+```
+root@raspberrypi:/home/pi# sudo usermod -aG plugdev $LOGNAME
+root@raspberrypi:/etc/udev/rules.d# cat > 51-android.rules
+SUBSYSTEM=="usb",ATTRS{idVendor}=="2c7c",ATTRS{idProduct}=="0125",MODE="0666",GROUP="plugdev"
+root@raspberrypi:/etc/udev/rules.d# udevadm control --reload-rules
+```
+and reboot
 
 Get a T-Mobile SIM card. 
 
