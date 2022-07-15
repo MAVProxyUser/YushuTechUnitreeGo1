@@ -844,6 +844,9 @@ time programmable and is already programmed at the factory. End user application
 communicate with specific IDs.
 ```
 
+EV1527 and Learning Code Remotes Explained Simple:
+https://ripplesecurity.com.au/blogs/news/ev1527-and-ask-explained-simple
+
 "Under the developer mode, if the robot is out of control, you can cut off the power of the built-in PDB"<br>
 
 <p align="center">
