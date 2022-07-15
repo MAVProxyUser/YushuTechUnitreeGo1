@@ -832,6 +832,17 @@ cd /home/pi/Unitree/autostart
 ```
 
 # PDB emergency shut off (backdoor? no way to disable)
+ANNTEM JN1Q. 
+https://anntem.aliexpress.com/store/1101246027
+
+Uses EV1527 encoder IC by Silvan Chip Electronics www.sc-tech.cn:
+```
+EV1527 provides individual unique secure ID for each chip. This ID is transmitted with every outgoing packet. The receiver can learn the code 
+after receiving the first packet and can be programmed to receive the data from an unique transmitter. This way the communication is secure 
+and multiple transmitter can not interfere with the receiver operation. Suitable for operations like digital locks etc. The unique ID is one 
+time programmable and is already programmed at the factory. End user applications just need to identify the code and program the receiver to 
+communicate with specific IDs.
+```
 
 "Under the developer mode, if the robot is out of control, you can cut off the power of the built-in PDB"<br>
 
