@@ -832,10 +832,12 @@ cd /home/pi/Unitree/autostart
 ```
 
 # PDB emergency shut off (backdoor? no way to disable)
-ANNTEM JN1Q. 
-https://anntem.aliexpress.com/store/1101246027
+The PDB has an ANNTEM JN1Q on 433mhz hard wired in for safety disconnects. 
+https://anntem.aliexpress.com/store/1101246027 (official store)
 
-Uses EV1527 encoder IC by Silvan Chip Electronics www.sc-tech.cn:
+THe transmitter included is a common 2 button design using a stunted 4 button design "HFY528-4KEY ver2.1".
+
+The HFY528 uses an EV1527 encoder IC by Silvan Chip Electronics www.sc-tech.cn:
 ```
 EV1527 provides individual unique secure ID for each chip. This ID is transmitted with every outgoing packet. The receiver can learn the code 
 after receiving the first packet and can be programmed to receive the data from an unique transmitter. This way the communication is secure 
@@ -846,6 +848,80 @@ communicate with specific IDs.
 
 EV1527 and Learning Code Remotes Explained Simple:
 https://ripplesecurity.com.au/blogs/news/ev1527-and-ask-explained-simple
+
+
+You can sniff the remote with rtl_433: 
+```
+$ rtl_433 -S all -f 433.9M
+rtl_433 version 21.05 (2020-05-09) inputs file rtl_tcp RTL-SDR SoapySDR with TLS
+Use -h for usage help and see https://triq.org/ for documentation.
+Trying conf file at "rtl_433.conf"...
+Trying conf file at "/home/ciajeepdoors/.config/rtl_433/rtl_433.conf"...
+Trying conf file at "/usr/local/etc/rtl_433/rtl_433.conf"...
+Trying conf file at "/etc/rtl_433/rtl_433.conf"...
+Registered 157 out of 186 device decoding protocols [ 1-4 8 11-12 15-17 19-23 25-26 29-36 38-60 63 67-71 73-100 102-105 108-116 119 121 124-128 130-149 151-161 163-168 170-175 177-186 ]
+Found Fitipower FC0013 tuner
+Exact sample rate is: 250000.000414 Hz
+Sample rate set to 250000 S/s.
+Tuner gain set to Auto.
+Tuned to 433.900MHz.
+Allocating 15 zero-copy buffers
+baseband_demod_FM: low pass filter for 250000 Hz at cutoff 25000 Hz, 40.0 us
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : 2022-07-15 22:47:11
+model     : Akhan-100F14 ID (20bit): 0x75ed6
+Data (4bit): 0x4 (Mute)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : 2022-07-15 22:47:11
+model     : Akhan-100F14 ID (20bit): 0x75ed6
+Data (4bit): 0x4 (Mute)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : 2022-07-15 22:47:11
+model     : Akhan-100F14 ID (20bit): 0x75ed6
+Data (4bit): 0x4 (Mute)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : 2022-07-15 22:47:11
+model     : Akhan-100F14 ID (20bit): 0x75ed6
+Data (4bit): 0x4 (Mute)
+*** Saving signal to file g001_433.9M_250k.cu8 (78818 samples, 262144 bytes)
+*** Saving signal to file g002_433.9M_250k.cu8 (35279 samples, 131072 bytes)
+*** Saving signal to file g003_433.9M_250k.cu8 (55769 samples, 131072 bytes)
+*** Saving signal to file g004_433.9M_250k.cu8 (35280 samples, 131072 bytes)
+*** Saving signal to file g005_433.9M_250k.cu8 (35279 samples, 131072 bytes)
+*** Saving signal to file g006_433.9M_250k.cu8 (151278 samples, 393216 bytes)
+^CSignal caught, exiting!
+
+$ rtl_433 -r g001_433.9M_250k.cu8 -a 4
+...
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.415692s
+model     : Akhan-100F14 ID (20bit): 0x75ed6
+Data (4bit): 0x4 (Mute)
+*** signal_start = 58652, signal_end = 122183, signal_len = 63531, pulses_found = 101
+Iteration 1. t: 145    min: 59 (45)    max: 231 (56)    delta 18
+Iteration 2. t: 145    min: 59 (45)    max: 231 (56)    delta 0
+Pulse coding: Short pulse length 59 - Long pulse length 231
+
+Short distance: 111, long distance: 278, packet distance: 2630
+
+p_limit: 145
+bitbuffer:: Number of rows: 5 
+[00] { 1} 00          : 0
+[01] {25} 75 ed 64 00 : 01110101 11101101 01100100 0
+[02] {25} 75 ed 64 00 : 01110101 11101101 01100100 0
+[03] {25} 75 ed 64 00 : 01110101 11101101 01100100 0
+[04] {25} 75 ed 64 00 : 01110101 11101101 01100100 0
+Iteration 1. t: 0    min: 0 (0)    max: 0 (0)    delta 3567587328
+Iteration 2. t: 0    min: 0 (0)    max: 0 (0)    delta 0
+Distance coding: Pulse length 0
+
+Short distance: 1000000, long distance: 0, packet distance: 0
+
+p_limit: 0
+bitbuffer:: Number of rows: 0 
+
+
+```
 
 "Under the developer mode, if the robot is out of control, you can cut off the power of the built-in PDB"<br>
 
