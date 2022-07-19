@@ -130,6 +130,11 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/sdk.png"><br>
 
 <p align="center">
 <img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/arch.png"><br>
+</p>
+
+<p align="center">
+<img 
 src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.png"><br>
 </p>
 
