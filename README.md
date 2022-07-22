@@ -256,8 +256,8 @@ https://www.youtube.com/watch?v=Sz-nllmtcc8<br>
 https://github.com/micro-ROS/micro_ros_stm32cubemx_utils<br>
 
 Interface port documentation reveals it to be an "H7"<br>
-STM32H7 - https://www.st.com/en/microcontrollers-microprocessors/stm32h7-series.html
-
+STM32H7 - https://www.st.com/en/microcontrollers-microprocessors/stm32h7-series.html<br>
+https://github.com/micro-ROS/NuttX/blob/master/arch/arm/src/stm32h7/stm32_gpio.h
 # Bluetooth 
 
 The transmitter appears to be Bluetooth based. 
