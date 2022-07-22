@@ -146,12 +146,12 @@ Note: The two small pins next to the XT30U connector on the dog's belly appear t
 
 <p align="center">
 <img
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/pinout.png"><br>
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/AfterSalesSupport/Expansion/pinout.png"><br>
 </p>
 
 <p align="center">
 <img
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Hirose40sFX2.png"><br>
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/AfterSalesSupport/Expansion/Hirose40sFX2.png"><br>
 </p>
 
 PART: FX2CA2-40P-1.27DSAL(71)-ND<br>
