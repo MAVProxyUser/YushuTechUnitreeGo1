@@ -138,6 +138,8 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/arch.png"><br
 src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.png"><br>
 </p>
 
+Note: The two small pins next to the XT30U connector on the dog's belly appear to be P & N signals for the RS485 "motors" network on the "A4". <br>
+
 # Programming interface
 In Go1_2022_05_11_e0d0e617/raspi/Unitree/autostart/programming we find programming.py<br>
 It imports ./build/robot_interface_high_level.cpython-37m-aarch64-linux-gnu.so in order to call the UDP listen functions. 
@@ -255,7 +257,7 @@ https://micro.ros.org/docs/overview/hardware/<br>
 https://www.youtube.com/watch?v=Sz-nllmtcc8<br>
 https://github.com/micro-ROS/micro_ros_stm32cubemx_utils<br>
 
-Interface port documentation reveals it to be an "H7"<br>
+Interface port documentation reveals it to be an "H7", and an "A4"<br>
 STM32H7 - https://www.st.com/en/microcontrollers-microprocessors/stm32h7-series.html<br>
 https://github.com/micro-ROS/NuttX/blob/master/arch/arm/src/stm32h7/stm32_gpio.h
 # Bluetooth 
