@@ -140,6 +140,8 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.png"><b
 </p>
 
 Note: The two small pins next to the XT30U connector on the dog's belly appear to be P & N signals for the RS485 "motors" network on the "A4". <br>
+XT30(2 2)-F<br>
+https://www.aliexpress.com/item/3256801621419825.html
 
 # Expansion Header
 "40-pin Centronics connector"
