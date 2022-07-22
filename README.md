@@ -10,9 +10,10 @@
    * [Go1 Nx](#go1-nx)
    * [Go1 MAX](#go1-max)
    * [Go1 Edu](#go1-edu)
-   * [Go1 Edu Explorer](#go1-edu-explorer)
    * [Go1 Edu Plus](#go1-edu-plus)
+   * [Go1 Edu Explorer](#go1-edu-explorer)
 * [Robot Internal Architecture](#robot-internal-architecture)
+* [Expansion Header](#expansion-header)
 * [Programming interface](#programming-interface)
 * [Update interface](#update-interface)
 * [Upload interface](#upload-interface)
@@ -139,6 +140,26 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.png"><b
 </p>
 
 Note: The two small pins next to the XT30U connector on the dog's belly appear to be P & N signals for the RS485 "motors" network on the "A4". <br>
+
+# Expansion Header
+"40-pin Centronics connector"
+
+<p align="center">
+<img
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/pinout.png"><br>
+</p>
+
+<p align="center">
+<img
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Hirose40sFX2.png"><br>
+</p>
+
+PART: FX2CA2-40P-1.27DSAL(71)-ND<br>
+DESC: CONN HEADER VERT 40POS 1.27MM<br>
+MFG : Hirose Electric Co Ltd [CI] / FX2CA2-40P-1.27DSAL(71)<br>
+https://www.hirose.com/product/document?clcode=CL0572-2768-1-71&productname=FX2-100P-0.635SH(71)&series=FX2&documenttype=Catalog&lang=en&documentid=D49368_en<br>
+https://www.digikey.com/short/195n09w7<br>
+
 
 # Programming interface
 In Go1_2022_05_11_e0d0e617/raspi/Unitree/autostart/programming we find programming.py<br>
