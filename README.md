@@ -1,7 +1,6 @@
 # HangZhou Yushu Tech Unitree Go1
 宇树科技 HangZhou Yushu Technology (Unitree) go1 development notes
 
-* [HangZhou Yushu Tech Unitree Go1](#hangzhou-yushu-tech-unitree-go1)
 * [Go1 series Product Matrix](#go1-series-product-matrix)
    * [Go1 (TM?)](#go1-tm)
    * [Go1 Air](#go1-air)
@@ -14,6 +13,7 @@
    * [Go1 Edu Explorer](#go1-edu-explorer)
 * [Robot Internal Architecture](#robot-internal-architecture)
 * [Expansion Header](#expansion-header)
+* [Cameras - Super Sensory System](#cameras---super-sensory-system)
 * [Programming interface](#programming-interface)
 * [Update interface](#update-interface)
 * [Upload interface](#upload-interface)
@@ -35,7 +35,6 @@
 * [Sending MQTT commands to the dog.](#sending-mqtt-commands-to-the-dog)
 * [TFTP to RTOS](#tftp-to-rtos)
 * [Troubleshooting](#troubleshooting)
-
 This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?<br>
 https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<br>
 [![Launch Video](http://img.youtube.com/vi/xdfmhWQyp_8/0.jpg)](https://www.youtube.com/watch?v=xdfmhWQyp_8)<br>
@@ -162,6 +161,36 @@ MFG : Hirose Electric Co Ltd [CI] / FX2CA2-40P-1.27DSAL(71)<br>
 https://www.hirose.com/product/document?clcode=CL0572-2768-1-71&productname=FX2-100P-0.635SH(71)&series=FX2&documenttype=Catalog&lang=en&documentid=D49368_en<br>
 https://www.digikey.com/short/195n09w7<br>
 
+# Cameras - Super Sensory System
+
+Strings in the camera binary help us identify the vision hardware
+```
+unitree@unitree-desktop:~/Unitree/autostart/camerarosnode/cameraRosNode$ grep 2610 . -r
+Binary file ./src/unitree_camera/lib/amd64/libtstc_V4L2_xu_camera.a matches
+Binary file ./src/unitree_camera/lib/arm64/libtstc_V4L2_xu_camera.a matches
+Binary file ./devel/lib/unitree_camera/point_cloud_node matches
+Binary file ./devel/lib/unitree_camera/example_point matches
+```
+
+SPCA_2610 must be the camera name. 
+
+```
+source//Extension_Unit_Class/Extension_Unit_SPCA2650_Protocol.cpp
+```
+
+This is clearly a SunPlus based "SSS" system. 
+https://www.synopsys.com/dw/doc.php/ss/SunPlusIT_usb3.0-phy-controller.pdf
+https://www.sunplusit.com/EN/Product/PcCamera
+
+Each Jetson Nano includes the following USB devices, in some cases multiple per.
+```
+Bus 001 Device 002: ID 1bcf:2cd1 Sunplus Innovation Technology Inc. 
+```
+
+The linux hardware database lists the camera package here:
+https://linux-hardware.org/index.php?id=usb:1bcf-2cd1
+"Sunplus Innovation Technology USB2.0 Camera"
+
 
 # Programming interface
 In Go1_2022_05_11_e0d0e617/raspi/Unitree/autostart/programming we find programming.py<br>
@@ -229,9 +258,23 @@ $ curl -X POST -H "Content-Type: multipart/form-data; boundary=-----------------
 ```
 
 # Passwords
-unitree / 123 (Nano)<br>
-raspberry / 123 (RasPi)<br>
-root / 123 (RasPi)<br>
+
+raspberrypi<br>
+192.168.123.161<br>
+192.168.12.1<br>
+pi / 123<br>
+root / 123<br>
+
+nano2gb<br>
+192.168.123.13<br>
+unitree / 123<br>
+root / (disabled)
+
+unitree-desktop<br>
+192.168.123.14<br>
+192.168.123.15<br>
+unitree / 123<br>
+root / (disabled)
 
 # Power Output 
 On the dogs belly is a 24v pass though assumed to be 2A max.
