@@ -1,6 +1,7 @@
 # HangZhou Yushu Tech Unitree Go1
 宇树科技 HangZhou Yushu Technology (Unitree) go1 development notes
 
+* [HangZhou Yushu Tech Unitree Go1](#hangzhou-yushu-tech-unitree-go1)
 * [Go1 series Product Matrix](#go1-series-product-matrix)
    * [Go1 (TM?)](#go1-tm)
    * [Go1 Air](#go1-air)
@@ -18,6 +19,7 @@
 * [Update interface](#update-interface)
 * [Upload interface](#upload-interface)
 * [Passwords](#passwords)
+* [Backup internal flash on all devices](#backup-internal-flash-on-all-devices)
 * [Power Output](#power-output)
 * [Installing TCPdump on the RasPi](#installing-tcpdump-on-the-raspi)
 * [STM32 MicroROS?](#stm32-microros)
@@ -35,6 +37,7 @@
 * [Sending MQTT commands to the dog.](#sending-mqtt-commands-to-the-dog)
 * [TFTP to RTOS](#tftp-to-rtos)
 * [Troubleshooting](#troubleshooting)
+
 This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?<br>
 https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<br>
 [![Launch Video](http://img.youtube.com/vi/xdfmhWQyp_8/0.jpg)](https://www.youtube.com/watch?v=xdfmhWQyp_8)<br>
