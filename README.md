@@ -376,7 +376,7 @@ Sec-WebSocket-Protocol: mqtt
 ```
 
 You can take apart the supporting .js files and make them more readable 
-with "prettier". 
+with "prettier". They are Webpack 4 encoded files. 
 
 ```
 $ node bin-prettier.js ../../chunk-ab73ca30.b65f7572.js
