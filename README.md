@@ -375,6 +375,17 @@ Sec-WebSocket-Protocol: mqtt
 
 ```
 
+You can take apart the supporting .js files and make them more readable 
+with "prettier". 
+
+```
+$ node bin-prettier.js ../../chunk-ab73ca30.b65f7572.js
+```
+
+You can find the respective files in:<br>
+Go1_2021_12_10_d799e0c3/raspi/Unitree/autostart/webMonitor/dist/
+
+
 # 45 / 5G support
 
 Quectel EG25-G is connected to the RasPI
