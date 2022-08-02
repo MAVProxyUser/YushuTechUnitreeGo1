@@ -1155,8 +1155,19 @@ mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "dance4
 
 These commands control the stick movement
 ```
-mosquitto_pub -h 192.168.12.1 -d -t "controller/stick" -m <unknown at this time>
+mosquitto_pub -h 192.168.12.1 -d -t "controller/stick" -m <see format below>
 ```
+
+Stick format is as follows
+```
+                var c = new Float32Array(4);
+                  (c[0] = e.lx),
+                  (c[1] = e.rx),
+                  (c[2] = e.ry),
+                  (c[3] = e.ly),
+                  t.publish("controller/stick", c.buffer, { qos: 0 });
+```
+
 
 # TFTP to RTOS
 
