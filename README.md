@@ -276,6 +276,30 @@ unitree-desktop<br>
 unitree / 123<br>
 root / (disabled)
 
+# Backup internal flash on all devices
+
+Ssh into the raspi, dump it to external USB
+```
+root@raspberrypi:/media/pi/59f46a9c-a6fc-45d6-824e-55f5c3844716/go1/raspberrypi# dd if=/dev/mmcblk0 of=mmcblk0 bs=4096
+^C521+0 records in
+521+0 records out
+2134016 bytes (2.1 MB, 2.0 MiB) copied, 0.0781444 s, 27.3 MB/s
+```
+
+Ssh to each of the "desktop" nanos and dump them
+```
+root@unitree-desktop:/home/unitree# dd if=/dev/mmcblk0 bs=4096 | gzip -c | ssh pi@192.168.123.161 'cat > /media/pi/59f46a9c-a6fc-45d6-824e-55f5c3844716/go1/ubuntu-desktop_1/mmcblk0.gz'
+pi@192.168.123.161's password: 
+root@unitree-desktop:/home/unitree# dd if=/dev/mmcblk0 bs=4096 | gzip -c | ssh pi@192.168.123.161 'cat > /media/pi/59f46a9c-a6fc-45d6-824e-55f5c3844716/go1/ubuntu-desktop_2/mmcblk0.gz'
+pi@192.168.123.161's password: 
+```
+
+Ssh to the nano2gb and dump it 
+```
+root@nano2gb:/home/unitree# dd if=/dev/mmcblk0 bs=4096 | gzip -c | ssh pi@192.168.123.161 'cat > /media/pi/59f46a9c-a6fc-45d6-824e-55f5c3844716/go1/nano2gb/mmcblk0.gz'
+pi@192.168.123.161's password: 
+```
+
 # Power Output 
 On the dogs belly is a 24v pass though assumed to be 2A max.
 
