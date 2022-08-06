@@ -1094,6 +1094,22 @@ https://github.com/search?q=org%3Amit-biomimetics+%22Setup+for+mini+cheetah%22&t
 This code is MIT license. 
 https://github.com/mit-biomimetics/Cheetah-Software/blob/master/LICENSE
 
+## Backflip
+```
+
+pi@raspberrypi:~/Unitree/autostart/sportMode/path_files $ mv ~/Unitree/autostart/sportMode/path_files/bk_offline_backflip_new_v12.dat ~/Unitree/autostart/sportMode/path_files/offline_backflip_new_v12.dat 
+pi@raspberrypi:~/Unitree/autostart/sportMode/path_files $ ls -al
+total 232
+drwxr-xr-x 2 pi pi   4096 Nov  5  2021 .
+drwxr-xr-x 4 pi pi   4096 Nov  5  2021 ..
+-rw-r--r-- 1 pi pi 221760 Nov  5  2021 bk_offline_backflip_new_v12.dat
+-rwxr-xr-x 1 pi pi    781 Nov  5  2021 pos_w_node.yaml
+```
+
+Execute "L1 + Y"<br>
+
+Be careful the dogs hips are weak and will eventually break from stress. Do not over use this feature. 
+
 # Sniffing MQTT traffic on the dog 
 
 Install mosquitto-clients
