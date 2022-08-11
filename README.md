@@ -412,6 +412,61 @@ $ node bin-prettier.js ../../chunk-ab73ca30.b65f7572.js
 You can find the respective files in:<br>
 Go1_2021_12_10_d799e0c3/raspi/Unitree/autostart/webMonitor/dist/
 
+The MQTT locic can be further understood by disassembling appTransit. 
+
+```
+  bVar1 = std::operator==(pbVar3,"controller/action");
+  if (bVar1 != false) {
+    pmVar2 = (message *)
+             std::__shared_ptr_access<mqtt::message_const,(__gnu_cxx::_Lock_policy)2,false,false>::
+             operator->(this_01);
+    pbVar3 = (basic_string *)mqtt::message::get_payload_str[abi:cxx11](pmVar2);
+    pbVar4 = std::operator<<((basic_ostream *)&std::cout,pbVar3);
+    std::basic_ostream<char,std::char_traits<char>>::operator<<
+              ((basic_ostream<char,std::char_traits<char>> *)pbVar4,
+               std::endl<char,std::char_traits<char>>);
+    pmVar2 = (message *)
+             std::__shared_ptr_access<mqtt::message_const,(__gnu_cxx::_Lock_policy)2,false,false>::
+             operator->(this_01);
+    mqtt::message::get_payload_str[abi:cxx11](pmVar2);
+    std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string
+              (abStack48);
+                    /* try { // try from 0010bf9c to 0010bfe3 has its CatchHandler @ 0010c458 */
+    std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator=
+              ((basic_string<char,std::char_traits<char>,std::allocator<char>> *)(this + 0x970),
+               abStack48);
+    bVar1 = std::operator==(abStack48,"walk");
+    if (bVar1 == false) {
+      bVar1 = std::operator==(abStack48,"run");
+      if (bVar1 == false) {
+        bVar1 = std::operator==(abStack48,"climb");
+        if (bVar1 == false) {
+          bVar1 = std::operator==(abStack48,"stand");
+          if (bVar1 == false) {
+            bVar1 = std::operator==(abStack48,"dance1");
+            if (bVar1 == false) {
+              bVar1 = std::operator==(abStack48,"dance2");
+              if (bVar1 == false) {
+                bVar1 = std::operator==(abStack48,"dance3");
+                if (bVar1 == false) {
+                  bVar1 = std::operator==(abStack48,"dance4");
+                  if (bVar1 == false) {
+                    bVar1 = std::operator==(abStack48,"backflip");
+                    if (bVar1 == false) {
+                      bVar1 = std::operator==(abStack48,"jumpYaw");
+                      if (bVar1 == false) {
+                        bVar1 = std::operator==(abStack48,"straightHand1");
+                        if (bVar1 == false) {
+                          bVar1 = std::operator==(abStack48,"standUp");
+                          if (bVar1 == false) {
+                            bVar1 = std::operator==(abStack48,"standDown");
+                            if (bVar1 == false) {
+                              bVar1 = std::operator==(abStack48,"damping");
+                              if (bVar1 == false) {
+                                bVar1 = std::operator==(abStack48,"recoverStand");
+                                if (bVar1 != false) {
+```
+
 
 # 45 / 5G support
 
