@@ -1264,6 +1264,8 @@ client.connect("192.168.12.1", 1883, 60)
 client.loop_forever()
 ```
 
+This example code will make the dog lay down, stand up, switch to walk mode, and go full speed in one direction for a second before stopping
+
 # TFTP to RTOS
 
 The STM RTOS has tftp enabled for updates. 
