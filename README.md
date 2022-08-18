@@ -357,6 +357,91 @@ https://github.com/micro-ROS/NuttX/blob/master/arch/arm/src/stm32h7/stm32_gpio.h
 
 The transmitter appears to be Bluetooth based. 
 
+$ hcitool scan 
+Scanning ...
+	98:DA:10:01:18:4E	Unitree-31F119
+
+# bluetoothctl scan on
+Discovery started
+[CHG] Device 98:DA:10:01:18:4E Name: Unitree-31F119
+[CHG] Device 98:DA:10:01:18:4E Alias: Unitree-31F119
+[CHG] Device 98:DA:10:01:18:4E Class: 0x00001f00
+[CHG] Device 98:DA:10:01:18:4E UUIDs: 0000ffe0-0000-1000-8000-00805f9b34fb
+[CHG] Device 98:DA:10:01:18:4E UUIDs: ffcacade-afde-cade-defa-cade00000000
+[CHG] Device 98:DA:10:01:18:4E UUIDs: 00001200-0000-1000-8000-00805f9b34fb
+[CHG] Device 98:DA:10:01:18:4E UUIDs: 00000100-0000-1000-8000-00805f9b34fb
+[CHG] Device 98:DA:10:01:18:4E UUIDs: 00000001-0000-1000-8000-00805f9b34fb
+[CHG] Device 98:DA:10:01:18:4E UUIDs: 00001101-0000-1000-8000-00805f9b34fb
+[CHG] Device 98:DA:10:01:18:4E UUIDs: 00000003-0000-1000-8000-00805f9b34fb
+[CHG] Device 98:DA:10:01:18:4E Icon is nil
+
+# bluetoothctl info 98:DA:10:01:18:4E
+Device 98:DA:10:01:18:4E (public)
+	Name: Unitree-31F119
+	Alias: Unitree-31F119
+	Class: 0x00001f00
+	Paired: no
+	Trusted: no
+	Blocked: no
+	Connected: no
+	LegacyPairing: no
+	UUID: Unknown                   (0000ffe0-0000-1000-8000-00805f9b34fb)
+	UUID: Vendor specific           (ffcacade-afde-cade-defa-cade00000000)
+	UUID: PnP Information           (00001200-0000-1000-8000-00805f9b34fb)
+	UUID: L2CAP                     (00000100-0000-1000-8000-00805f9b34fb)
+	UUID: SDP                       (00000001-0000-1000-8000-00805f9b34fb)
+	UUID: Serial Port               (00001101-0000-1000-8000-00805f9b34fb)
+	UUID: RFCOMM                    (00000003-0000-1000-8000-00805f9b34fb)
+	ManufacturerData Key: 0x0000
+	ManufacturerData Value:
+  98 da 10 01 18 4e                                .....Ne
+
+# sdptool browse 98:DA:10:01:18:4E
+Browsing 98:DA:10:01:18:4E ...
+Service Name: Port
+Service RecHandle: 0x10001
+Service Class ID List:
+  "Serial Port" (0x1101)
+Protocol Descriptor List:
+  "L2CAP" (0x0100)
+  "RFCOMM" (0x0003)
+    Channel: 1
+
+# gatttool -b 98:DA:10:01:18:4E -I
+[98:DA:10:01:18:4E][LE]> connect
+Attempting to connect to 98:DA:10:01:18:4E
+Connection successful
+[98:DA:10:01:18:4E][LE]> primary
+attr handle: 0x0001, end grp handle: 0x0009 uuid: 00001800-0000-1000-8000-00805f9b34fb
+attr handle: 0x000a, end grp handle: 0x000d uuid: 00001801-0000-1000-8000-00805f9b34fb
+attr handle: 0x000e, end grp handle: 0x0020 uuid: 0000180a-0000-1000-8000-00805f9b34fb
+attr handle: 0x0021, end grp handle: 0xffff uuid: 0000ffe0-0000-1000-8000-00805f9b34fb
+
+[98:DA:10:01:18:4E][LE]> characteristics 0x000e 0x0020
+handle: 0x000f, char properties: 0x02, char value handle: 0x0010, uuid: 00002a29-0000-1000-8000-00805f9b34fb
+handle: 0x0011, char properties: 0x02, char value handle: 0x0012, uuid: 00002a24-0000-1000-8000-00805f9b34fb
+handle: 0x0013, char properties: 0x02, char value handle: 0x0014, uuid: 00002a25-0000-1000-8000-00805f9b34fb
+handle: 0x0015, char properties: 0x02, char value handle: 0x0016, uuid: 00002a26-0000-1000-8000-00805f9b34fb
+handle: 0x0017, char properties: 0x02, char value handle: 0x0018, uuid: 00002a27-0000-1000-8000-00805f9b34fb
+handle: 0x0019, char properties: 0x02, char value handle: 0x001a, uuid: 00002a28-0000-1000-8000-00805f9b34fb
+handle: 0x001b, char properties: 0x02, char value handle: 0x001c, uuid: 00002a23-0000-1000-8000-00805f9b34fb
+handle: 0x001d, char properties: 0x02, char value handle: 0x001e, uuid: 00002a2a-0000-1000-8000-00805f9b34fb
+handle: 0x001f, char properties: 0x02, char value handle: 0x0020, uuid: 00002a50-0000-1000-8000-00805f9b34fb
+
+[98:DA:10:01:18:4E][LE]> char-read-hnd 0x0010
+Characteristic value/descriptor: 43 45 56 41 00 00 00 00 00 00 
+
+This tell us that the device is made by CEVA, and the other characteristics tell more about the specific chip. 
+
+$ echo -e "\x43\x45\x56\x41"
+CEVA BT 4.0
+
+Other characteristics reveal
+Firmware 01.1
+Hardware SM-1
+Software 01.1
+
+
 # Mobile App
 The mobile app uses MQTT over websocket
 
