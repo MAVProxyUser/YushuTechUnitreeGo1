@@ -353,11 +353,12 @@ https://github.com/micro-ROS/micro_ros_stm32cubemx_utils<br>
 Interface port documentation reveals it to be an "H7", and an "A4"<br>
 STM32H7 - https://www.st.com/en/microcontrollers-microprocessors/stm32h7-series.html<br>
 https://github.com/micro-ROS/NuttX/blob/master/arch/arm/src/stm32h7/stm32_gpio.h
+
 # Bluetooth 
 
 The transmitter appears to be Bluetooth based. 
-
-$ hcitool scan 
+```
+# hcitool scan 
 Scanning ...
 	98:DA:10:01:18:4E	Unitree-31F119
 
@@ -430,17 +431,25 @@ handle: 0x001f, char properties: 0x02, char value handle: 0x0020, uuid: 00002a50
 
 [98:DA:10:01:18:4E][LE]> char-read-hnd 0x0010
 Characteristic value/descriptor: 43 45 56 41 00 00 00 00 00 00 
+```
 
 This tell us that the device is made by CEVA, and the other characteristics tell more about the specific chip. 
-
+```
 $ echo -e "\x43\x45\x56\x41"
 CEVA BT 4.0
+```
 
 Other characteristics reveal
 Firmware 01.1
 Hardware SM-1
 Software 01.1
 
+The RFComm port does not seem to need pairing
+```
+# rfcomm connect /dev/rfcomm0 98:DA:10:01:18:4E 
+Connected /dev/rfcomm0 to 98:DA:10:01:18:4E on channel 1
+Press CTRL-C for hangup
+```
 
 # Mobile App
 The mobile app uses MQTT over websocket
