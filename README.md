@@ -449,6 +449,29 @@ The RFComm port does not seem to need pairing
 # rfcomm connect /dev/rfcomm0 98:DA:10:01:18:4E 
 Connected /dev/rfcomm0 to 98:DA:10:01:18:4E on channel 1
 Press CTRL-C for hangup
+
+# screen /dev/rfcomm0 115200
+��:ek��MD0:G��:��MD�:GT��:��GY��:ek&�G��:��G���:��MD0:GT��:#�:MD0:G���:��MD0:G���:ek&...
+```
+
+The following Python code can be used to decode stick data from the remote
+
+```
+import serial
+import binascii
+import struct
+
+# rfcomm connect /dev/rfcomm0 98:DA:10:01:18:4E 
+
+with serial.Serial('/dev/rfcomm0', 115200, timeout=1) as ser:
+        while True:
+                val = ser.read(20)
+                [lx,rx,ry,ly,b1,b2,b3] = struct.unpack('ffffcce', val)
+                print(str([lx,rx,ry,ly]))                               # Stick values  
+
+                print( '{0:08b}'.format(int(binascii.hexlify(b1),16)) ) # Rocker Switches
+                print( '{0:08b}'.format(int(binascii.hexlify(b2),16)) ) # Front Panel Buttons
+                print("------------------------------------------")
 ```
 
 # Mobile App
