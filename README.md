@@ -474,6 +474,33 @@ with serial.Serial('/dev/rfcomm0', 115200, timeout=1) as ser:
                 print("------------------------------------------")
 ```
 
+You can pair with the device with 1234 as the key
+```
+# bluetoothctl --agent KeyboardDisplay
+Agent registered
+[bluetooth]# pair 98:DA:10:01:18:4E 
+Attempting to pair with 98:DA:10:01:18:4E
+[CHG] Device 98:DA:10:01:18:4E Connected: yes
+Request PIN code
+[agent] Enter PIN code: 1234
+[CHG] Device 98:DA:10:01:18:4E Paired: yes
+Pairing successful
+
+```
+
+Other keys fail
+```
+[bluetooth]# pair 98:DA:10:01:18:4E 
+Attempting to pair with 98:DA:10:01:18:4E
+[CHG] Device 98:DA:10:01:18:4E Connected: yes
+Request PIN code
+[agent] Enter PIN code: 0912
+Failed to pair: org.bluez.Error.AuthenticationFailed
+[CHG] Device 98:DA:10:01:18:4E Connected: no
+```
+
+The BLE "central" role seems to be performed by the Dog, and the Transmitter is the peripheral. 
+
 # Mobile App
 The mobile app uses MQTT over websocket
 
