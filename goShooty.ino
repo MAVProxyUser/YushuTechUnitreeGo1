@@ -5,8 +5,10 @@ BluetoothSerial SerialBT;
 esp_spp_sec_t sec_mask=ESP_SPP_SEC_NONE;
 esp_spp_role_t role=ESP_SPP_ROLE_SLAVE;
 String readString;
+int count = 0;
 
 void setup() {
+  pinMode(13, OUTPUT);
   Serial.begin(115200);
   if(! SerialBT.begin("Unitree pew pew switch", true) ) {
     Serial.println("========== serialBT failed!");
@@ -25,12 +27,11 @@ void loop() {
     {
       String content = "";
       char character;
-      int count = 0;
+
       while(SerialBT.available()) 
       {
         character = SerialBT.read(); 
         content.concat(character);
-        count = count+1;
       }
       if (content != "") {
         //Serial.println(content);
@@ -39,7 +40,19 @@ void loop() {
         //Serial.println();
         if(a == 0x10)
         {
-          Serial.println("pew pew pew");
+          count = count+1;
+          Serial.println("pew pew pew!");
+          if (count >= 5)
+          { 
+            count = 0;
+            digitalWrite(13, HIGH);
+            delay(2000);
+            digitalWrite(13, LOW);
+          }
+          else
+          {
+            Serial.println(count);
+          }
         }
         //else
         //{
@@ -49,4 +62,3 @@ void loop() {
     }
   } 
 }
-
