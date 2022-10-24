@@ -1,6 +1,9 @@
 # HangZhou Yushu Tech Unitree Go1
 宇树科技 HangZhou Yushu Technology (Unitree) go1 development notes
 
+Looking for Quadruped friends? Join "The Dog Pound animal control for Stray robot dogs" slack group: <br>
+https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnSagFQ<br>
+
 * [HangZhou Yushu Tech Unitree Go1](#hangzhou-yushu-tech-unitree-go1)
 * [Go1 series Product Matrix](#go1-series-product-matrix)
    * [Go1 (TM?)](#go1-tm)
