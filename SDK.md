@@ -1,3 +1,5 @@
+First off, if you need some friends with robot dogs, stop by Slack: https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnSagFQ
+
 All the magic can be found here:
 https://github.com/unitreerobotics/unitree_legged_sdk/issues/24
 
