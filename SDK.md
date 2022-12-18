@@ -46,9 +46,6 @@ https://github.com/unitreerobotics/unitree_legged_sdk/releases/tag/v3.8.0
                      3.8.x
 ```
 
-Alternative typo patched fork for go1 v3.5.1:
-https://github.com/JonasFovea/unitree_legged_sdk/tree/fix
-
 You MUST patch the example_walk.cpp to work with High Level if you have an (Air?) Pro, or MAX (non EDU version)
 
 You need to use: 
@@ -67,3 +64,5 @@ or
 192.168.123.11
 ```
 
+Alternative typo patched fork for go1 v3.5.1:
+https://github.com/JonasFovea/unitree_legged_sdk/tree/fix
