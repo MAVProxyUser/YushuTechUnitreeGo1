@@ -1297,18 +1297,40 @@ This code is MIT license.
 https://github.com/mit-biomimetics/Cheetah-Software/blob/master/LICENSE
 
 ## Backflip
-```
 
-pi@raspberrypi:~/Unitree/autostart/sportMode/path_files $ mv ~/Unitree/autostart/sportMode/path_files/bk_offline_backflip_new_v12.dat ~/Unitree/autostart/sportMode/path_files/offline_backflip_new_v12.dat 
-pi@raspberrypi:~/Unitree/autostart/sportMode/path_files $ ls -al
-total 232
-drwxr-xr-x 2 pi pi   4096 Nov  5  2021 .
-drwxr-xr-x 4 pi pi   4096 Nov  5  2021 ..
--rw-r--r-- 1 pi pi 221760 Nov  5  2021 bk_offline_backflip_new_v12.dat
--rwxr-xr-x 1 pi pi    781 Nov  5  2021 pos_w_node.yaml
-```
+The backflip is sown in the marketing video, but it is seemingly disabled. This is how to re-enable it. 
+Ssh into the ras pi with password 123
 
-Execute "L1 + Y"<br>
+```
+pi@raspberrypi:~/ $ mv ~/Unitree/autostart/sportMode/path_files/bk_offline_backflip_new_v12.dat ~/Unitree/autostart/sportMode/path_files/offline_backflip_new_v12.dat 
+pi@raspberrypi:~/Unitree/autostart/sportMode/path_files $ sudo reboot
+```
+After reboot:
+Press "L1 + Y" on the controller<br>
+
+How does it work? Well it is MIT Cheetah code. Specifically Execute a flip via ComputeCommand() code. 
+
+Start loading the "control plan"
+https://github.com/mit-biomimetics/Cheetah-Software/blob/master/user/MIT_Controller/Controllers/BackFlip/DataReader.cpp#L28
+
+Joint positions
+https://github.com/mit-biomimetics/Cheetah-Software/blob/master/user/MIT_Controller/FSM_States/FSM_State_BackFlip.h#L46
+
+Null out the position vector, then start feeding it full of data from the .dat file. 
+https://github.com/mit-biomimetics/Cheetah-Software/blob/master/user/MIT_Controller/FSM_States/FSM_State_BackFlip.cpp#L28
+
+"Plan offsets", x, z, yaw, hips, knees, etc. 
+https://github.com/mit-biomimetics/Cheetah-Software/blob/master/user/MIT_Controller/Controllers/BackFlip/DataReader.hpp#L6
+
+Dat file for backflip
+https://github.com/mit-biomimetics/Cheetah-Software/blob/master/user/MIT_Controller/Controllers/BackFlip/backflip.dat
+
+Older version of the repo:
+https://github.com/dbdxnuliba/mit-biomimetics_Cheetah/blob/master/user/WBC_Controller/WBC_States/BackFlip/data/backflip.dat
+https://github.com/dbdxnuliba/mit-biomimetics_Cheetah/blob/master/user/WBC_Controller/WBC_States/BackFlip/data/mc_flip.dat
+
+This is the same as the unitree .dat file, but Unitree crafted it. 
+https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/offline_backflip_new_v12.dat
 
 Be careful the dogs hips are weak and will eventually break from stress. Do not over use this feature. 
 
