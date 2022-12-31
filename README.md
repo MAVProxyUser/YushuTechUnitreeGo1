@@ -946,32 +946,32 @@ The MQTT locic can be further understood by disassembling appTransit.
 
 # 4G / 5G support
 
-MAX and EDU versions of the Unitree dogs can include a 4G cellular modem. The MAX includes a Quectel EG25-G connected to the RasPI
-https://www.quectel.com/wp-content/uploads/pdfupload/EP-FMEG25GMPCIs_Specification_V1.0-1609137.pdf
-https://www.t-mobile.com/content/dam/tfb/pdf/tfb-iot/Quectel_EG25-G_LTE_Standard_Specification_V1.3.pdf
-https://fccid.io/XMR201903EG25G/User-Manual/user-manual-4219711.pdf
+MAX and EDU versions of the Unitree dogs can include a 4G cellular modem. The MAX includes a Quectel EG25-G connected to the RasPI<br>
+https://www.quectel.com/wp-content/uploads/pdfupload/EP-FMEG25GMPCIs_Specification_V1.0-1609137.pdf<br>
+https://www.t-mobile.com/content/dam/tfb/pdf/tfb-iot/Quectel_EG25-G_LTE_Standard_Specification_V1.3.pdf<br>
+https://fccid.io/XMR201903EG25G/User-Manual/user-manual-4219711.pdf<br>
 
 It includes a GNSS function, which is why the GPS antenna in the Go1 is connected to this device. 
 
-5G support is assumed to be provided by a Quctel RM5 series chipset, but this has not been confirmed yet.  
-https://www.quectel.com/product/5g-rm50xq-series
-https://www.quectel.com/product/5g-rm510q-gl
-https://www.quectel.com/wp-content/uploads/2021/02/Quectel_Product_Brochure_EN_V6.1.pdf
+5G support is assumed to be provided by a Quctel RM5 series chipset, but this has not been confirmed yet.<br>
+https://www.quectel.com/product/5g-rm50xq-series<br>
+https://www.quectel.com/product/5g-rm510q-gl<br>
+https://www.quectel.com/wp-content/uploads/2021/02/Quectel_Product_Brochure_EN_V6.1.pdf<br>
 
 There are some known vulnerabilities in the Quectel series, that may impact the dog depending on the firmware on your cellular card.  
 
 CVE-2021-31698: Quectel EG25-G devices through 202006130814 allow executing arbitrary code remotely by using an AT command to place shell metacharacters in quectel_handle_fumo_cfg input in atfwd_daemon.<br>
-https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31698
-"Code execution as root via AT commands on the Quectel EG25-G modem"
-https://nns.ee/blog/2021/04/03/modem-rce.html
+https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31698<br>
+"Code execution as root via AT commands on the Quectel EG25-G modem"<br>
+https://nns.ee/blog/2021/04/03/modem-rce.html<br>
 
 Support provided by Quectel EC25<br>
 https://osmocom.org/projects/quectel-modems/wiki/EC25_Linux<br>
 Known to be ridden with FOTA backdoors<br>
 https://penthertz.com/blog/mobile-iot-modules-FOTA-backdooring-at-scale.html<br>
 "All the 4G Modules Could be Hacked" talk from Defcon 2019<br>
-https://i.blackhat.com/USA-19/Wednesday/us-19-Shupeng-All-The-4G-Modules-Could-Be-Hacked.pdf
-https://nns.ee/blog/2021/04/03/modem-rce.html
+https://i.blackhat.com/USA-19/Wednesday/us-19-Shupeng-All-The-4G-Modules-Could-Be-Hacked.pdf<br>
+https://nns.ee/blog/2021/04/03/modem-rce.html<br>
 
 The variant tested was not vulnerable to the obvious code execution: https://nvd.nist.gov/vuln/detail/CVE-2021-31698
 
