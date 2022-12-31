@@ -1,10 +1,13 @@
 # HangZhou Yushu Tech Unitree Go1
-宇树科技 HangZhou Yushu Technology (Unitree) go1 deep dive & unofficial development notes
 
 Looking for Quadruped friends? Join "The Dog Pound animal control for Stray robot dogs" slack group: <br>
 https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnSagFQ<br>
 
+# Table of Contents
+宇树科技 HangZhou Yushu Technology (Unitree) go1 deep dive & unofficial development notes:
+
 * [HangZhou Yushu Tech Unitree Go1](#hangzhou-yushu-tech-unitree-go1)
+* [Table of Contents](#table-of-contents)
 * [Robot Internal Architecture](#robot-internal-architecture)
 * [Expansion Header](#expansion-header)
 * [Cameras - Super Sensory System](#cameras---super-sensory-system)
@@ -15,7 +18,13 @@ https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnS
 * [Backup internal flash on all devices](#backup-internal-flash-on-all-devices)
 * [Power Output](#power-output)
 * [Installing TCPdump on the RasPi](#installing-tcpdump-on-the-raspi)
+* [Sniffing MQTT traffic on the dog](#sniffing-mqtt-traffic-on-the-dog)
+* [Sending MQTT commands to the dog.](#sending-mqtt-commands-to-the-dog)
 * [STM32 MicroROS?](#stm32-microros)
+* [TFTP to RTOS](#tftp-to-rtos)
+* [What talks to the STM at 192.168.123.10?](#what-talks-to-the-stm-at-19216812310)
+* [MIT Cheetah code](#mit-cheetah-code)
+   * [Backflip](#backflip)
 * [Bluetooth](#bluetooth)
 * [Mobile App](#mobile-app)
 * [4G / 5G support](#4g--5g-support)
@@ -24,12 +33,6 @@ https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnS
 * [Wifi backdoor](#wifi-backdoor)
 * [Autostart items](#autostart-items)
 * [PDB emergency shut off (backdoor? no way to disable)](#pdb-emergency-shut-off-backdoor-no-way-to-disable)
-* [What talks to the STM at 192.168.123.10?](#what-talks-to-the-stm-at-19216812310)
-* [MIT Cheetah code](#mit-cheetah-code)
-   * [Backflip](#backflip)
-* [Sniffing MQTT traffic on the dog](#sniffing-mqtt-traffic-on-the-dog)
-* [Sending MQTT commands to the dog.](#sending-mqtt-commands-to-the-dog)
-* [TFTP to RTOS](#tftp-to-rtos)
 * [Troubleshooting](#troubleshooting)
 * [Go1 series Product Matrix](#go1-series-product-matrix)
    * [Go1 (TM?)](#go1-tm)
@@ -51,9 +54,16 @@ https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<
 [![Launch Video](http://img.youtube.com/vi/xdfmhWQyp_8/0.jpg)](https://www.youtube.com/watch?v=xdfmhWQyp_8)<br>
 
 The reality is a "usable" version of the dog that can actually be programmed can never be obtained for $2700. This cost is reserved alone for the basic "RC" version of the 
-dog, a version with no extra internal computing capability.
+dog, a version with no extra internal computing capability. Never mind the import costs, or artificial $1000 support overhead costs tacked on by most distributors at the 
+request of Unitree. 
 
 # Robot Internal Architecture
+
+The Unitree go1 dog is in essence an evolution of MIT Cheetah SPIne architecture. 
+https://dspace.mit.edu/bitstream/handle/1721.1/118671/1057343368-MIT.pdf
+
+In the Unitree design a Raspberry Pi & multiple Jetson boards take places of the Intel "UP" board in the Cheetah design. The RS485 network and STM32 motion processing is 
+nearly identical. You can in fact easily find reminants of the Cheetah code in the Legged_sport binary from Unitree. 
 
 <p align="center">
 <img 
@@ -81,12 +91,12 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.png"><b
 </p>
 
 Note: The two small pins next to the XT30U connector on the dog's belly appear to be P & N signals for the RS485 "motors" network on the "A4". <br>
-XT30(2 2)-F<br>
-https://www.aliexpress.com/item/3256801621419825.html
 
+The connector is proprely called a XT30(2 2)-F and can be purchased here: https://www.aliexpress.com/item/3256801621419825.html
 
 # Expansion Header
-"40-pin Centronics connector"
+
+The back of the dog has a "40-pin Centronics connector" expansion connector that can be used to access various ports connected to the hardware on the dogs innards. 
 
 <p align="center">
 <img
@@ -98,6 +108,8 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/AfterSalesSup
 src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/AfterSalesSupport/Expansion/Hirose40sFX2.png"><br>
 </p>
 
+You can get variants of the connector fairly easily. There are a number of pin arrangements and minor variations. One example is listed below. 
+
 PART: FX2CA2-40P-1.27DSAL(71)-ND<br>
 DESC: CONN HEADER VERT 40POS 1.27MM<br>
 MFG : Hirose Electric Co Ltd [CI] / FX2CA2-40P-1.27DSAL(71)<br>
@@ -105,6 +117,10 @@ https://www.hirose.com/product/document?clcode=CL0572-2768-1-71&productname=FX2-
 https://www.digikey.com/short/195n09w7<br>
 
 # Cameras - Super Sensory System
+
+Unitree advertises the "SSS Super-Sensing System" as follows, "1 set of fisheye binocular depth sensing angle = 150x170", "5 sets of fisheye binocular depth sensing" + 
+"fisheye AI sensing", "1 set of fisheye binocular depth sensing = 4 sets of Intel Realsense sensing angle", "Thus: 5 sets of fisheye binocular depth sensing = 20 groups of 
+Intel Realsense sensing angles". 
 
 Strings in the camera binary help us identify the vision hardware
 ```
@@ -134,8 +150,13 @@ The linux hardware database lists the camera package here:
 https://linux-hardware.org/index.php?id=usb:1bcf-2cd1
 "Sunplus Innovation Technology USB2.0 Camera"
 
+Upon contacting SunTrust, they did confirm they make the camera's for Unitree, but refused any outside support such as providing a PDF manual for the chipset. 
 
 # Programming interface
+
+Recent versions of the Go1 firmware, specifically Go1_2022_05_11_e0d0e617.zip and up include "Blockly Programming". This can be used to send a limited set of commands to the 
+Go1. Additionally it has a security vulnerability that allows arbitrary code execution via python on the dog. 
+
 In Go1_2022_05_11_e0d0e617/raspi/Unitree/autostart/programming we find programming.py<br>
 It imports ./build/robot_interface_high_level.cpython-37m-aarch64-linux-gnu.so in order to call the UDP listen functions. 
 ```
@@ -158,6 +179,9 @@ compile() method is used if the Python code is in string form or is an AST objec
 This handles all the MIT Scratch code blocks from the mobile client. 
 
 # Update interface
+
+The firmware update interface similarly contains a vulnerability that can allow for arbitrary code execution on the dog via python. 
+
 In Go1_2021_12_10_d799e0c3/raspi/Unitree/autostart/updateDependencies we find startup_manager.py<br>
 It declares itself to be "Unitree System Manager", and offers the following functions
 ```
@@ -184,6 +208,10 @@ def on_message(client, userdata, msg):
 ```
 
 # Upload interface 
+
+The upload interface can be used to push files to any location on the dog's file system as well, this can aid in abuse of the previously mentioned vulnerabilities. Generally 
+speaking this isn't a huge deal, but over time Unitree will of course attempt to further lock down access to the dogs internals. 
+
 In Go1_2021_12_10_d799e0c3/raspi/Unitree/autostart/updateDependencies we find startup_uploader.py<br>
 It outlines how to accept update packages. They must be .zip files, or they will be rejected
 
@@ -201,6 +229,8 @@ $ curl -X POST -H "Content-Type: multipart/form-data; boundary=-----------------
 ```
 
 # Passwords
+
+There are several linux systems on the dogs network that act as ROS processing nodes. Currently there is no access to the STM32 MCU (aka 'h7') motion controller. 
 
 raspberrypi<br>
 192.168.123.161<br>
@@ -220,6 +250,9 @@ unitree / 123<br>
 root / (disabled)
 
 # Backup internal flash on all devices
+
+After connecting into the devices, and setting a root password, and adjusting the ssh config to allow root acecss, you can back up the systems to a USB drive connected to 
+the RasPI port on the dogs back. 
 
 Ssh into the raspi, dump it to external USB
 ```
@@ -244,9 +277,11 @@ pi@192.168.123.161's password:
 ```
 
 # Power Output 
-On the dogs belly is a 24v pass though assumed to be 2A max.
+On the dogs belly is a 24v pass though assumed to be 2A max. The power input on the dogs back can also be used for a payload when the dog is not on a bench. 
+
 
 # Installing TCPdump on the RasPi
+To inspect network traffic on the dog, you will need to install tcpdump on one of the devices. The RasPi is an easy place to do this. 
 
 Download from the mirror
 ```
@@ -282,9 +317,111 @@ Setting up tcpdump (4.9.3-1~deb10u2) ...
 Processing triggers for man-db (2.8.5-2) ...
 ```
 
+# Sniffing MQTT traffic on the dog 
+
+Install mosquitto-clients
+
+```
+pi@raspberrypi:~ $ sudo apt-get install mosquitto-clients
+pi@raspberrypi:~ $ mosquitto_sub -v -t "#"
+usys/run ok
+usys/uuid xxx-xxx-xxx-xxx-xxx
+usys/version/app 1.38.0
+usys/version/nano3 
+updateDependencies:1.0.1;ipconfig:1.0.0;gencamparams:1.0.0;camerarosnode:1.0.0;03persontrack:2.1.0;imageai:1.0.2;faceLightServer:1.0.1;slamDetector:1.0.0;wsaudio:1.0.0;faceLightMqtt:1.0.0
+usys/version/raspi 
+updateDependencies:1.0.1;roscore:1.0.0;configNetwork:1.0.0;sportMode:1.38.0;triggerSport:1.5.0;webMonitor:1.4.0;appTransit:1.5.0;07obstacle:1.1.0;utrack:3.9.4;programming:1.0.0;tunnel:1.0.0
+usys/version/nano2 
+updateDependencies:1.0.1;ipconfig:1.0.0;gencamparams:1.0.0;camerarosnode:1.0.0;03persontrack:2.1.0;imageai:1.0.2;faceLightServer:1.0.1;slamDetector:1.0.0;wsaudio:1.0.0;faceLightMqtt:1.0.0
+usys/version/nano1 
+updateDependencies:1.0.1;ipconfig:1.0.0;gencamparams:1.0.0;camerarosnode:1.0.0;03persontrack:2.1.0;imageai:1.0.2;faceLightServer:1.0.1;slamDetector:1.0.0;wsaudio:1.0.0;faceLightMqtt:1.0.0
+controller/run ok
+programming/run on
+programming/current_action stop
+robot/state ??.??.????.??.??aH?lR??'<M?1??>??>$???#?9?E?:C???
+robot/state ??.??.????.??.??aH?lR??'<M?1??>??>$???#?9?E?:C???
+robot/state ??.??.????.??.??aH?lR??'<M?1??>??>$???#?9?E?:C???
+bms/state 
+firmware/version 	%%!$$!$#"$$!$FA
+controller/current_action (null)
+
+```
+
+You can also sniff the stick movements. 
+```
+mosquitto_sub  -h 192.168.12.1 -t "controller/stick" 
+```
+
+# Sending MQTT commands to the dog. 
+
+You can send these MQTT commands to control the bot always
+
+```
+mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "standUp"
+mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "standDown"
+mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "run"
+mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "walk"
+mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "climb"
+```
+
+You must be in SDK mode 2 to send these (L1+L2 & start)
+```
+mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "dance1"
+mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "dance2"
+mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "jumpYaw"
+mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "straightHand1"
+```
+
+These commands seem to be somehow black listed on the go1
+```
+mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "backflip"
+mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "dance3
+mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "dance4
+```
+
+These commands control the stick movement
+```
+mosquitto_pub -h 192.168.12.1 -d -t "controller/stick" -m <see format below>
+```
+
+Stick format is as follows
+```
+                var c = new Float32Array(4);
+                  (c[0] = e.lx),
+                  (c[1] = e.rx),
+                  (c[2] = e.ry),
+                  (c[3] = e.ly),
+                  t.publish("controller/stick", c.buffer, { qos: 0 });
+```
+
+You can parse stick output with the following code. Ranges go from 1 to -1 with 0 being center. 
+
+```
+import paho.mqtt.client as mqtt
+import binascii
+import struct
+
+def on_connect(client, userdata, flags, rc):
+    print("Connected with result code {0}".format(str(rc)))
+    client.subscribe("controller/stick")
+
+def on_message(client, userdata, msg):
+    [lx,rx,ry,ly] = struct.unpack('ffff', msg.payload)
+    print("Message received-> " + msg.topic + " " + str([lx,rx,ry,ly]))
+
+client = mqtt.Client("Stick Data")
+client.on_connect = on_connect
+client.on_message = on_message
+client.connect("192.168.12.1", 1883, 60)
+client.loop_forever()
+```
+
+This example code will make the dog lay down, stand up, switch to walk mode, and go full speed in one direction for a second before stopping
+
+
 # STM32 MicroROS?
 
-The device at 192.168.123.10 may be an STM32 running MicroROS
+The motion control device at 192.168.123.10 may be an STM32 running MicroROS
 
 https://micro.ros.org/docs/overview/hardware/<br>
 https://www.youtube.com/watch?v=Sz-nllmtcc8<br>
@@ -294,9 +431,115 @@ Interface port documentation reveals it to be an "H7", and an "A4"<br>
 STM32H7 - https://www.st.com/en/microcontrollers-microprocessors/stm32h7-series.html<br>
 https://github.com/micro-ROS/NuttX/blob/master/arch/arm/src/stm32h7/stm32_gpio.h
 
+It absolutly has MIT Cheetah based code running within. 
+
+# TFTP to RTOS
+
+The STM RTOS has tftp enabled for updates. 
+./autostart/updateDependencies/update_firmware.py:    atftp = "sleep 5; atftp -p -l " + sys.argv[1] + " 192.168.123.10 --tftp-timeout 10;"
+
+
+It is assumed to be a variants of IAP over tftp per ST spec
+https://www.st.com/resource/en/application_note/an3376-stm32f2x7-inapplication-programming-iap-over-ethernet-stmicroelectronics.pdf
+
+If you tftp to 192.168.161.10, the bot will immediately drop. 
+
+```
+pi@raspberrypi:~ $ atftp -g -r "*.bin" 192.168.123.10 69 --trace  --verbose
+Trace mode on.
+Verbose mode on.
+sent RRQ <file: *.bin, mode: octet <>>
+received DATA <block: 1, size: 0>
+sent ACK <block: 1>
+```
+
+# What talks to the STM at 192.168.123.10?
+
+Two apps:
+/Unitree/autostart/sportMode/bin/Legged_sport
+/Unitree/autostart/appTransit/build/appTransit
+
+```
+root@raspberrypi:/home/pi# netstat -ap | grep 192.168.123.10
+...
+udp     5504      0 192.168.123.161:8008    192.168.123.10:8007     ESTABLISHED 1460/./bin/Legged_s 
+udp        0      0 192.168.123.161:8093    192.168.123.10:8007     ESTABLISHED 1752/./build/appTra 
+
+root@raspberrypi:/home/pi# fuser -n udp 8008
+8008/udp:             1460
+root@raspberrypi:/home/pi# fuser -n udp 8093
+8093/udp:             1752
+root@raspberrypi:/home/pi# ps -ax | grep 1460 
+ 1460 ?        SLl    3:08 ./bin/Legged_sport
+root@raspberrypi:/home/pi# ps -ax | grep 1752
+ 1752 ?        Sl     0:02 ./build/appTransit
+
+```
+
+Look familiar? 
+
+https://github.com/unitreerobotics/unitree_legged_sdk/blob/master/include/unitree_legged_sdk/udp.h#L32
+
+```
+constexpr int UDP_CLIENT_PORT = 8080;                       // local port
+constexpr int UDP_SERVER_PORT = 8007;                       // target port
+constexpr char UDP_SERVER_IP_BASIC[] = "192.168.123.10";    // target IP address
+constexpr char UDP_SERVER_IP_SPORT[] = "192.168.123.161";   // target IP address
+```
+
+# MIT Cheetah code
+
+printf("[Backflip DataReader] Setup for mini cheetah\n");<br>
+printf("[Cheetah Test] Test initialization is done\n");<br>
+
+https://github.com/search?q=org%3Amit-biomimetics+%22Cheetah+Test%22&type=code
+https://github.com/search?q=org%3Amit-biomimetics+%22Setup+for+mini+cheetah%22&type=code
+
+This code is MIT license. 
+https://github.com/mit-biomimetics/Cheetah-Software/blob/master/LICENSE
+
+## Backflip
+
+The backflip is sown in the marketing video, but it is seemingly disabled. This is how to re-enable it. 
+Ssh into the ras pi with password 123
+
+```
+pi@raspberrypi:~/ $ mv ~/Unitree/autostart/sportMode/path_files/bk_offline_backflip_new_v12.dat ~/Unitree/autostart/sportMode/path_files/offline_backflip_new_v12.dat 
+pi@raspberrypi:~/ $ sudo reboot
+```
+After reboot:
+Press "L1 + Y" on the controller<br>
+
+How does it work? Well it is MIT Cheetah code. Specifically Execute a flip via ComputeCommand() code. 
+
+Start loading the "control plan"
+https://github.com/mit-biomimetics/Cheetah-Software/blob/master/user/MIT_Controller/Controllers/BackFlip/DataReader.cpp#L28
+
+Joint positions
+https://github.com/mit-biomimetics/Cheetah-Software/blob/master/user/MIT_Controller/FSM_States/FSM_State_BackFlip.h#L46
+
+Null out the position vector, then start feeding it full of data from the .dat file. 
+https://github.com/mit-biomimetics/Cheetah-Software/blob/master/user/MIT_Controller/FSM_States/FSM_State_BackFlip.cpp#L28
+
+"Plan offsets", x, z, yaw, hips, knees, etc. 
+https://github.com/mit-biomimetics/Cheetah-Software/blob/master/user/MIT_Controller/Controllers/BackFlip/DataReader.hpp#L6
+
+Dat file for backflip
+https://github.com/mit-biomimetics/Cheetah-Software/blob/master/user/MIT_Controller/Controllers/BackFlip/backflip.dat
+
+Older version of the repo:
+https://github.com/dbdxnuliba/mit-biomimetics_Cheetah/blob/master/user/WBC_Controller/WBC_States/BackFlip/data/backflip.dat
+https://github.com/dbdxnuliba/mit-biomimetics_Cheetah/blob/master/user/WBC_Controller/WBC_States/BackFlip/data/mc_flip.dat
+
+This is the same as the unitree .dat file, but Unitree crafted it. 
+https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/offline_backflip_new_v12.dat
+
+Be careful the dogs hips are weak and will eventually break from stress. Do not over use this feature. 
+
 # Bluetooth 
 
-The transmitter appears to be Bluetooth based. 
+One variation in the MIT Cheetah Design is, instead of the MCU being connected to a Zigbee or RC radio, it uses Bluetooth LE. 
+
 ```
 # hcitool scan 
 Scanning ...
@@ -373,7 +616,7 @@ handle: 0x001f, char properties: 0x02, char value handle: 0x0020, uuid: 00002a50
 Characteristic value/descriptor: 43 45 56 41 00 00 00 00 00 00 
 ```
 
-This tell us that the device is made by CEVA, and the other characteristics tell more about the specific chip. 
+This tells us that the device is made by CEVA, and the other characteristics tell more about the specific chip. 
 ```
 $ echo -e "\x43\x45\x56\x41"
 CEVA BT 4.0
@@ -442,7 +685,25 @@ Failed to pair: org.bluez.Error.AuthenticationFailed
 The BLE "central" role seems to be performed by the Dog, and the Transmitter is the peripheral. 
 
 # Mobile App
-The mobile app uses MQTT over websocket
+The mobile app uses MQTT over websocket in order to function. Most of the calls are redirected to the appropriate service by Nginx on the dog. 
+
+```
+# cat sites-available/default   | grep location 
+	location / {
+	location ^~ /mqtt {
+	location ^~ /upload {
+	location / {
+	location ^~ /mqtt {
+	location ^~ /upload {
+	location ^~ /map {
+	location ^~ /cam1 {
+	location ^~ /cam2 {
+	location ^~ /audio {
+	location ^~ /cam3 {
+	location ^~ /cam4 {
+	location ^~ /cam5 {
+	location ^~ /human {
+```
 
 On an iOS device you can use RVI utils to sniff the connection
 https://developer.apple.com/documentation/network/recording_a_packet_trace
@@ -554,55 +815,24 @@ The MQTT locic can be further understood by disassembling appTransit.
 
 # 4G / 5G support
 
-Quectel EG25-G is connected to the RasPI
+MAX and EDU versions of the Unitree dogs can include a 4G cellular modem. The MAX includes a Quectel EG25-G connected to the RasPI
 https://www.quectel.com/wp-content/uploads/pdfupload/EP-FMEG25GMPCIs_Specification_V1.0-1609137.pdf
 https://www.t-mobile.com/content/dam/tfb/pdf/tfb-iot/Quectel_EG25-G_LTE_Standard_Specification_V1.3.pdf
 https://fccid.io/XMR201903EG25G/User-Manual/user-manual-4219711.pdf
 
-It includes a GNSS function. The GPS antenna in the Go1 is connected to this device. 
+It includes a GNSS function, which is why the GPS antenna in the Go1 is connected to this device. 
 
-5G support is assumed to be provided by a Quctel RM5 series chipset. 
+5G support is assumed to be provided by a Quctel RM5 series chipset, but this has not been confirmed yet.  
 https://www.quectel.com/product/5g-rm50xq-series
 https://www.quectel.com/product/5g-rm510q-gl
 https://www.quectel.com/wp-content/uploads/2021/02/Quectel_Product_Brochure_EN_V6.1.pdf
+
+There are some known vulnerabilities in the Quectel series, that may impact the dog depending on the firmware on your cellular card.  
 
 CVE-2021-31698: Quectel EG25-G devices through 202006130814 allow executing arbitrary code remotely by using an AT command to place shell metacharacters in quectel_handle_fumo_cfg input in atfwd_daemon.<br>
 https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-31698
 "Code execution as root via AT commands on the Quectel EG25-G modem"
 https://nns.ee/blog/2021/04/03/modem-rce.html
-
-While connected to the 45/5g the dog does call home. Here is an example of it calling the Zhexi cloud
-
-```
-pi@raspberrypi:~ $ netstat -ap | grep ESTABLISHED | grep 100.100.57.114
-(Not all processes could be identified, non-owned process info
- will not be shown, you would have to be root to see it all.)
-tcp        0      0 100.100.57.114:53570    124.156.140.55:5670     ESTABLISHED -                   
-tcp        0      0 100.100.57.114:52582    124.156.140.55:http     ESTABLISHED -                   
-tcp        0      0 100.100.57.114:52578    124.156.140.55:http     ESTABLISHED -                   
-tcp        0      0 100.100.57.114:55788    134.175.175.55:9998     ESTABLISHED -                   
-```
-
-<p align="center">
-<img
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/zhexi.png"><br>
-<img
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/dns.png"><br>
-</p>
-
-You can disbale the tunnel by killing the cloudsail daemon
-```
-root@raspberrypi:/home/pi/Unitree/autostart# systemctl disable CSClientDaemon
-Removed /etc/systemd/system/multi-user.target.wants/CSClientDaemon.service.
-```
-
-Also move the auto start "tunnel" out of the way so it is unable to autostart
-```
-root@raspberrypi:/home/pi/Unitree/autostart# mv tunnel/ /root/tunnel_disabled/
-
-```
-
-# 4G use in the USA
 
 Support provided by Quectel EC25<br>
 https://osmocom.org/projects/quectel-modems/wiki/EC25_Linux<br>
@@ -720,6 +950,41 @@ root@raspberrypi:/etc/udev/rules.d# udevadm control --reload-rules
 ```
 and reboot
 
+While the go1 MAX is connected to 45/5g the dog does call home to the Zhexi cloud
+
+```
+pi@raspberrypi:~ $ netstat -ap | grep ESTABLISHED | grep 100.100.57.114
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+tcp        0      0 100.100.57.114:53570    124.156.140.55:5670     ESTABLISHED -                   
+tcp        0      0 100.100.57.114:52582    124.156.140.55:http     ESTABLISHED -                   
+tcp        0      0 100.100.57.114:52578    124.156.140.55:http     ESTABLISHED -                   
+tcp        0      0 100.100.57.114:55788    134.175.175.55:9998     ESTABLISHED -                   
+```
+
+<p align="center">
+<img
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/zhexi.png"><br>
+<img
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/dns.png"><br>
+</p>
+
+You can disbale the tunnel by killing the cloudsail daemon
+```
+root@raspberrypi:/home/pi/Unitree/autostart# systemctl disable CSClientDaemon
+Removed /etc/systemd/system/multi-user.target.wants/CSClientDaemon.service.
+```
+
+You can also move the auto start "tunnel" out of the way so it is unable to autostart
+```
+root@raspberrypi:/home/pi/Unitree/autostart# mv tunnel/ /root/tunnel_disabled/
+
+```
+
+# 4G use in the USA
+
+In order to use 4G on the Unitree MAX series in the USA, you will have to make some changes to the internal configuration. 
+
 Get a T-Mobile SIM card. 
 
 Edit the config file for the Unitree configNetwork autostart service, at the very least the APN needs to be changed off China Unicom.
@@ -780,56 +1045,9 @@ The mmcli tool will help get basic informaiton that you may need to give your ce
 
 root@raspberrypi:/home/pi$ mmcli -m 0
   --------------------------------
-  General  |            dbus path: /org/freedesktop/ModemManager1/Modem/0
-           |            device id: 
-  --------------------------------
-  Hardware |         manufacturer: QUALCOMM INCORPORATED
-           |                model: QUECTEL Mobile Broadband Module
-           |             revision: 
-           |         h/w revision: 10000
-           |            supported: gsm-umts, lte
-           |                       cdma-evdo, lte
-           |                       lte
-           |                       cdma-evdo, gsm-umts, lte
-           |              current: cdma-evdo, gsm-umts, lte
-           |         equipment id: 
-  --------------------------------
-  System   |               device: /sys/devices/platform/soc/fe980000.usb/usb1/1-1/1-1.3
-           |              drivers: option1, qmi_wwan
-           |               plugin: Quectel
-           |         primary port: cdc-wdm0
-           |                ports: ttyUSB0 (qcdm), ttyUSB2 (at), cdc-wdm0 (qmi), wwan0 (net), 
-           |                       ttyUSB3 (at)
-  --------------------------------
-  Status   |                 lock: sim-pin2
-           |       unlock retries: sim-pin (3), sim-pin2 (10), sim-puk (10), sim-puk2 (10)
-           |                state: disabled
-           |          power state: on
-           |       signal quality: 0% (cached)
-  --------------------------------
-  Modes    |            supported: allowed: 2g; preferred: none
-           |                       allowed: 3g; preferred: none
-           |                       allowed: 2g, 3g; preferred: 3g
-           |                       allowed: 2g, 3g; preferred: 2g
-           |                       allowed: 2g, 4g; preferred: 4g
-           |                       allowed: 2g, 4g; preferred: 2g
-           |                       allowed: 3g, 4g; preferred: 3g
-           |                       allowed: 3g, 4g; preferred: 4g
-           |                       allowed: 2g, 3g, 4g; preferred: 4g
-           |                       allowed: 2g, 3g, 4g; preferred: 3g
-           |                       allowed: 2g, 3g, 4g; preferred: 2g
-           |              current: allowed: 2g, 3g, 4g; preferred: 4g
-  --------------------------------
-  Bands    |            supported: egsm, dcs, utran-1, utran-8, eutran-1, eutran-3, eutran-5, 
-           |                       eutran-8, eutran-34, eutran-38, eutran-39, eutran-40, eutran-41, 
-           |                       cdma-bc0
-           |              current: egsm, dcs, utran-1, utran-8, eutran-1, eutran-3, eutran-5, 
-           |                       eutran-8, eutran-34, eutran-38, eutran-39, eutran-40, eutran-41, 
-           |                       cdma-bc0
-  --------------------------------
   IP       |            supported: ipv4, ipv6, ipv4v6
   --------------------------------
-  3GPP     |                 imei: 313376969187
+  3GPP     |                 imei: DEADBEEFCAFE
   --------------------------------
   3GPP EPS | ue mode of operation: csps-2
   --------------------------------
@@ -844,14 +1062,7 @@ If you need to double check the bearer information you can.
 
 ```
 root@raspberrypi:/home/pi$ mmcli -b 0
-  --------------------------------
-  General            |  dbus path: /org/freedesktop/ModemManager1/Bearer/0
-                     |       type: default
-  --------------------------------
-  Status             |  connected: yes
-                     |  suspended: no
-                     |  interface: wwan0
-                     | ip timeout: 20
+...
   --------------------------------
   Properties         |        apn: fast.t-mobile.com
                      |    roaming: allowed
@@ -861,12 +1072,10 @@ root@raspberrypi:/home/pi$ mmcli -b 0
                      |     prefix: 30
                      |    gateway: 5.4.3.2
                      |        dns: 1.1.0.4, 1.1.0.2
-                     |        mtu: 1500
-  --------------------------------
-  Statistics         |   duration: 330
+...
 ```
 
-You can use qmicli to verify the APN profile setting slots
+You can use qmicli to verify the APN profile setting slots as well. All of this useful for troubleshooting. 
 
 ```
 root@raspberrypi:/home/pi$ qmicli -p -d /dev/cdc-wdm0 --wds-get-profile-list=3gpp
@@ -916,6 +1125,8 @@ root@raspberrypi:/home/pi$ mmcli -m 0 --3gpp-scan --timeout=300
 
 # GPS from 4G module
 
+As mentioned above the built in Quectel module can provide pseudo GPS output, the following commands will enable that functionality. 
+
 ```
 root@raspberrypi:/home/pi$ mmcli -m 0 --location-status
   ------------------------
@@ -943,7 +1154,7 @@ root@raspberrypi:/home/pi$ mmcli -m 0 --location-get
 ```
 
 # Wifi backdoor
-There is an autoconnect network called "Unitree-2.4G" in the wpa supplicant config. 
+Arguably a malicious backdoor, this is likely a leftover remanant from testing at the Unitree factor. None the less, there is an autoconnect network called "Unitree-2.4G" in the wpa supplicant config. This can be used to take arbitrary control of the dog. 
 
 ```
 
@@ -982,7 +1193,7 @@ pi@raspberrypi:/etc $ ps -ax | grep wpa
  8444 pts/1    S+     0:00 grep --color=auto wpa
 ```
 
-If you are quick you can catch it to login to the dog. 
+If you are quick you can catch it, and use it to login to the dog. Automation makes it failproof. 
 
 ```
 $ ping 192.168.1.115
@@ -1059,7 +1270,7 @@ debug1: Exit status 0
 
 # Autostart items
 
-The default uses GNOME autostart, so that anything in /Unitree/autostart/<folder>/*.sh is executed<br>
+The Unitree default bringup process uses GNOME autostart, so that anything in /Unitree/autostart/<folder>/*.sh is executed<br>
 
 FreeDesktop enabled this: https://specifications.freedesktop.org/autostart-spec/0.5/ar01s02.html
 ```
@@ -1096,10 +1307,22 @@ cd /home/pi/Unitree/autostart
 ```
 
 # PDB emergency shut off (backdoor? no way to disable)
-The PDB has an ANNTEM JN1Q on 433mhz hard wired in for safety disconnects. 
+The PDB has an ANNTEM JN1Q on 433mhz hard wired in for safety disconnects. It can be considered a backdoor method to kill the dog due to the weakness in the protocol spec. 
 https://anntem.aliexpress.com/store/1101246027 (official store)
 
-THe transmitter included is a common 2 button design using a stunted 4 button design "HFY528-4KEY ver2.1".
+"Under the developer mode, if the robot is out of control, you can cut off the power of the built-in PDB"<br>
+
+<p align="center">
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/PDB.jpg">
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/remote.png">
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/frame.jpg">
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/warn.jpg">
+</p>
+<br>
+
+https://www.youtube.com/watch?v=gDnDbuFLjys
+
+The transmitter included is a common 2 button design using a stunted 4 button design "HFY528-4KEY ver2.1".
 
 The HFY528 uses an EV1527 encoder IC by Silvan Chip Electronics www.sc-tech.cn:
 ```
@@ -1185,222 +1408,6 @@ p_limit: 0
 bitbuffer:: Number of rows: 0 
 
 
-```
-
-"Under the developer mode, if the robot is out of control, you can cut off the power of the built-in PDB"<br>
-
-<p align="center">
-<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/PDB.jpg">
-<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/remote.png">
-<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/frame.jpg">
-<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/warn.jpg">
-</p>
-<br>
-
-https://www.youtube.com/watch?v=gDnDbuFLjys
-
-# What talks to the STM at 192.168.123.10?
-
-Two apps:
-/Unitree/autostart/sportMode/bin/Legged_sport
-/Unitree/autostart/appTransit/build/appTransit
-
-```
-root@raspberrypi:/home/pi# netstat -ap | grep 192.168.123.10
-...
-udp     5504      0 192.168.123.161:8008    192.168.123.10:8007     ESTABLISHED 1460/./bin/Legged_s 
-udp        0      0 192.168.123.161:8093    192.168.123.10:8007     ESTABLISHED 1752/./build/appTra 
-
-root@raspberrypi:/home/pi# fuser -n udp 8008
-8008/udp:             1460
-root@raspberrypi:/home/pi# fuser -n udp 8093
-8093/udp:             1752
-root@raspberrypi:/home/pi# ps -ax | grep 1460 
- 1460 ?        SLl    3:08 ./bin/Legged_sport
-root@raspberrypi:/home/pi# ps -ax | grep 1752
- 1752 ?        Sl     0:02 ./build/appTransit
-
-```
-
-Look familiar? 
-
-https://github.com/unitreerobotics/unitree_legged_sdk/blob/master/include/unitree_legged_sdk/udp.h#L32
-
-```
-constexpr int UDP_CLIENT_PORT = 8080;                       // local port
-constexpr int UDP_SERVER_PORT = 8007;                       // target port
-constexpr char UDP_SERVER_IP_BASIC[] = "192.168.123.10";    // target IP address
-constexpr char UDP_SERVER_IP_SPORT[] = "192.168.123.161";   // target IP address
-```
-
-# MIT Cheetah code
-
-printf("[Backflip DataReader] Setup for mini cheetah\n");<br>
-printf("[Cheetah Test] Test initialization is done\n");<br>
-
-https://github.com/search?q=org%3Amit-biomimetics+%22Cheetah+Test%22&type=code
-https://github.com/search?q=org%3Amit-biomimetics+%22Setup+for+mini+cheetah%22&type=code
-
-This code is MIT license. 
-https://github.com/mit-biomimetics/Cheetah-Software/blob/master/LICENSE
-
-## Backflip
-
-The backflip is sown in the marketing video, but it is seemingly disabled. This is how to re-enable it. 
-Ssh into the ras pi with password 123
-
-```
-pi@raspberrypi:~/ $ mv ~/Unitree/autostart/sportMode/path_files/bk_offline_backflip_new_v12.dat ~/Unitree/autostart/sportMode/path_files/offline_backflip_new_v12.dat 
-pi@raspberrypi:~/ $ sudo reboot
-```
-After reboot:
-Press "L1 + Y" on the controller<br>
-
-How does it work? Well it is MIT Cheetah code. Specifically Execute a flip via ComputeCommand() code. 
-
-Start loading the "control plan"
-https://github.com/mit-biomimetics/Cheetah-Software/blob/master/user/MIT_Controller/Controllers/BackFlip/DataReader.cpp#L28
-
-Joint positions
-https://github.com/mit-biomimetics/Cheetah-Software/blob/master/user/MIT_Controller/FSM_States/FSM_State_BackFlip.h#L46
-
-Null out the position vector, then start feeding it full of data from the .dat file. 
-https://github.com/mit-biomimetics/Cheetah-Software/blob/master/user/MIT_Controller/FSM_States/FSM_State_BackFlip.cpp#L28
-
-"Plan offsets", x, z, yaw, hips, knees, etc. 
-https://github.com/mit-biomimetics/Cheetah-Software/blob/master/user/MIT_Controller/Controllers/BackFlip/DataReader.hpp#L6
-
-Dat file for backflip
-https://github.com/mit-biomimetics/Cheetah-Software/blob/master/user/MIT_Controller/Controllers/BackFlip/backflip.dat
-
-Older version of the repo:
-https://github.com/dbdxnuliba/mit-biomimetics_Cheetah/blob/master/user/WBC_Controller/WBC_States/BackFlip/data/backflip.dat
-https://github.com/dbdxnuliba/mit-biomimetics_Cheetah/blob/master/user/WBC_Controller/WBC_States/BackFlip/data/mc_flip.dat
-
-This is the same as the unitree .dat file, but Unitree crafted it. 
-https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/offline_backflip_new_v12.dat
-
-Be careful the dogs hips are weak and will eventually break from stress. Do not over use this feature. 
-
-# Sniffing MQTT traffic on the dog 
-
-Install mosquitto-clients
-
-```
-pi@raspberrypi:~ $ sudo apt-get install mosquitto-clients
-pi@raspberrypi:~ $ mosquitto_sub -v -t "#"
-usys/run ok
-usys/uuid xxx-xxx-xxx-xxx-xxx
-usys/version/app 1.38.0
-usys/version/nano3 
-updateDependencies:1.0.1;ipconfig:1.0.0;gencamparams:1.0.0;camerarosnode:1.0.0;03persontrack:2.1.0;imageai:1.0.2;faceLightServer:1.0.1;slamDetector:1.0.0;wsaudio:1.0.0;faceLightMqtt:1.0.0
-usys/version/raspi 
-updateDependencies:1.0.1;roscore:1.0.0;configNetwork:1.0.0;sportMode:1.38.0;triggerSport:1.5.0;webMonitor:1.4.0;appTransit:1.5.0;07obstacle:1.1.0;utrack:3.9.4;programming:1.0.0;tunnel:1.0.0
-usys/version/nano2 
-updateDependencies:1.0.1;ipconfig:1.0.0;gencamparams:1.0.0;camerarosnode:1.0.0;03persontrack:2.1.0;imageai:1.0.2;faceLightServer:1.0.1;slamDetector:1.0.0;wsaudio:1.0.0;faceLightMqtt:1.0.0
-usys/version/nano1 
-updateDependencies:1.0.1;ipconfig:1.0.0;gencamparams:1.0.0;camerarosnode:1.0.0;03persontrack:2.1.0;imageai:1.0.2;faceLightServer:1.0.1;slamDetector:1.0.0;wsaudio:1.0.0;faceLightMqtt:1.0.0
-controller/run ok
-programming/run on
-programming/current_action stop
-robot/state ??.??.????.??.??aH?lR??'<M?1??>??>$???#?9?E?:C???
-robot/state ??.??.????.??.??aH?lR??'<M?1??>??>$???#?9?E?:C???
-robot/state ??.??.????.??.??aH?lR??'<M?1??>??>$???#?9?E?:C???
-bms/state 
-firmware/version 	%%!$$!$#"$$!$FA
-controller/current_action (null)
-
-```
-
-You can also sniff the stick movements. 
-```
-mosquitto_sub  -h 192.168.12.1 -t "controller/stick" 
-```
-
-# Sending MQTT commands to the dog. 
-
-You can send these MQTT commands to control the bot always
-
-```
-mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "standUp"
-mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "standDown"
-mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "run"
-mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "walk"
-mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "climb"
-```
-
-You must be in SDK mode 2 to send these (L1+L2 & start)
-```
-mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "dance1"
-mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "dance2"
-mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "jumpYaw"
-mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "straightHand1"
-```
-
-These commands seem to be somehow black listed on the go1
-```
-mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "backflip"
-mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "dance3
-mosquitto_pub -h 192.168.12.1 -d -t "controller/action" -m "dance4
-```
-
-These commands control the stick movement
-```
-mosquitto_pub -h 192.168.12.1 -d -t "controller/stick" -m <see format below>
-```
-
-Stick format is as follows
-```
-                var c = new Float32Array(4);
-                  (c[0] = e.lx),
-                  (c[1] = e.rx),
-                  (c[2] = e.ry),
-                  (c[3] = e.ly),
-                  t.publish("controller/stick", c.buffer, { qos: 0 });
-```
-
-You can parse stick output with the following code. Ranges go from 1 to -1 with 0 being center. 
-
-```
-import paho.mqtt.client as mqtt
-import binascii
-import struct
-
-def on_connect(client, userdata, flags, rc):
-    print("Connected with result code {0}".format(str(rc)))
-    client.subscribe("controller/stick")
-
-def on_message(client, userdata, msg):
-    [lx,rx,ry,ly] = struct.unpack('ffff', msg.payload)
-    print("Message received-> " + msg.topic + " " + str([lx,rx,ry,ly]))
-
-client = mqtt.Client("Stick Data")
-client.on_connect = on_connect
-client.on_message = on_message
-client.connect("192.168.12.1", 1883, 60)
-client.loop_forever()
-```
-
-This example code will make the dog lay down, stand up, switch to walk mode, and go full speed in one direction for a second before stopping
-
-# TFTP to RTOS
-
-The STM RTOS has tftp enabled for updates. 
-./autostart/updateDependencies/update_firmware.py:    atftp = "sleep 5; atftp -p -l " + sys.argv[1] + " 192.168.123.10 --tftp-timeout 10;"
-
-
-It is assumed to be a variants of IAP over tftp per ST spec
-https://www.st.com/resource/en/application_note/an3376-stm32f2x7-inapplication-programming-iap-over-ethernet-stmicroelectronics.pdf
-
-If you tftp to 192.168.161.10, the bot will immediately drop. 
-
-```
-pi@raspberrypi:~ $ atftp -g -r "*.bin" 192.168.123.10 69 --trace  --verbose
-Trace mode on.
-Verbose mode on.
-sent RRQ <file: *.bin, mode: octet <>>
-received DATA <block: 1, size: 0>
-sent ACK <block: 1>
 ```
 
 # Troubleshooting
