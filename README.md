@@ -49,8 +49,7 @@ One of the first affordable affordable quadrupeds on the market is sold by Unitr
 seemingly everywhere. Often confused as "Boston Dynamics Spot", or specifically being a "knock off Spot" the Go1 series is hard to miss these days. This likely started with 
 the artificially low advertising cost. Beefed up marketing videos sold everyone on the low cost Air version of the dog, while hyping features of the EDU model. 
 
-"This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?"<br>
-https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<br>
+["This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?"](https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1)<br>
 [![Launch Video](http://img.youtube.com/vi/xdfmhWQyp_8/0.jpg)](https://www.youtube.com/watch?v=xdfmhWQyp_8)<br>
 
 The reality is a "usable" version of the dog that can actually be programmed can never be obtained for $2700. This cost is reserved alone for the basic "RC" version of the 
