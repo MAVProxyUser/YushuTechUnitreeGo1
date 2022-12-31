@@ -13,6 +13,8 @@ https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnS
 * [Programming interface](#programming-interface)
 * [Update interface](#update-interface)
 * [Upload interface](#upload-interface)
+* [SDK usage on non EDU models](#sdk-usage-on-non-edu-models)
+   * [Example Walk on Unitree go1 pro](#example-walk-on-unitree-go1-pro)
 * [Passwords](#passwords)
 * [Backup internal flash on all devices](#backup-internal-flash-on-all-devices)
 * [Power Output](#power-output)
