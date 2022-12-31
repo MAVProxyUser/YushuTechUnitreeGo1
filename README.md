@@ -7,7 +7,6 @@ https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnS
 宇树科技 HangZhou Yushu Technology (Unitree) go1 deep dive & unofficial development notes:
 
 * [HangZhou Yushu Tech Unitree Go1](#hangzhou-yushu-tech-unitree-go1)
-* [Table of Contents](#table-of-contents)
 * [Robot Internal Architecture](#robot-internal-architecture)
 * [Expansion Header](#expansion-header)
 * [Cameras - Super Sensory System](#cameras---super-sensory-system)
@@ -91,7 +90,7 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.png"><b
 
 Note: The two small pins next to the XT30U connector on the dog's belly appear to be P & N signals for the RS485 "motors" network on the "A4". <br>
 
-The connector is proprely called a XT30(2 2)-F and can be purchased here: https://www.aliexpress.com/item/3256801621419825.html
+The connector is properly called a XT30(2 2)-F and can be purchased here: https://www.aliexpress.com/item/3256801621419825.html
 
 # Expansion Header
 
@@ -114,6 +113,8 @@ DESC: CONN HEADER VERT 40POS 1.27MM<br>
 MFG : Hirose Electric Co Ltd [CI] / FX2CA2-40P-1.27DSAL(71)<br>
 https://www.hirose.com/product/document?clcode=CL0572-2768-1-71&productname=FX2-100P-0.635SH(71)&series=FX2&documenttype=Catalog&lang=en&documentid=D49368_en<br>
 https://www.digikey.com/short/195n09w7<br>
+
+More detail is located here: https://github.com/MAVProxyUser/YushuTechUnitreeGo1/tree/main/AfterSalesSupport/Expansion
 
 # Cameras - Super Sensory System
 
@@ -177,6 +178,8 @@ compile() method is used if the Python code is in string form or is an AST objec
 ```
 This handles all the MIT Scratch code blocks from the mobile client. 
 
+
+
 # SDK usage on non EDU models
 All the magic can be found here:
 https://github.com/unitreerobotics/unitree_legged_sdk/issues/24
@@ -227,8 +230,10 @@ https://github.com/unitreerobotics/unitree_legged_sdk/releases/tag/v3.8.0
 ```
 
 You MUST patch the example_walk.cpp to work with High Level if you have an (Air?) Pro, or MAX (non EDU version)
+A patched version is here: [example_walk_g01_high_level.cpp](https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/example_walk_g01_high_level.cpp)
+Likewise a precompiled binary is here: [example_walk_g01_high_level](https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/example_walk_g01_high_level)
 
-You need to use: 
+You need to use make changes to use the proper driver. In many cases the A1 driver is selected in the git commits, and the wrong UDP target is chosen.  
 ```
 safe(LeggedType::Go1)
 ```
@@ -238,14 +243,17 @@ and
 ```
 Make sure it is not set to 
 ```
-safe(LeggedType::A1)``` 
+safe(LeggedType::A1)
+``` 
 or 
 ```
 192.168.123.11
 ```
 
-Alternative typo patched fork for go1 v3.5.1:
+Likewise there are some typos that casue problems in v3.51. There is a prepatched Alternative typo fixed fork for go1 v3.5.1 here:
 https://github.com/JonasFovea/unitree_legged_sdk/tree/fix
+
+You must also force the levelFlag to 0 for high level. 
 
 ## Example Walk on Unitree go1 pro
 As outlined above, make the following changes. 
