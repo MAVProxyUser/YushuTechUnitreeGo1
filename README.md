@@ -5,6 +5,7 @@ Looking for Quadruped friends? Join "The Dog Pound animal control for Stray robo
 https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnSagFQ<br>
 
 * [HangZhou Yushu Tech Unitree Go1](#hangzhou-yushu-tech-unitree-go1)
+* [Robot Internal Architecture](#robot-internal-architecture)
 * [Expansion Header](#expansion-header)
 * [Cameras - Super Sensory System](#cameras---super-sensory-system)
 * [Programming interface](#programming-interface)
@@ -40,7 +41,6 @@ https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnS
    * [Go1 Edu](#go1-edu)
    * [Go1 Edu Plus](#go1-edu-plus)
    * [Go1 Edu Explorer](#go1-edu-explorer)
-* [Robot Internal Architecture](#robot-internal-architecture)
 
 One of the first affordable affordable quadrupeds on the market is sold by Unitree Robotics. The marketing has exploded out of seemingly no where, and now the dogs are 
 seemingly everywhere. Often confused as "Boston Dynamics Spot", or specifically being a "knock off Spot" the Go1 series is hard to miss these days. This likely started with 
@@ -52,6 +52,38 @@ https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<
 
 The reality is a "usable" version of the dog that can actually be programmed can never be obtained for $2700. This cost is reserved alone for the basic "RC" version of the 
 dog, a version with no extra internal computing capability.
+
+# Robot Internal Architecture
+
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/NetworkLayout.png"><br>
+</p>
+
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/FlowChart.png"><br>
+</p>
+
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/sdk.png"><br>
+</p>
+
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/arch.png"><br>
+</p>
+
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.png"><br>
+</p>
+
+Note: The two small pins next to the XT30U connector on the dog's belly appear to be P & N signals for the RS485 "motors" network on the "A4". <br>
+XT30(2 2)-F<br>
+https://www.aliexpress.com/item/3256801621419825.html
+
 
 # Expansion Header
 "40-pin Centronics connector"
@@ -1482,36 +1514,4 @@ Basically<br>
 - Support for developing gesture recognition<br>
 - VSLAM and other secondary development<br>
 - With the 3D Lidar, also the Dynamic Obstacle Avoidance.<br>
-
-# Robot Internal Architecture
-
-<p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/NetworkLayout.png"><br>
-</p>
-
-<p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/FlowChart.png"><br>
-</p>
-
-<p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/sdk.png"><br>
-</p>
-
-<p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/arch.png"><br>
-</p>
-
-<p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.png"><br>
-</p>
-
-Note: The two small pins next to the XT30U connector on the dog's belly appear to be P & N signals for the RS485 "motors" network on the "A4". <br>
-XT30(2 2)-F<br>
-https://www.aliexpress.com/item/3256801621419825.html
-
 
