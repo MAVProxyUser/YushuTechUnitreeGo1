@@ -1123,10 +1123,21 @@ debug1: Exit status 0
 
 # Autostart items
 
-The default uses GNOME autostart<br>
-/home/pi/.config/autostart/*
+The default uses GNOME autostart, so that anything in /Unitree/autostart/<folder>/*.sh is executed<br>
 
+FreeDesktop enabled this: https://specifications.freedesktop.org/autostart-spec/0.5/ar01s02.html
 ```
+Example: If $XDG_CONFIG_HOME is not set the Autostart Directory in the user's home directory is ~/.config/autostart/
+```
+
+Several scripts are ultimately launched by this technique. All initially triggerd by the auto login to the desktop
+```
+# cat etc/lightdm/lightdm.conf  | grep autologin-user | grep -v \#
+autologin-user=pi
+
+# ls ./home/pi/bk_Unitree/autostart/
+00roscore  01config4G_AP_Wifi  02sportMode  03triggerSport  05appManager  06appTransit  07obstacle  08utrack  09tunnel
+
 pi@raspberrypi:~ $ cat /home/pi/.config/autostart/unitree.desktop 
 [Desktop Entry]
 Name=unitree
