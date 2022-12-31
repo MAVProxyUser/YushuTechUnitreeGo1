@@ -1304,7 +1304,7 @@ Ssh into the ras pi with password 123
 
 ```
 pi@raspberrypi:~/ $ mv ~/Unitree/autostart/sportMode/path_files/bk_offline_backflip_new_v12.dat ~/Unitree/autostart/sportMode/path_files/offline_backflip_new_v12.dat 
-pi@raspberrypi:~/Unitree/autostart/sportMode/path_files $ sudo reboot
+pi@raspberrypi:~/ $ sudo reboot
 ```
 After reboot:
 Press "L1 + Y" on the controller<br>
