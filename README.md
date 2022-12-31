@@ -785,6 +785,9 @@ with serial.Serial('/dev/rfcomm0', 115200, timeout=1) as ser:
                 print("------------------------------------------")
 ```
 
+You can also use an Ardiuno to hook this stream to use it as a remote trigger. 
+https://github.com/MAVProxyUser/YushuTechUnitreeGo1/tree/main/ArduinoBTRemoteFire
+
 You can pair with the device with 1234 as the key
 ```
 # bluetoothctl --agent KeyboardDisplay
