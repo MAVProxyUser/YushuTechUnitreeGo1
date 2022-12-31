@@ -250,7 +250,7 @@ or
 192.168.123.11
 ```
 
-Likewise there are some typos that casue problems in v3.51. There is a prepatched Alternative typo fixed fork for go1 v3.5.1 here:
+Likewise there are some typos that cause problems in v3.51. There is a prepatched Alternative typo fixed fork for go1 v3.5.1 here:
 https://github.com/JonasFovea/unitree_legged_sdk/tree/fix
 
 You must also force the levelFlag to 0 for high level. 
@@ -291,7 +291,7 @@ index 46e20d4..07ceb22 100644
 
 Ensure you are compiling the SDK for the proper arch! Don't compile for arm64 if you are on amd64! 
 ```
-kfinisterre@dev0:~/unitree_legged_sdk_v3.5.1/build$ git diff
+user@dev0:~/unitree_legged_sdk_v3.5.1/build$ git diff
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 7830771..66159c6 100644
 --- a/CMakeLists.txt
