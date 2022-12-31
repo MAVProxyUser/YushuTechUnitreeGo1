@@ -178,7 +178,61 @@ compile() method is used if the Python code is in string form or is an AST objec
 ```
 This handles all the MIT Scratch code blocks from the mobile client. 
 
+An example exploit is here: https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/mqtt_python.py
 
+# Update interface
+
+The firmware update interface similarly contains a vulnerability that can allow for arbitrary code execution on the dog via python. 
+
+In Go1_2021_12_10_d799e0c3/raspi/Unitree/autostart/updateDependencies we find startup_manager.py<br>
+It declares itself to be "Unitree System Manager", and offers the following functions
+```
+Functions:
+1. run bash files
+2. delete uploaded packages
+3. run update packages
+4. process topics when modules shut down
+```
+
+This can also be used to run arbitry commands. 
+```
+def on_message(client, userdata, msg):
+    global updatePackage
+    global updateFirmware
+    # not doing anything during update
+    if(updatePackage !='' or updateFirmware !=''):
+        return 
+    # run bash file
+    if(msg.topic == "usys/sh"):
+        bashFile = str(msg.payload,'utf-8')
+        print("Running sh " + bashFile)
+        process = subprocess.Popen(["sh", bashFile],stdout=subprocess.PIPE)
+```
+
+An example exploit is here: https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/mqtt_shellout.py 
+
+# Upload interface 
+
+The upload interface can be used to push files to any location on the dog's file system as well, this can aid in abuse of the previously mentioned vulnerabilities. Generally 
+speaking this isn't a huge deal, but over time Unitree will of course attempt to further lock down access to the dogs internals. 
+
+In Go1_2021_12_10_d799e0c3/raspi/Unitree/autostart/updateDependencies we find startup_uploader.py<br>
+It outlines how to accept update packages. They must be .zip files, or they will be rejected
+
+```
+$ cat test.txt 
+------------------------------4ebf00fbcf09
+Content-Disposition: form-data; name="file"; filename="/tmp/out.zip"
+
+filecontent here
+
+------------------------------4ebf00fbcf09
+
+$ curl -X POST -H "Content-Type: multipart/form-data; boundary=----------------------------4ebf00fbcf09"   --data-binary @test.txt http://localhost:9800
+{'info':'File '/tmp/out.zip' upload success!'}
+```
+
+An example exploit is here: https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/mqtt_shellout.py 
 
 # SDK usage on non EDU models
 All the magic can be found here:
@@ -304,56 +358,6 @@ index 7830771..66159c6 100644
 +set(EXTRA_LIBS -pthread libunitree_legged_sdk_amd64.so lcm)
  
  set(CMAKE_CXX_FLAGS "-O3 -fPIC")
-```
-
-# Update interface
-
-The firmware update interface similarly contains a vulnerability that can allow for arbitrary code execution on the dog via python. 
-
-In Go1_2021_12_10_d799e0c3/raspi/Unitree/autostart/updateDependencies we find startup_manager.py<br>
-It declares itself to be "Unitree System Manager", and offers the following functions
-```
-Functions:
-1. run bash files
-2. delete uploaded packages
-3. run update packages
-4. process topics when modules shut down
-```
-
-This can also be used to run arbitry commands. 
-```
-def on_message(client, userdata, msg):
-    global updatePackage
-    global updateFirmware
-    # not doing anything during update
-    if(updatePackage !='' or updateFirmware !=''):
-        return 
-    # run bash file
-    if(msg.topic == "usys/sh"):
-        bashFile = str(msg.payload,'utf-8')
-        print("Running sh " + bashFile)
-        process = subprocess.Popen(["sh", bashFile],stdout=subprocess.PIPE)
-```
-
-# Upload interface 
-
-The upload interface can be used to push files to any location on the dog's file system as well, this can aid in abuse of the previously mentioned vulnerabilities. Generally 
-speaking this isn't a huge deal, but over time Unitree will of course attempt to further lock down access to the dogs internals. 
-
-In Go1_2021_12_10_d799e0c3/raspi/Unitree/autostart/updateDependencies we find startup_uploader.py<br>
-It outlines how to accept update packages. They must be .zip files, or they will be rejected
-
-```
-$ cat test.txt 
-------------------------------4ebf00fbcf09
-Content-Disposition: form-data; name="file"; filename="/tmp/out.zip"
-
-filecontent here
-
-------------------------------4ebf00fbcf09
-
-$ curl -X POST -H "Content-Type: multipart/form-data; boundary=----------------------------4ebf00fbcf09"   --data-binary @test.txt http://localhost:9800
-{'info':'File '/tmp/out.zip' upload success!'}
 ```
 
 # Passwords
