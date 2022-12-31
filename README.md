@@ -1643,7 +1643,7 @@ When upgrading to the 2D or 3D LiDAR versions of the GO1 EDU, one of the three J
 ## Go1 Edu Explorer
 3D LiDAR Upgrade (Explorer)
 
-The difference between the EDU and the EDU Explorer is basically those features that comes with the integration of the Lidar (2D/3D): 
+The difference between the EDU and the EDU Explorer is basically those features that comes with the integration of the Lidar (2D/3D):<br>
 Basically<br>
 - Obstacle avoidance<br>
 - Mapping and navigation planning<br>
