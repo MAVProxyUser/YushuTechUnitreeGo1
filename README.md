@@ -1,21 +1,10 @@
 # HangZhou Yushu Tech Unitree Go1
-宇树科技 HangZhou Yushu Technology (Unitree) go1 development notes
+宇树科技 HangZhou Yushu Technology (Unitree) go1 deep dive & unofficial development notes
 
 Looking for Quadruped friends? Join "The Dog Pound animal control for Stray robot dogs" slack group: <br>
 https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnSagFQ<br>
 
 * [HangZhou Yushu Tech Unitree Go1](#hangzhou-yushu-tech-unitree-go1)
-* [Go1 series Product Matrix](#go1-series-product-matrix)
-   * [Go1 (TM?)](#go1-tm)
-   * [Go1 Air](#go1-air)
-   * [Go1 Pro](#go1-pro)
-   * [Go1 Pro MAX](#go1-pro-max)
-   * [Go1 Nx](#go1-nx)
-   * [Go1 MAX](#go1-max)
-   * [Go1 Edu](#go1-edu)
-   * [Go1 Edu Plus](#go1-edu-plus)
-   * [Go1 Edu Explorer](#go1-edu-explorer)
-* [Robot Internal Architecture](#robot-internal-architecture)
 * [Expansion Header](#expansion-header)
 * [Cameras - Super Sensory System](#cameras---super-sensory-system)
 * [Programming interface](#programming-interface)
@@ -28,7 +17,7 @@ https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnS
 * [STM32 MicroROS?](#stm32-microros)
 * [Bluetooth](#bluetooth)
 * [Mobile App](#mobile-app)
-* [45 / 5G support](#45--5g-support)
+* [4G / 5G support](#4g--5g-support)
 * [4G use in the USA](#4g-use-in-the-usa)
 * [GPS from 4G module](#gps-from-4g-module)
 * [Wifi backdoor](#wifi-backdoor)
@@ -41,113 +30,28 @@ https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnS
 * [Sending MQTT commands to the dog.](#sending-mqtt-commands-to-the-dog)
 * [TFTP to RTOS](#tftp-to-rtos)
 * [Troubleshooting](#troubleshooting)
+* [Go1 series Product Matrix](#go1-series-product-matrix)
+   * [Go1 (TM?)](#go1-tm)
+   * [Go1 Air](#go1-air)
+   * [Go1 Pro](#go1-pro)
+   * [Go1 Pro MAX](#go1-pro-max)
+   * [Go1 Nx](#go1-nx)
+   * [Go1 MAX](#go1-max)
+   * [Go1 Edu](#go1-edu)
+   * [Go1 Edu Plus](#go1-edu-plus)
+   * [Go1 Edu Explorer](#go1-edu-explorer)
+* [Robot Internal Architecture](#robot-internal-architecture)
 
-This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?<br>
+One of the first affordable affordable quadrupeds on the market is sold by Unitree Robotics. The marketing has exploded out of seemingly no where, and now the dogs are 
+seemingly everywhere. Often confused as "Boston Dynamics Spot", or specifically being a "knock off Spot" the Go1 series is hard to miss these days. This likely started with 
+the artificially low advertising cost. Beefed up marketing videos sold everyone on the low cost Air version of the dog, while hyping features of the EDU model. 
+
+"This $2,700 robot dog will carry a single bottle of water for you: Who needs a tote bag when you have a little robot butler?"<br>
 https://www.theverge.com/2021/6/10/22527413/tiny-robot-dog-unitree-robotics-go1<br>
 [![Launch Video](http://img.youtube.com/vi/xdfmhWQyp_8/0.jpg)](https://www.youtube.com/watch?v=xdfmhWQyp_8)<br>
 
-# Go1 series Product Matrix
-The full product matrix is not understood, there appear to be regional sub variants that are only sold in certain countries. For example the "Go1 MAX" is supposed to be China exclusive, although it can be easily obtained "cross-border". [Test report details](https://www.tele.soumu.go.jp/giteki/SearchServlet?pageID=jg01_01&PC=018&TC=N&PK=1&FN=220315N018&SN=%94F%8F%D8&LN=15&R1=*****&R2=*****) have given the current understanding of product options. <br>
-<p align="center">
-<img
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/JapanTest.png"><br>
-<img
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/ChinaTest.png"><br>
-</p>
-
-## Go1 (TM?)
-https://www.taobao.com/list/item/657740636451.htm
-Early Black variant of the Air? 
-
-https://www.cnbeta.com/articles/tech/1139381.htm
- 
-<p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1TM.jpg"><br>
-</p>
-
-<p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1.jpg"><br>
-</p>
-
-## Go1 Air
-<p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1Air.png"><br>
-</p>
-
-## Go1 Pro
-<p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1Pro.png"><br>
-</p>
-
-## Go1 Pro MAX
-*unknown* 
-
-## Go1 Nx
-*unknown* 
-
-## Go1 MAX
-https://www.taobao.com/list/item/667863152779.htm
-<p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1MAX.png"><br>
-</p>
-
-## Go1 Edu
-<p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1EDU.png"><br>
-</p>
-
-When upgrading to the 2D or 3D LiDAR versions of the GO1 EDU, one of the three Jetson Nanos is upgraded to a Jetson Xavier NX. As a result, the robot is capable of dynamic obstacle avoidance, navigation planning, map building, self-positioning and more. This also supports your ability to develop gesture recognition, VSLAM, deep learning, machine learning, etc.
-
-## Go1 Edu Plus
-2D LiDAR Upgrade (Plus)
-
-## Go1 Edu Explorer
-3D LiDAR Upgrade (Explorer)
-
-The difference between the EDU and the EDU Explorer is basically those features that comes with the integration of the Lidar (2D/3D): 
-Basically<br>
-- Obstacle avoidance<br>
-- Mapping and navigation planning<br>
-- Support for developing gesture recognition<br>
-- VSLAM and other secondary development<br>
-- With the 3D Lidar, also the Dynamic Obstacle Avoidance.<br>
-
-# Robot Internal Architecture
-
-<p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/NetworkLayout.png"><br>
-</p>
-
-<p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/FlowChart.png"><br>
-</p>
-
-<p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/sdk.png"><br>
-</p>
-
-<p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/arch.png"><br>
-</p>
-
-<p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.png"><br>
-</p>
-
-Note: The two small pins next to the XT30U connector on the dog's belly appear to be P & N signals for the RS485 "motors" network on the "A4". <br>
-XT30(2 2)-F<br>
-https://www.aliexpress.com/item/3256801621419825.html
+The reality is a "usable" version of the dog that can actually be programmed can never be obtained for $2700. This cost is reserved alone for the basic "RC" version of the 
+dog, a version with no extra internal computing capability.
 
 # Expansion Header
 "40-pin Centronics connector"
@@ -616,7 +520,7 @@ The MQTT locic can be further understood by disassembling appTransit.
 ```
 
 
-# 45 / 5G support
+# 4G / 5G support
 
 Quectel EG25-G is connected to the RasPI
 https://www.quectel.com/wp-content/uploads/pdfupload/EP-FMEG25GMPCIs_Specification_V1.0-1609137.pdf
@@ -1506,3 +1410,108 @@ pi@raspberrypi:~ $ systemctl list-units --failed
 ● nginx.service loaded failed failed A high performance web server and a reverse proxy server
 
 ```
+
+# Go1 series Product Matrix
+The full product matrix is not fully understood, but there appears to be regional sub variants that are only sold in certain countries. For example the "Go1 MAX" is supposed to be China exclusive, although it can be easily obtained "cross-border". [Test report details](https://www.tele.soumu.go.jp/giteki/SearchServlet?pageID=jg01_01&PC=018&TC=N&PK=1&FN=220315N018&SN=%94F%8F%D8&LN=15&R1=*****&R2=*****) have given the current understanding of product options. <br>
+<p align="center">
+<img
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/JapanTest.png"><br>
+<img
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/ChinaTest.png"><br>
+</p>
+
+## Go1 (TM?)
+https://www.taobao.com/list/item/657740636451.htm
+Early Black variant of the Air? 
+
+https://www.cnbeta.com/articles/tech/1139381.htm
+ 
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1TM.jpg"><br>
+</p>
+
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1.jpg"><br>
+</p>
+
+## Go1 Air
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1Air.png"><br>
+</p>
+
+## Go1 Pro
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1Pro.png"><br>
+</p>
+
+## Go1 Pro MAX
+*unknown* 
+
+## Go1 Nx
+*unknown* 
+
+## Go1 MAX
+https://www.taobao.com/list/item/667863152779.htm
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1MAX.png"><br>
+</p>
+
+## Go1 Edu
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1EDU.png"><br>
+</p>
+
+When upgrading to the 2D or 3D LiDAR versions of the GO1 EDU, one of the three Jetson Nanos is upgraded to a Jetson Xavier NX. As a result, the robot is capable of dynamic obstacle avoidance, navigation planning, map building, self-positioning and more. This also supports your ability to develop gesture recognition, VSLAM, deep learning, machine learning, etc.
+
+## Go1 Edu Plus
+2D LiDAR Upgrade (Plus)
+
+## Go1 Edu Explorer
+3D LiDAR Upgrade (Explorer)
+
+The difference between the EDU and the EDU Explorer is basically those features that comes with the integration of the Lidar (2D/3D): 
+Basically<br>
+- Obstacle avoidance<br>
+- Mapping and navigation planning<br>
+- Support for developing gesture recognition<br>
+- VSLAM and other secondary development<br>
+- With the 3D Lidar, also the Dynamic Obstacle Avoidance.<br>
+
+# Robot Internal Architecture
+
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/NetworkLayout.png"><br>
+</p>
+
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/FlowChart.png"><br>
+</p>
+
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/sdk.png"><br>
+</p>
+
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/arch.png"><br>
+</p>
+
+<p align="center">
+<img 
+src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Ports.png"><br>
+</p>
+
+Note: The two small pins next to the XT30U connector on the dog's belly appear to be P & N signals for the RS485 "motors" network on the "A4". <br>
+XT30(2 2)-F<br>
+https://www.aliexpress.com/item/3256801621419825.html
+
+
