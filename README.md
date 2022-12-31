@@ -1590,10 +1590,8 @@ pi@raspberrypi:~ $ systemctl list-units --failed
 # Go1 series Product Matrix
 The full product matrix is not fully understood, but there appears to be regional sub variants that are only sold in certain countries. For example the "Go1 MAX" is supposed to be China exclusive, although it can be easily obtained "cross-border". [Test report details](https://www.tele.soumu.go.jp/giteki/SearchServlet?pageID=jg01_01&PC=018&TC=N&PK=1&FN=220315N018&SN=%94F%8F%D8&LN=15&R1=*****&R2=*****) have given the current understanding of product options. <br>
 <p align="center">
-<img
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/JapanTest.png"><br>
-<img
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/ChinaTest.png"><br>
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/JapanTest.png"><br>
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/ChinaTest.png"><br>
 </p>
 
 ## Go1 (TM?)
@@ -1603,25 +1601,21 @@ Early Black variant of the Air?
 https://www.cnbeta.com/articles/tech/1139381.htm
  
 <p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1TM.jpg"><br>
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1TM.jpg"><br>
 </p>
 
 <p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1.jpg"><br>
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1.jpg"><br>
 </p>
 
 ## Go1 Air
 <p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1Air.png"><br>
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1Air.png"><br>
 </p>
 
 ## Go1 Pro
 <p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1Pro.png"><br>
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1Pro.png"><br>
 </p>
 
 ## Go1 Pro MAX
@@ -1633,14 +1627,12 @@ src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1Pro.png"><
 ## Go1 MAX
 https://www.taobao.com/list/item/667863152779.htm
 <p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1MAX.png"><br>
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1MAX.png"><br>
 </p>
 
 ## Go1 Edu
 <p align="center">
-<img 
-src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1EDU.png"><br>
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Go1EDU.png"><br>
 </p>
 
 When upgrading to the 2D or 3D LiDAR versions of the GO1 EDU, one of the three Jetson Nanos is upgraded to a Jetson Xavier NX. As a result, the robot is capable of dynamic obstacle avoidance, navigation planning, map building, self-positioning and more. This also supports your ability to develop gesture recognition, VSLAM, deep learning, machine learning, etc.
