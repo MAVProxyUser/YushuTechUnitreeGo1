@@ -362,6 +362,75 @@ index 7830771..66159c6 100644
  set(CMAKE_CXX_FLAGS "-O3 -fPIC")
 ```
 
+For the ros_to_real package on ROS2 you can use the following notes:
+
+```
+source /opt/ros/galactic/setup.bash
+mkdir -p ~/unitree_ros2_ws/src
+cd ~/unitree_ros2_ws/src
+git clone https://github.com/JonasFovea/unitree_legged_sdk.git -b fix 
+git clone https://github.com/unitreerobotics/unitree_ros2_to_real.git
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2cdf49f..a3ce520 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -22,13 +22,13 @@ set(CMAKE_CXX_FLAGS "-O3")
+ 
+ include_directories(
+     include
+-    ${CMAKE_SOURCE_DIR}/unitree_legged_sdk-master/include
++    /home/kfinisterre/unitree_ros2_ws/src/unitree_legged_sdk/include/
+ )
+ 
+ 
+ 
+-link_directories(${CMAKE_SOURCE_DIR}/unitree_legged_sdk-master/lib)
+-
++link_directories(/home/kfinisterre/unitree_ros2_ws/src/unitree_legged_sdk/lib)
+
+diff --git a/src/ros2_udp.cpp b/src/ros2_udp.cpp
+index 72dc295..e10dc96 100644
+--- a/src/ros2_udp.cpp
++++ b/src/ros2_udp.cpp
+@@ -22,7 +22,7 @@ public:
+ public:
+     Custom()
+         : low_udp(LOWLEVEL),
+-          high_udp(8090, "192.168.123.161", 8082, sizeof(HighCmd), sizeof(HighState))
++          high_udp(8090, "192.168.12.1", 8082, sizeof(HighCmd), sizeof(HighState))
+     {
+         high_udp.InitCmdData(high_cmd);
+         low_udp.InitCmdData(low_cmd);
+@@ -116,4 +116,4 @@ int main(int argc, char **argv)
+     rclcpp::shutdown();
+ 
+     return 0;
+-}
+\ No newline at end of file
++}
+diff --git a/src/ros2_walk_example.cpp b/src/ros2_walk_example.cpp
+index 8cbae21..c225f89 100644
+--- a/src/ros2_walk_example.cpp
++++ b/src/ros2_walk_example.cpp
+@@ -37,7 +37,7 @@ int main(int argc, char **argv)
+ 
+         high_cmd_ros.head[0] = 0xFE;
+         high_cmd_ros.head[1] = 0xEF;
+-        high_cmd_ros.level_flag = HIGHLEVEL;
++        high_cmd_ros.level_flag = 0;
+         high_cmd_ros.mode = 0;
+         high_cmd_ros.gait_type = 0;
+         high_cmd_ros.speed_level = 0;
+@@ -143,4 +143,4 @@ int main(int argc, char **argv)
+     }
+ 
+     return 0;
+-}
+\ No newline at end of file
++}
+```
+
 # Passwords
 
 There are several linux systems on the dogs network that act as ROS processing nodes. Currently there is no access to the STM32 MCU (aka 'h7') motion controller. 
