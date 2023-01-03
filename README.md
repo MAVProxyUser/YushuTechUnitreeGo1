@@ -14,7 +14,10 @@ https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnS
 * [Update interface](#update-interface)
 * [Upload interface](#upload-interface)
 * [SDK usage on non EDU models](#sdk-usage-on-non-edu-models)
+   * [Requirements:](#requirements)
    * [Example Walk on Unitree go1 pro](#example-walk-on-unitree-go1-pro)
+* [ros2_udp &amp; ros2_walk_example](#ros2_udp--ros2_walk_example)
+* [ROS1 examples](#ros1-examples)
 * [Passwords](#passwords)
 * [Backup internal flash on all devices](#backup-internal-flash-on-all-devices)
 * [Power Output](#power-output)
@@ -243,7 +246,7 @@ https://github.com/unitreerobotics/unitree_legged_sdk/issues/24
 Thanks to Devemin:
 https://qiita.com/devemin/items/1708176248a1928f3b88
 
-Requirements:
+## Requirements:
 Do not use one of these versions of the SDK, because they do NOT support go1:
 https://github.com/unitreerobotics/unitree_legged_sdk/releases/tag/v3.2
 https://github.com/unitreerobotics/unitree_legged_sdk/releases/tag/v3.3
@@ -362,6 +365,7 @@ index 7830771..66159c6 100644
  set(CMAKE_CXX_FLAGS "-O3 -fPIC")
 ```
 
+# ros2_udp & ros2_walk_example
 For the ros_to_real package on ROS2 you can use the following notes:
 
 ```
@@ -430,6 +434,8 @@ index 8cbae21..c225f89 100644
 \ No newline at end of file
 +}
 ```
+
+# ROS1 examples
 
 The ROS1 examples, including keyboard control can be made to work with the following diffs. (including on non EDU models)
 ```
@@ -513,6 +519,7 @@ index 53fda22..4b019ad 100644
  }
  
  int main(int argc, char **argv)
+
 diff --git a/unitree_legged_real/src/exe/example_walk.cpp b/unitree_legged_real/src/exe/example_walk.cpp
 index ce46ddb..3ae0e51 100644
 --- a/unitree_legged_real/src/exe/example_walk.cpp
