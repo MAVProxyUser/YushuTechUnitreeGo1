@@ -14,7 +14,7 @@ https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnS
 * [Update interface](#update-interface)
 * [Upload interface](#upload-interface)
 * [SDK usage on non EDU models](#sdk-usage-on-non-edu-models)
-   * [Requirements:](#requirements)
+   * [Requirements](#requirements)
    * [Example Walk on Unitree go1 pro](#example-walk-on-unitree-go1-pro)
    * [ros2_udp &amp; ros2_walk_example](#ros2_udp--ros2_walk_example)
    * [ROS1 examples](#ros1-examples)
@@ -248,7 +248,7 @@ https://github.com/unitreerobotics/unitree_legged_sdk/issues/24
 Thanks to Devemin:
 https://qiita.com/devemin/items/1708176248a1928f3b88
 
-## Requirements:
+## Requirements
 Do not use one of these versions of the SDK, because they do NOT support go1:
 https://github.com/unitreerobotics/unitree_legged_sdk/releases/tag/v3.2
 https://github.com/unitreerobotics/unitree_legged_sdk/releases/tag/v3.3
