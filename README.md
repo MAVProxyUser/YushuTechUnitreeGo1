@@ -431,6 +431,152 @@ index 8cbae21..c225f89 100644
 +}
 ```
 
+The ROS1 examples, including keyboard control can be made to work with the following diffs. (including on non EDU models)
+```
+diff --git a/unitree_legged_real/CMakeLists.txt b/unitree_legged_real/CMakeLists.txt
+index e01901f..4d78ce0 100755
+--- a/unitree_legged_real/CMakeLists.txt
++++ b/unitree_legged_real/CMakeLists.txt
+@@ -30,6 +30,7 @@ include_directories(
+     include
+     ${catkin_INCLUDE_DIRS}
+     ${CMAKE_SOURCE_DIR}/unitree_legged_sdk/include
++    ~/unitree_ros_ws/src/unitree_legged_sdk/include/
+ )
+ 
+ 
+diff --git a/unitree_legged_real/include/convert.h b/unitree_legged_real/include/convert.h
+index f71a838..e4dfb66 100755
+--- a/unitree_legged_real/include/convert.h
++++ b/unitree_legged_real/include/convert.h
+@@ -63,7 +63,7 @@ UNITREE_LEGGED_SDK::HighCmd rosMsg2Cmd(const unitree_legged_msgs::HighCmd::Const
+         cmd.wirelessRemote[i] = msg->wirelessRemote[i];
+     }
+ 
+-    cmd.levelFlag = msg->levelFlag;
++    cmd.levelFlag = 0;
+     cmd.frameReserve = msg->frameReserve;
+     cmd.bandWidth = msg->bandWidth;
+     cmd.mode = msg->mode;
+diff --git a/unitree_legged_real/src/exe/control_via_keyboard.cpp b/unitree_legged_real/src/exe/control_via_keyboard.cpp
+index 53fda22..4b019ad 100644
+--- a/unitree_legged_real/src/exe/control_via_keyboard.cpp
++++ b/unitree_legged_real/src/exe/control_via_keyboard.cpp
+@@ -2,32 +2,24 @@
+ #include <geometry_msgs/Twist.h>
+ #include <termios.h>
+ 
+-int getch()
+-{
+-       int ch;
+-       struct termios oldt;
+-       struct termios newt;
+-
+-       // Store old settings, and copy to new settings
+-       tcgetattr(STDIN_FILENO, &oldt);
+-       newt = oldt;
+-
+-       // Make required changes and apply the settings
+-       newt.c_lflag &= ~(ICANON | ECHO);
+-       newt.c_iflag |= IGNBRK;
+-       newt.c_iflag &= ~(INLCR | ICRNL | IXON | IXOFF);
+-       newt.c_lflag &= ~(ICANON | ECHO | ECHOK | ECHOE | ECHONL | ISIG | IEXTEN);
+-       newt.c_cc[VMIN] = 0;
+-       newt.c_cc[VTIME] = 1;
+-       tcsetattr(fileno(stdin), TCSANOW, &newt);
+-
+-       // Get the current character
+-       ch = getchar();
+-
+-       // Reapply old settings
+-       tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+-
+-       return ch;
++char getch() {
++        char buf = 0;
++        struct termios old = {0};
++        if (tcgetattr(0, &old) < 0)
++                perror("tcsetattr()");
++        old.c_lflag &= ~ICANON;
++        old.c_lflag &= ~ECHO;
++        old.c_cc[VMIN] = 1;
++        old.c_cc[VTIME] = 0;
++        if (tcsetattr(0, TCSANOW, &old) < 0)
++                perror("tcsetattr ICANON");
++        if (read(0, &buf, 1) < 0)
++                perror ("read()");
++        old.c_lflag |= ICANON;
++        old.c_lflag |= ECHO;
++        if (tcsetattr(0, TCSADRAIN, &old) < 0)
++                perror ("tcsetattr ~ICANON");
++        return (buf);
+ }
+ 
+ int main(int argc, char **argv)
+diff --git a/unitree_legged_real/src/exe/example_walk.cpp b/unitree_legged_real/src/exe/example_walk.cpp
+index ce46ddb..3ae0e51 100644
+--- a/unitree_legged_real/src/exe/example_walk.cpp
++++ b/unitree_legged_real/src/exe/example_walk.cpp
+@@ -32,7 +32,7 @@ int main(int argc, char **argv)
+ 
+         high_cmd_ros.head[0] = 0xFE;
+         high_cmd_ros.head[1] = 0xEF;
+-        high_cmd_ros.levelFlag = HIGHLEVEL;
++        high_cmd_ros.levelFlag = 0;
+         high_cmd_ros.mode = 0;
+         high_cmd_ros.gaitType = 0;
+         high_cmd_ros.speedLevel = 0;
+@@ -137,4 +137,4 @@ int main(int argc, char **argv)
+     }
+ 
+     return 0;
+-}
+\ No newline at end of file
++}
+diff --git a/unitree_legged_real/src/exe/ros_udp.cpp b/unitree_legged_real/src/exe/ros_udp.cpp
+index 1a3daa9..eee0416 100644
+--- a/unitree_legged_real/src/exe/ros_udp.cpp
++++ b/unitree_legged_real/src/exe/ros_udp.cpp
+@@ -25,7 +25,7 @@ public:
+ public:
+     Custom()
+         : low_udp(LOWLEVEL),
+-          high_udp(8090, "192.168.123.161", 8082, sizeof(HighCmd), sizeof(HighState))
++          high_udp(8090, "192.168.12.1", 8082, sizeof(HighCmd), sizeof(HighState))
+     {
+         high_udp.InitCmdData(high_cmd);
+         low_udp.InitCmdData(low_cmd);
+diff --git a/unitree_legged_real/src/exe/twist_sub.cpp b/unitree_legged_real/src/exe/twist_sub.cpp
+index 10c2689..ab04169 100644
+--- a/unitree_legged_real/src/exe/twist_sub.cpp
++++ b/unitree_legged_real/src/exe/twist_sub.cpp
+@@ -25,7 +25,7 @@ public:
+ public:
+     Custom()
+         : low_udp(LOWLEVEL),
+-          high_udp(8090, "192.168.123.161", 8082, sizeof(HighCmd), sizeof(HighState))
++          high_udp(8090, "192.168.12.1", 8082, sizeof(HighCmd), sizeof(HighState))
+     {
+         high_udp.InitCmdData(high_cmd);
+         low_udp.InitCmdData(low_cmd);
+@@ -78,7 +78,6 @@ void cmdVelCallback(const geometry_msgs::Twist::ConstPtr &msg)
+     printf("cmd_x_vel = %f\n", custom.high_cmd.velocity[0]);
+     printf("cmd_y_vel = %f\n", custom.high_cmd.velocity[1]);
+     printf("cmd_yaw_vel = %f\n", custom.high_cmd.yawSpeed);
+-
+     unitree_legged_msgs::HighState high_state_ros;
+ 
+     high_state_ros = state2rosMsg(custom.high_state);
+@@ -107,4 +106,4 @@ int main(int argc, char **argv)
+     ros::spin();
+ 
+     return 0;
+-}
+\ No newline at end of file
++}
+```
+
+
 # Passwords
 
 There are several linux systems on the dogs network that act as ROS processing nodes. Currently there is no access to the STM32 MCU (aka 'h7') motion controller. 
