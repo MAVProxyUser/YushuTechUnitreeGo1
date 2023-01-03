@@ -16,6 +16,8 @@ https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnS
 * [SDK usage on non EDU models](#sdk-usage-on-non-edu-models)
    * [Requirements:](#requirements)
    * [Example Walk on Unitree go1 pro](#example-walk-on-unitree-go1-pro)
+   * [ros2_udp &amp; ros2_walk_example](#ros2_udp--ros2_walk_example)
+   * [ROS1 examples](#ros1-examples)
 * [ros2_udp &amp; ros2_walk_example](#ros2_udp--ros2_walk_example)
 * [ROS1 examples](#ros1-examples)
 * [Passwords](#passwords)
@@ -365,7 +367,7 @@ index 7830771..66159c6 100644
  set(CMAKE_CXX_FLAGS "-O3 -fPIC")
 ```
 
-# ros2_udp & ros2_walk_example
+## ros2_udp & ros2_walk_example
 For the ros_to_real package on ROS2 you can use the following notes:
 
 ```
@@ -435,7 +437,7 @@ index 8cbae21..c225f89 100644
 +}
 ```
 
-# ROS1 examples
+## ROS1 examples
 
 The ROS1 examples, including keyboard control can be made to work with the following diffs. (including on non EDU models)
 ```
