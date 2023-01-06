@@ -843,8 +843,8 @@ sent ACK <block: 1>
 ## What talks to the STM at 192.168.123.10?
 
 Two apps:
-/Unitree/autostart/sportMode/bin/Legged_sport
-/Unitree/autostart/appTransit/build/appTransit
+/home/pi/Unitree/autostart/sportMode/bin/Legged_sport
+/home/pi/Unitree/autostart/appTransit/build/appTransit
 
 ```
 root@raspberrypi:/home/pi# netstat -ap | grep 192.168.123.10
@@ -1165,7 +1165,7 @@ $ node bin-prettier.js ../../chunk-ab73ca30.b65f7572.js
 You can find the respective files in:<br>
 Go1_2021_12_10_d799e0c3/raspi/Unitree/autostart/webMonitor/dist/
 
-The MQTT locic can be further understood by disassembling appTransit. 
+The MQTT locic can be further understood by disassembling /home/pi/Unitree/autostart/appTransit/build/appTransit. 
 
 ```
   bVar1 = std::operator==(pbVar3,"controller/action");
