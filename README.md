@@ -3,6 +3,8 @@
 Looking for Quadruped friends? Join "The Dog Pound animal control for Stray robot dogs" slack group: <br>
 https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnSagFQ<br>
 
+If you like this repo, fork it... [Click to Fork https://github.com/MAVProxyUser/YushuTechUnitreeGo1](https://github.com/MAVProxyUser/YushuTechUnitreeGo1/fork)! Make sure you keep your forked copy up to date, lots of changes happen over time. You won't want a stale copy. 
+
 # Table of Contents
 宇树科技 HangZhou Yushu Technology (Unitree) go1 deep dive & unofficial development notes:
 
