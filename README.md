@@ -812,6 +812,20 @@ The STM RTOS has tftp enabled for updates.
 It is assumed to be a variants of IAP over tftp per ST spec<br>
 https://www.st.com/resource/en/application_note/an3376-stm32f2x7-inapplication-programming-iap-over-ethernet-stmicroelectronics.pdf
 
+```
+This application note is intended for developers using the STM32F2x7 microcontroller. It provides implementation solutions for In-Application Programming (IAP) using the 
+STM32F2x7 Ethernet communications interface.
+Two possible solutions are provided on top of the LwIP TCP/IP stack:
+●IAP using TFTP (Trivial File Transfer Protocol)
+```
+
+The motion controller update firmware does indeed use the LWIP stack, and happens to be STM32 based. 
+```
+$ strings ../Unitree_RE/CoH017_35.bin | grep LWIP
+../LWIP/Target/ethernetif.c
+Timeout time too long, max is LWIP_UINT32_MAX/4 msecs
+```
+
 If you tftp to 192.168.161.10, the Unitree go1 will immediately drop. 
 
 ```
