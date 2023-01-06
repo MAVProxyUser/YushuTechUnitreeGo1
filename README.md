@@ -803,7 +803,7 @@ https://github.com/micro-ROS/NuttX/blob/master/arch/arm/src/stm32h7/stm32_gpio.h
 We can clearly tell from the poorly ground "e3", "ARM", "VQ" "H7" & "43" that we are dealing with an STM32H743
 <img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/STm32H743.png"><br>
 
-There are two variants due to ST parts shorages, an unknown BGA version, and a surface mount version with an LQFP100 and the following pinout:
+There are two variants due to ST parts shorages, an unknown BGA version, and a surface mount LQFP100 with the following pinout:<br>
 <img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/STm32H743-pinout.png"><br>
 
 It absolutly has MIT Cheetah based code running within. You can clearly see the lineage just by looking at [1057343368-MIT.pdf](https://dspace.mit.edu/bitstream/handle/1721.1/118671/1057343368-MIT.pdf).<br>
