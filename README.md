@@ -885,7 +885,7 @@ https://github.com/search?q=org%3Amit-biomimetics+%22Setup+for+mini+cheetah%22&t
 This code is MIT license. 
 https://github.com/mit-biomimetics/Cheetah-Software/blob/master/LICENSE
 
-Unitree know acknowledges this:<br>
+Unitree now acknowledges this:<br>
 https://github.com/unitreerobotics/Acknowledgement/blob/055126fc1e9148d23a212dd1cf99e82d084b0174/README.md#L11
 ```
 Cheetah-Software, developed by MIT Biomimetic Robotics Lab. https://github.com/mit-biomimetics/Cheetah-Software
