@@ -808,10 +808,11 @@ It absolutly has MIT Cheetah based code running within. You can clearly see the 
 
 The STM RTOS has tftp enabled for updates.
 ```
-./autostart/updateDependencies/update_firmware.py:    atftp = "sleep 5; atftp -p -l " + sys.argv[1] + " 192.168.123.10 --tftp-timeout 10;"
+./autostart/updateDependencies/update_firmware.py:   
+      atftp = "sleep 5; atftp -p -l " + sys.argv[1] + " 192.168.123.10 --tftp-timeout 10;"
 ```
 
-It is assumed to be a variants of IAP over tftp per ST spec<br>
+It is assumed to be a variant of IAP over tftp per ST spec.<br>
 https://www.st.com/resource/en/application_note/an3376-stm32f2x7-inapplication-programming-iap-over-ethernet-stmicroelectronics.pdf
 
 ```
