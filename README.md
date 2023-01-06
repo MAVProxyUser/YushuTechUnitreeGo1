@@ -18,8 +18,7 @@ https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnS
    * [Example Walk on Unitree go1 pro](#example-walk-on-unitree-go1-pro)
    * [ros2_udp &amp; ros2_walk_example](#ros2_udp--ros2_walk_example)
    * [ROS1 examples](#ros1-examples)
-* [ros2_udp &amp; ros2_walk_example](#ros2_udp--ros2_walk_example)
-* [ROS1 examples](#ros1-examples)
+   * [ros2_udp &amp; ros2_walk_example](#ros2_udp--ros2_walk_example)
 * [Passwords](#passwords)
 * [Backup internal flash on all devices](#backup-internal-flash-on-all-devices)
 * [Power Output](#power-output)
@@ -440,6 +439,7 @@ index 8cbae21..c225f89 100644
 ## ROS1 examples
 
 The ROS1 examples, including keyboard control can be made to work with the following diffs. (including on non EDU models)
+
 ```
 diff --git a/unitree_legged_real/CMakeLists.txt b/unitree_legged_real/CMakeLists.txt
 index e01901f..4d78ce0 100755
@@ -779,28 +779,39 @@ This example code will make the dog lay down, stand up, switch to walk mode, and
 
 # STM32 MicroROS?
 
-The motion control device at 192.168.123.10 may be an STM32 running MicroROS
+The motion control device at 192.168.123.10 may be an STM32 running MicroROS.
 
 https://micro.ros.org/docs/overview/hardware/<br>
 https://www.youtube.com/watch?v=Sz-nllmtcc8<br>
 https://github.com/micro-ROS/micro_ros_stm32cubemx_utils<br>
 
-Interface port documentation reveals it to be an "H7", and an "A4"<br>
+Physically tearing down the motion controller reveals attempts to grind off the chip markings. 
+
+<p align="center">
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/STM32Grind1.png"><br>
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/STM32Grind2.png"><br>
+</p>
+
+Interface port documentation reveals it to be an "H7", which refers to STM32H7<br>
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/H7ref.jpeg"><br>
 STM32H7 - https://www.st.com/en/microcontrollers-microprocessors/stm32h7-series.html<br>
 https://github.com/micro-ROS/NuttX/blob/master/arch/arm/src/stm32h7/stm32_gpio.h
 
-It absolutly has MIT Cheetah based code running within. 
+We can clearly tell from the poorly ground "e3", "ARM", "VQ" "H7" & "43" that we are dealing with an STM32H743
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/STm32H743.png"><br>
 
-# TFTP to RTOS
+It absolutly has MIT Cheetah based code running within. You can clearly see the lineage just by looking at [1057343368-MIT.pdf](https://dspace.mit.edu/bitstream/handle/1721.1/118671/1057343368-MIT.pdf).<br>
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/CheetahSpine.png"><br>
+
+# TFTP to RToS
 
 The STM RTOS has tftp enabled for updates. 
 ./autostart/updateDependencies/update_firmware.py:    atftp = "sleep 5; atftp -p -l " + sys.argv[1] + " 192.168.123.10 --tftp-timeout 10;"
 
-
-It is assumed to be a variants of IAP over tftp per ST spec
+It is assumed to be a variants of IAP over tftp per ST spec<br>
 https://www.st.com/resource/en/application_note/an3376-stm32f2x7-inapplication-programming-iap-over-ethernet-stmicroelectronics.pdf
 
-If you tftp to 192.168.161.10, the bot will immediately drop. 
+If you tftp to 192.168.161.10, the Unitree go1 will immediately drop. 
 
 ```
 pi@raspberrypi:~ $ atftp -g -r "*.bin" 192.168.123.10 69 --trace  --verbose
@@ -855,6 +866,24 @@ https://github.com/search?q=org%3Amit-biomimetics+%22Setup+for+mini+cheetah%22&t
 
 This code is MIT license. 
 https://github.com/mit-biomimetics/Cheetah-Software/blob/master/LICENSE
+
+Unitree know acknowledges this:<br>
+https://github.com/unitreerobotics/Acknowledgement/blob/055126fc1e9148d23a212dd1cf99e82d084b0174/README.md#L11
+```
+Cheetah-Software, developed by MIT Biomimetic Robotics Lab. https://github.com/mit-biomimetics/Cheetah-Software
+```
+
+Newer firmware versions include the MIT License as well.<br>
+https://github.com/unitreerobotics/unitree_legged_sdk/issues/55
+
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/CheetahLicense.png"><br>
+
+Dissassembly of the SportMode binary will show clear refrences to the MIT Cheetah HardwareBridge.<br>
+
+https://mit-biomimetics.github.io/d9/da0/_hardware_bridge_8cpp_source.html<br>
+https://mit-biomimetics.github.io/d5/d90/_control_parameters_8cpp.html<br>
+https://github.com/mit-biomimetics/Cheetah-Software/blob/master/common/src/Controllers/FootSwingTrajectory.cpp<br>
+
 
 ## Backflip
 
@@ -1773,6 +1802,22 @@ bitbuffer:: Number of rows: 0
 
 # Troubleshooting
 
+## Stop dog from standing up at boot (Disable triggers)
+
+The go1 motion program is automatically triggered after power on. If you want the robot to power on<br>
+[without triggering](https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/Disable_triggers.docx) the motion program (or don't want the robot to stand up<br>
+on its own) you need to do the following:<br>
+Access to the robot's pi system, either through ssh or by connecting to a monitor<br>
+Access the following paths： ~/Unitree/autostart/triggerSport<br>
+The triggersport.sh script file is the trigger program, let's rename it as follows<br>
+
+<img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/triggers.png"><br>
+Reboot<br>
+When you turn the robot on again you will find that it will not stand up on its own.<br>
+If you want it to go into motion mode (or stand up) you need to press L1+Start on the remote control at the same time<br>
+
+
+## General software repair
 If you accidentally delete /etc/hosts, or remove the "localhost" entry, the dog will not stand. 
 
 ```
