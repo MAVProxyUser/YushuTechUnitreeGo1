@@ -25,8 +25,8 @@ https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnS
 * [Sniffing MQTT traffic on the dog](#sniffing-mqtt-traffic-on-the-dog)
 * [Sending MQTT commands to the dog.](#sending-mqtt-commands-to-the-dog)
 * [STM32 MicroROS?](#stm32-microros)
-* [TFTP to RToS](#tftp-to-rtos)
-* [What talks to the STM at 192.168.123.10?](#what-talks-to-the-stm-at-19216812310)
+   * [TFTP to RToS](#tftp-to-rtos)
+   * [What talks to the STM at 192.168.123.10?](#what-talks-to-the-stm-at-19216812310)
 * [MIT Cheetah code](#mit-cheetah-code)
    * [Backflip](#backflip)
 * [Bluetooth](#bluetooth)
@@ -804,7 +804,7 @@ We can clearly tell from the poorly ground "e3", "ARM", "VQ" "H7" & "43" that we
 It absolutly has MIT Cheetah based code running within. You can clearly see the lineage just by looking at [1057343368-MIT.pdf](https://dspace.mit.edu/bitstream/handle/1721.1/118671/1057343368-MIT.pdf).<br>
 <img src="https://github.com/MAVProxyUser/YushuTechUnitreeGo1/blob/main/CheetahSpine.png"><br>
 
-# TFTP to RToS
+## TFTP to RToS
 
 The STM RTOS has tftp enabled for updates. 
 ./autostart/updateDependencies/update_firmware.py:    atftp = "sleep 5; atftp -p -l " + sys.argv[1] + " 192.168.123.10 --tftp-timeout 10;"
@@ -823,7 +823,7 @@ received DATA <block: 1, size: 0>
 sent ACK <block: 1>
 ```
 
-# What talks to the STM at 192.168.123.10?
+## What talks to the STM at 192.168.123.10?
 
 Two apps:
 /Unitree/autostart/sportMode/bin/Legged_sport
