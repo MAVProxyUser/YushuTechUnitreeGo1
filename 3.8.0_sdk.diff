@@ -1,0 +1,63 @@
+diff --git a/example/example_walk.cpp b/example/example_walk.cpp
+index 46e20d4..07ceb22 100644
+--- a/example/example_walk.cpp
++++ b/example/example_walk.cpp
+@@ -15,7 +15,7 @@ class Custom
+ public:
+     Custom(uint8_t level): 
+       safe(LeggedType::Go1), 
+-      udp(level, 8090, "192.168.123.161", 8082){
++      udp(level, 8090, "192.168.12.1", 8082){
+         udp.InitCmdData(cmd);
+     }
+     void UDPRecv();
+@@ -59,6 +59,7 @@ void Custom::RobotControl()
+     cmd.velocity[1] = 0.0f;
+     cmd.yawSpeed = 0.0f;
+     cmd.reserve = 0;
++    cmd.levelFlag = 0;
+ 
+     if(motiontime > 0 && motiontime < 1000){
+         cmd.mode = 1;
+diff --git a/example_py/example_position.py b/example_py/example_position.py
+old mode 100644
+new mode 100755
+diff --git a/example_py/example_torque.py b/example_py/example_torque.py
+old mode 100644
+new mode 100755
+diff --git a/example_py/example_velocity.py b/example_py/example_velocity.py
+old mode 100644
+new mode 100755
+diff --git a/example_py/example_walk.py b/example_py/example_walk.py
+old mode 100644
+new mode 100755
+index c697c33..dc82624
+--- a/example_py/example_walk.py
++++ b/example_py/example_walk.py
+@@ -13,7 +13,7 @@ if __name__ == '__main__':
+     HIGHLEVEL = 0xee
+     LOWLEVEL  = 0xff
+ 
+-    udp = sdk.UDP(HIGHLEVEL, 8080, "192.168.123.161", 8082)
++    udp = sdk.UDP(HIGHLEVEL, 8080, "192.168.12.1", 8082)
+ 
+     cmd = sdk.HighCmd()
+     state = sdk.HighState()
+@@ -26,7 +26,7 @@ if __name__ == '__main__':
+ 
+         udp.Recv()
+         udp.GetRecv(state)
+-        
++
+         # print(motiontime)
+         # print(state.imu.rpy[0])
+         # print(motiontime, state.motorState[0].q, state.motorState[1].q, state.motorState[2].q)
+@@ -41,6 +41,7 @@ if __name__ == '__main__':
+         cmd.velocity = [0, 0]
+         cmd.yawSpeed = 0.0
+         cmd.reserve = 0
++        cmd.levelFlag = 0
+ 
+         # cmd.mode = 2
+         # cmd.gaitType = 1
+
