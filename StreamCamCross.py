@@ -11,6 +11,9 @@
 # /home/unitree/Unitree/autostart/imageai/mLComSystemFrame/config/mqSNNRConfig.yaml:udpHost: "192.168.123.96"
 #
 # Further detail on the cameras located here: https://www.yuque.com/ironfatty/nly1un/rguxgz
+#
+# Feeds off pipeline 'appsrc ! videoconvert ! omxh264enc ! video/x-h264, stream-format=byte-stream ! rtph264pay ! udpsink host=	"appsrc ! videoconvert ! omxh264enc ! video/x-h264, stream-format=byte-stream ! rtph264pay ! udpsink host="	ds'
+# from libcoordinateProcess.so used by mqttControlNode on each nano. 
 
 import cv2
 
