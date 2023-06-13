@@ -9,6 +9,8 @@
 # /home/unitree/Unitree/autostart/imageai/mLComSystemFrame/config/mqMNConfig.yaml:udpHost: "192.168.123.96"
 # /home/unitree/Unitree/autostart/imageai/mLComSystemFrame/config/mqSNNLConfig.yaml:udpHost: "192.168.123.96"
 # /home/unitree/Unitree/autostart/imageai/mLComSystemFrame/config/mqSNNRConfig.yaml:udpHost: "192.168.123.96"
+#
+# Further detail on the cameras located here: https://www.yuque.com/ironfatty/nly1un/rguxgz
 
 import cv2
 
