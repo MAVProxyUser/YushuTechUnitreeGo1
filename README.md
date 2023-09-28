@@ -1,7 +1,7 @@
 # HangZhou Yushu Tech Unitree Go1
 
 Looking for Quadruped friends? Join "The Dog Pound animal control for Stray robot dogs" slack group: <br>
-https://join.slack.com/t/robotdogs/shared_invite/zt-1fvixx89u-7T79~VxmDYdFSIoTnSagFQ<br>
+https://join.slack.com/t/robotdogs/shared_invite/zt-24ep8mqn4-1p42Aq7owRv9klLI~3C5Pw<br>
 
 Looking for a Unitree Go1 Air, Pro, or MAX hack to enable EDU low-level functions? Look no further than 
 [Unitree Go1 Free-Dog SDK featuring 'faux-level' support!](https://github.com/Bin4ry/free-dog-sdk/tree/main) from Former "DJI Slack OG" [@bin4ry](https://twitter.com/bin4rydigit)
