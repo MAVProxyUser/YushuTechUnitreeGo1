@@ -1,5 +1,5 @@
 # Cloudsail backdoor
-Cloudsail: Zhexi Cloud Interconection Nat Punching network backdoor network tunnel.
+Cloudsail: Zhexi Cloud Interconection Nat Punching network backdoor tunnel.
 https://www.zhexi.tech/help/api/xd/
 
 P2P tunnel can be created between any clientIDs (read as dogs), and a unitree master client (read as any other individual with the leaked key).
@@ -34,3 +34,15 @@ January 2023
 {'error': 0, 'data': [{'id': '9b658552-90c5-11ed-8010-02420a0001ca', 'name': 'raspberrypi', 'remark': '', 'os': 'Debian GNU/Linux 10 (buster)', 'ip': '10.90.21.11', 'publicIP': '223.104.246.203', 'mac': 'e4:5f:01:b6:e1:e8', 'version': '1.143.0.15537', 'activetime': '2023-01-10T10:45:00.000Z', 'addtime': '2023-01-10T10:38:37.000Z', 'isActive': 0}], 'total': 1133, 'current': 1}
 
 This tunnel exposes the network connected to the dog to outside influence via the tunel. Someone can control the dog via MQTT, or attack networks connected to the dog, or use the dog to attack Wifi networks within the dogs reach.
+
+# Concept 
+Decentralized Remote Interconnection 2.0
+https://www.zhexi.tech/blog/20200822/
+![zhexi](https://www.zhexi.tech/client/a19d73ffd0474faa.jpg)
+
+"Traditional VPN must technically have a "fixed address server" role, which is the "center", and all nodes must first connect to this center to communicate with each other. For remote interconnection, this center is a burden. Without this center, the direct connection between nodes will be simpler and more efficient, and single-point failure can be avoided. Unlike "Everyone is the center", the real sense of decentralization is to eliminate any form of VPN server, whether it is In-cloud or On-premises. This is the latest version of Cassie."
+
+Zhexi Cloud Internet API Technology White Paper
+https://www.zhexi.tech/blog/20211008
+![zhexi penetration](https://www.zhexi.tech/client/8d73575d5c31030a.png)
+![penetrating modes](https://www.zhexi.tech/client/79073c46d609745e.png)
